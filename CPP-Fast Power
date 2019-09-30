@@ -26,4 +26,41 @@ public class Main {
 
 
   }
+  // After optimisation with complexitity log(b)
+  
+  package com.company;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+import static java.lang.Math.pow;
+
+
+public class Main {
+	static int fastPower(int a,int b){
+		if(b==0){
+			return 1;
+		}
+		int smallAns = fastPower(a,b/2);
+		smallAns*=smallAns;
+		if(b%2!=0){
+			return a*smallAns;
+		}
+		return smallAns;
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter the Number a: ");
+		int a = sc.nextInt();
+		sc.nextLine();
+		System.out.print("Enter the number b");
+		int b= sc.nextInt();
+
+		System.out.println(fastPower(a,b));
+	}
+
+
+    }
+
+
 
