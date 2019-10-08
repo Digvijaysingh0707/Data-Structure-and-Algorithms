@@ -1,3 +1,9 @@
+Searching an element in a 2D array and array is sorted along the row and coloumn
+
+complexity is O(M+N)
+
+
+
 #include <iostream>
 #include <bits/stdc++.h>
 
