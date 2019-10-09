@@ -38,4 +38,36 @@ using namespace std;
 
     return 0;
     }
+    
+    
+    // Java 
+     private static void Search(int[][] mat, int n, int x) {
+        int i = 0, j = n - 1;
+
+        while (i < n && j >= 0) {
+            if (mat[i][j] == x) {
+                System.out.println("Element found at " + i + " , " + j);
+                return;
+            }
+            if (mat[i][j] > x) {
+                j--;
+
+            } else {
+                i++;
+            }
+        }
+        System.out.println("Element not found");
+        return;
+    }
+
+
+    public static void main(String[] args) {
+        int[][] mat = {{10,20,30,40},
+                {15,25,35,45},
+                {27,29,39,49}};
+        Search(mat,3,29);
+    }
+}
+
+    
 
