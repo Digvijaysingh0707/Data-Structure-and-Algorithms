@@ -8,6 +8,7 @@ int main()
     cin>>a;
 
     int i =0;
+    if first one is 9
     if(a[i]=='9'){
         i++;
     }
