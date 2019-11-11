@@ -1,0 +1,5 @@
+if we write char array in " " this format the null character is automatically placed there
+to read a character array we can used cin or cin.getline but if we want to input two words we have to used cin.getline Ex: if we input 
+Hello World and we used cin then it will terminate after hello only
+Size of hello char arry is 6 as it also contains null charccter
+cin.getline is used to read the sentences.
