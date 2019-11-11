@@ -1,3 +1,5 @@
+if we try to search an element in linear way then complexity will be O(M*N)
+
 Searching an element in a 2D array and array is sorted along the row and coloumn
 
 complexity is O(M+N)
