@@ -1,6 +1,35 @@
 First sort the given array
 the pick last lement and firdt element to print in wave form
-but this will not be very efficient
+but this will not be very efficient and complexity will be O(nlog n)
+
+package com.company;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+    static void swap(int arr[],int a,int b){
+        int temp =arr[a];
+        arr[a]=arr[b];
+        arr[b]=temp;
+    }
+    static void sortINwave(int arr[],int n){
+        Arrays.sort(arr);
+        for(int i =0;i<n-1;i+=2){
+            swap(arr,i,i+1);
+        }
+    }
+
+    public static void main(String[] args) {
+       int arr[]= {10, 90, 49, 2, 1, 5, 23};
+       int n = arr.length;
+       sortINwave(arr,n);
+       for(int e:arr){
+           System.out.print(e);
+       }
+    }
+}
+
 
 
 Another approach:
@@ -27,6 +56,7 @@ int main(){
     }
     return 0;
 }
+complexity is O(n)
 
 //Java code
 package com.company;
