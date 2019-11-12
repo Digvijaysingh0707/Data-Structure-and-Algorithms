@@ -1,3 +1,5 @@
+Divide the array into two 1 is sorteda nd another is unsorted
+
 #include <iostream>
 
 using namespace std;
