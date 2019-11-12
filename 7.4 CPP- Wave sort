@@ -1,10 +1,19 @@
+First sort the given array
+the pick last lement and firdt element to print in wave form
+but this will not be very efficient
+
+
+Another approach:
+Swap the adjacent element to create peak and depression
+
+
 #include<iostream>
 using namespace std;
 int main(){
     int a[] = {1,3,4,2,7,8,5,9,36};
     int n = sizeof(a)/sizeof(int);
     for(int i = 0;i<n;i+=2){
-            //check for the left element
+            //check for the left element and try to create the peak
         if(i>0&&a[i-1]>a[i]){
             swap(a[i],a[i-1]);
         }
