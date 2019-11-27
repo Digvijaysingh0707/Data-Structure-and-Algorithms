@@ -1,0 +1,3 @@
+Approach 1:- GCD(a,b) check if a & b are divisible by number from 1 to min(a,b) 
+Approach 2:-GCD(a,b)=GCD(b,a%b) recursively
+                     Gcd(a,0) =a :- base case
