@@ -8,11 +8,13 @@ import java.util.Scanner;
 public class Main {
 	static
 	boolean isSorted(int a[],int n) {
+	// Base case
 		if (n == 1) {
 			return true;
 		}
 	if(a[n-1]<a[n-2])
 		return false;
+	// For n-1 part of array
 	return isSorted(a,n-1);
 	}
 	public static void main(String[] args) {
