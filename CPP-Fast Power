@@ -7,6 +7,7 @@ import static java.lang.Math.pow;
 
 
 public class Main {
+// Taking b steps
 	static int powerFn(int a,int b){
 		if(b==0){
 			return 1;
@@ -43,7 +44,10 @@ public class Main {
 		}
 		int smallAns = fastPower(a,b/2);
 		smallAns*=smallAns;
-		if(b%2!=0){
+		//when b is odd
+		
+		if(b%2!=0)
+		//or(b&1){
 			return a*smallAns;
 		}
 		return smallAns;
