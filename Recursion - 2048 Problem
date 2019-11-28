@@ -1,3 +1,7 @@
+To print spellig of a number
+
+
+
 #include <iostream>
 
 using namespace std;
@@ -21,3 +25,29 @@ int main()
 
     return 0;
 }
+
+
+package com.company;
+import java.util.Scanner;
+public class Main {
+    public static void print(int n){
+        if(n==0){
+            return;
+        }
+        String[] spellings={"zero","one","two","three","four","five","six","seven","eight","nine"};
+        print(n/10);
+        System.out.print(spellings[n%10]+" ");
+
+    }
+
+
+    public static void main (String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        print(x);
+    }
+
+}
+
+
