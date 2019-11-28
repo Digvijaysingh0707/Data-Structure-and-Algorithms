@@ -1,0 +1,29 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+    static int product(int x, int y)
+    {
+        // if x is less than
+        // y swap the numbers
+        //if (x < y)
+          //  return product(y, x);
+
+            // iteratively calculate
+            // y times sum of x
+         if (y != 0)
+            return (x + product(x, y - 1));
+
+            // if any of the two numbers is
+            // zero return zero
+        else
+            return 0;
+    }
+
+    // Driver Code
+    public static void main (String[] args)
+    {
+        int x = 2, y = 5;
+        System.out.println(product(x, y));
+    }
+}
+
