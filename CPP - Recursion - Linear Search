@@ -1,0 +1,27 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+   public static int LinearSearch(int[] a,int n,int i,int key){
+       if(i==n)
+           return -1;
+       if(a[i]==key)
+           return i;
+       return LinearSearch(a,n,i+1,key);
+   }
+
+
+    public static void main (String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int[] arr= new int[x];
+        for(int i =0;i<x;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.print("Enter number: ");
+        int y =sc.nextInt();
+        System.out.println(LinearSearch(arr,x,0,y));
+    }
+
+}
+
