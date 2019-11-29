@@ -1,3 +1,5 @@
+pair wise comparision
+
 //Iteration  happens for n-1 times
 // In first iteration largest element comes at last
 //In first for loop we sort 1 element and put it at last(largest one) and call the recursive function for n-1 times
