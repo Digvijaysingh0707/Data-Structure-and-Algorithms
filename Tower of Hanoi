@@ -2,7 +2,7 @@
 // Move Last disk from A(Source) to C(destination)
 // Move n-1 disks from B to C
 
-No. of steps=2^n-1
+No. of steps=(2^n)-1
 
 //C++ code
 #include <iostream>
