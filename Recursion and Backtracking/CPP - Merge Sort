@@ -1,0 +1,57 @@
+Based on divide & conquer:- divide the array into 2 prts,sort each part & merges them
+complexity is O(nlog n)
+//not working
+
+
+package com.company;
+import java.util.Scanner;
+public class Main {
+   static void merge(int[] a,int s,int e){
+       int mid=(s+e)/2;
+       int i =s;
+       int j=mid+1;
+       int k=s;
+       int[] temp={0};
+       while (i<=mid&&j<=e){
+           if(a[i]<a[j]){
+                temp[k++]=a[i++];
+           }
+           else{
+               temp[k++]=a[j++];
+           }
+       }
+       //suppose j part gets exhausted
+       while(i<=mid){
+           temp[k++]=a[i++];
+       }
+       //suppose j part gets exhausted
+       while(j<=e){
+           temp[k++]=a[j++];
+       }
+       for( i=s;i<=e;i++){
+           a[i]=temp[i];
+       }
+
+   }
+   static void mergeSort(int[] a,int s,int e){
+       if(s>=e)
+           return;
+       int mid=(s+e)/2;
+       mergeSort(a,s,mid);
+       mergeSort(a,mid+1,e);
+       merge(a,s,e);
+   }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size=sc.nextInt();
+        int[] arr = new int[size];
+        for(int i =0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        mergeSort(arr,0,size-1);
+        for (int i =0;i<size;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
