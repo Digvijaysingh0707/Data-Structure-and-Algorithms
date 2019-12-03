@@ -1,0 +1,3 @@
+Divide the array into 2 parts about the element called pivot element
+divide and conquer
+O(nlog n) time in average case
