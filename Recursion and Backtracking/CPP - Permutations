@@ -1,3 +1,5 @@
+//Not done in java
+
 #include <iostream>
 using namespace std;
    void permute(char in[],int i){
