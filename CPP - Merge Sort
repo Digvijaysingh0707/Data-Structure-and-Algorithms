@@ -1,0 +1,2 @@
+Based on divide & conquer:- divide the array into 2 prts,sort each part & merges them
+complexity is O(nlog n)
