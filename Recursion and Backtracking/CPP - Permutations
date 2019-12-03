@@ -20,3 +20,56 @@ using namespace std;
        permute(in,0);
        return 0;
    }
+
+
+
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static void permute(char[] in,int i) {
+        if (in[i] == ' ') {
+            System.out.print(" ");
+            return;
+        }
+
+
+        for (int j = 0; in[j] != ' '; j++) {
+            char temp = in[i];
+            in[i] = in[j];
+            in[j] = temp;
+            permute(in, i + 1);
+            temp = in[i];
+            in[i] = in[j];
+            in[j] = temp;
+
+        }
+    }
+
+
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String inp;
+        int x = sc.nextInt();
+        char[] in= new char[x];
+        inp=sc.next();
+
+        for(int i =0;i<x;i++){
+            in[x]=inp.charAt(i);
+
+                    //Scanner sc = new Scanner(System.in);
+            //String inp;
+            //char arr[] = new char[6];
+            //System.out.println("Enter character array: ");
+            //inp = sc.next();
+            //for(int i=0; i!= 6; i++)
+            //	arr[i] = inp.charAt(i);
+        }
+        permute(in,0);
+
+
+    }
+}
