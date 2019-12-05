@@ -31,5 +31,40 @@ public class Main {
 
     }
 }
+// Recursive approach
+//Help taken from google
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    static int lastIndex(int arr[],int x,int i){
+        //Base Case
+        if(i==arr.length)
+            return -1;
+        int index=lastIndex(arr,x,i+1);
+        if(arr[i]==x&&index==-1)
+            return i;
+        else
+            return index;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int arr[]= new int[x];
+        for(int i =0;i<x;i++){
+            arr[i]=sc.nextInt();
+        }
+        int m =sc.nextInt();
+
+        System.out.print(lastIndex(arr,m,0));
+
+
+
+    }
+}
+
+
+
 
 
