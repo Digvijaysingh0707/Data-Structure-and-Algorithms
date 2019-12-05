@@ -1,0 +1,18 @@
+//Non recursive approach
+
+
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        String str ="1234";
+        System.out.print("Integer value="+Integer.parseInt(str));
+        System.out.print("Integer value="+Integer.valueOf(str));
+    }
+}
+
+
