@@ -1,0 +1,35 @@
+
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[10];
+        System.out.print("Enter elements:");
+        for(int i =0;i<10;i++){
+            arr[i]=sc.nextInt();
+        }
+        int firstIndex=-1;
+        int lastIndex=-1;
+        System.out.print("Element tp search:");
+        int x=sc.nextInt();
+        for(int i =0;i<10;i++){
+
+            if(arr[i]==x&&firstIndex==-1)
+                firstIndex=i;
+            if(arr[i]==x&&firstIndex!=i)
+                lastIndex=i;
+        }
+        System.out.print(firstIndex +"\n"+ lastIndex);
+
+
+
+
+    }
+}
+
+
