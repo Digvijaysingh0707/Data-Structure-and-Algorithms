@@ -1,3 +1,7 @@
+ next is of type node
+ head points to first node
+ node points to last node
+
 public class LinkedList{
 private class Node{
 int data;
