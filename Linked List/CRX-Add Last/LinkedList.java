@@ -1,3 +1,8 @@
+data and next are data members of node class
+    head points start of linked list
+
+
+
 package com.company;
 
 public class LinkedList {
