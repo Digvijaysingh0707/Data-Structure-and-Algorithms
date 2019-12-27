@@ -27,28 +27,3 @@ public class Main {
     }
 
 	}
-//C++ code
-#include<iostream>
-using namespace std;
-int main(){
-	int a[5];
-	for(int i =0;i<5;i++){
-		cin>>a[i];
-	}
-	for(int i =0;i<5;i++){
-		cout<<a[i]<<" ";
-	}
-	int key;
-	cin>>key;
-	int i;
-	for( i =0;i<5;i++){
-		if(key==a[i]){
-			cout<<"Element is found at index "<<i;
-			break;
-		}
-	}
-	if(i==5){
-		cout<<"Element is not found ";
-	}
-}
-
