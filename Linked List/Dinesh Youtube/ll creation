@@ -1,0 +1,11 @@
+public class LinkedList {
+private static class Listnode{
+        private int data;
+        private Listnode next;
+        //constructor
+        private Listnode(int data){
+            this.data=data;
+            this.next=null;
+        }
+
+    }
