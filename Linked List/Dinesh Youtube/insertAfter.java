@@ -25,27 +25,8 @@ public class LinkedList {
         }
 
     }
-    public Listnode insertAtBegining(Listnode head,int data){
-        Listnode newNode= new Listnode(data);
-        if(head==null){
-            return newNode;
-        }
-        newNode.next=head;
-        head=newNode;
-        return head;
-    }
-    public Listnode insertAtEnd(Listnode head,int data){
-        Listnode newNode = new Listnode(data);
-        if(head==null){
-            return newNode;
-        }
-        Listnode current = head;
-        while(current.next!=null){
-            current=current.next;
-        }
-        current.next=newNode;
-        return head;
-    }
+   
+    
     public void insertAfter(Listnode previous,int data){
         if(previous==null){
             System.out.print("Previous node cant be null");
@@ -54,19 +35,7 @@ public class LinkedList {
         newNode.next=previous.next;
         previous.next=newNode;
     }
-    public int length(Listnode head){
-        if(head==null){
-            return 0;
-        }
-        int count =0;
-        Listnode current = head;
-        while(current!=null){
-            count++;
-            current=current.next;
-        }
-        return count;
-    }
-
+   
 
     public static void main(String[] args){
         Listnode head =new Listnode(10);
@@ -79,14 +48,11 @@ public class LinkedList {
 
 
         LinkedList ll= new LinkedList();
-        ll.display(head);
-        System.out.println();
-
+      
 
         ll.insertAfter(second,111);
         ll.display(head);
-       // System.out.print("Length of Linked List is:- "+ll.length(head));
-
+      
 
     }
 }
