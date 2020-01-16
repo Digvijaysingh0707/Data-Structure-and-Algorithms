@@ -34,19 +34,7 @@ public class LinkedList {
         head=newNode;
         return head;
     }
-    public int length(Listnode head){
-        if(head==null){
-            return 0;
-        }
-        int count =0;
-        Listnode current = head;
-        while(current!=null){
-            count++;
-            current=current.next;
-        }
-        return count;
-    }
-
+   
 
     public static void main(String[] args){
         Listnode head =new Listnode(10);
@@ -59,9 +47,7 @@ public class LinkedList {
 
 
         LinkedList ll= new LinkedList();
-        ll.display(head);
-        System.out.println();
-        
+       
         
         Listnode newHead= ll.insertAtBegining(head,15);
         ll.display(newHead);
