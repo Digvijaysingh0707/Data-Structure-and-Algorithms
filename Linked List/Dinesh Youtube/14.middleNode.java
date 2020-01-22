@@ -25,12 +25,14 @@ public class LinkedList {
             this.next=null;
         }
     }
+    // This methed of finding mid point is called Runner technique
+  //  suppose two person are rrunnning one with x and other with 2x when 2x wala reaches end then x wala reaches mid point
     public static Listnode middleNode(Listnode head){
         if(head==null){
             return head;
         }
         Listnode slwPtr = head;
-        Listnode fstPtr = head;
+        Listnode fstPtr = head.next;
         while(fstPtr!=null&& fstPtr.next!=null){
             slwPtr = slwPtr.next;
             fstPtr = fstPtr.next.next;
