@@ -1,0 +1,17 @@
+XOR when differet values then it give the output
+1^0=1
+0^1=1
+and when both are same then it gives 0
+5^5=0
+5^7^5=7
+
+Left shift(<<) bring zero from  left to right
+(5)000101=001010(10)
+5<<1=5*(2^1)
+a<<2= remove 2 zeroes fromleft and put into gthe fright=a*(2^2)
+a<<b=a*(2^b)
+
+
+Right shift a>>b=a/(2^b) remove zeroes fromright to left
+
+10>>1=10/(2^1)
