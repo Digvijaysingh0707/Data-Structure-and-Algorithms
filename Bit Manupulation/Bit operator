@@ -2,7 +2,7 @@ XOR when differet values then it give the output
 1^0=1
 0^1=1
 and when both are same then it gives 0
-and when both are different it gives zero
+and when both are different it gives one
 5^5=0
 5^7^5=7
 
