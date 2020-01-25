@@ -1,0 +1,53 @@
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+
+public class LinkedList {
+    static boolean checkExpression(String str){
+        Stack<Character> s=new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char current=str.charAt(i);
+            if(current=='('){
+                s.push(current);
+
+            } else if (current == ')') {
+                if (s.isEmpty() || s.peek() != '(') {
+
+                    return false;
+                }
+                s.pop();
+
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+    public static void main(String[] args) {
+        String str;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the String:-" );
+        str=sc.nextLine();
+        boolean valid = checkExpression(str);
+        System.out.println(valid);
+
+
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
