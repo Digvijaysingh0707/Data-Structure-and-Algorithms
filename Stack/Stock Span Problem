@@ -1,0 +1,32 @@
+import java.util.List;
+import java.util.Stack;
+
+// by stack O(N)
+ class LinkedList {
+    static int[] printSpan(int arr[],int n){
+        Stack<Integer> s= new Stack<>();
+        int ans[]={};
+        for (int day=0; day<n; day++){
+            int curPrice = arr[day];
+            while (s.isEmpty()==false && arr[s.peek()]<curPrice){
+                s.pop();
+            }
+            int betterDay = s.isEmpty()? 0:s.peek();
+            int span = day - betterDay;
+            ans[day]=span;
+            s.push(day);
+        }
+        for(int i =0;i<n;i++){
+            System.out.print(arr[i]+" ");
+        }
+        return ans;
+
+    }
+
+    public static void main(String[] args) {
+        int n =6;
+        int arr[]={100,80,60,70,60,75,85};
+        printSpan(arr,n);
+
+    }
+}
