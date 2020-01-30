@@ -29,9 +29,11 @@ class  BinaryTree{
             System.out.println(tempNode.key+" ");
             if(tempNode.left!=null){
                 queue.add(tempNode.left);
+                
             }
             if(tempNode.right!=null){
                 queue.add(tempNode.right);
+                
             }
         }
     }
