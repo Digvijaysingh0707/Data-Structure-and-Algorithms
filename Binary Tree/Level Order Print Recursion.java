@@ -36,9 +36,9 @@ class  BinaryTree{
     }
     static void printAllLevel(){
         int h =height(root);
-        for (int i =0;i<=h;i++){
+        for (int i =1;i<=h;i++){
             printGivenLevel(root,i);
-            //System.out.println();
+            System.out.println();
         }
     }
     static void printGivenLevel(Node root,int level){
@@ -47,12 +47,12 @@ class  BinaryTree{
         }
         if(level==1){
             System.out.print(root.key);
-            System.out.println();
+            return;
         }
         else{
             printGivenLevel(root.left,level-1);
             printGivenLevel(root.right,level-1);
-            //System.out.println();
+            return;
         }
 
     }
