@@ -1,3 +1,7 @@
+Complexity is O(N^2)
+    
+    skewed tree- tree having nodes in one direction
+
 public class Node {
     int key;
     Node left,right;
