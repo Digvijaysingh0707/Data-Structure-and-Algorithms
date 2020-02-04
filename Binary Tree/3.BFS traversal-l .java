@@ -21,19 +21,20 @@ class  BinaryTree{
     BinaryTree(){
         root=null;
     }
-    static void printLevelOrder(){
+    static void printLevelOrder(Node root){
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(root);
+
         while(!queue.isEmpty()){
             Node tempNode=queue.poll();
             System.out.println(tempNode.key+" ");
             if(tempNode.left!=null){
                 queue.add(tempNode.left);
-                
+
             }
             if(tempNode.right!=null){
                 queue.add(tempNode.right);
-                
+
             }
         }
     }
@@ -54,7 +55,7 @@ class  BinaryTree{
         tree.root.left.right = new Node(5);
 
         System.out.println("Level order traversal of Binary tree using Queue:- ");
-        tree.printLevelOrder();
+        tree.printLevelOrder(root);
 
     }
 }
