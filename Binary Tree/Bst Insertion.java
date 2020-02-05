@@ -1,3 +1,9 @@
+Bst helps in searching as node are arranged in sorted order
+Complexity:- O(logN) best case
+    O(N) worst case
+    
+    Inorder of bst is always sorted
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
