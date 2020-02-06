@@ -1,4 +1,7 @@
 Compelxity:- O(n2)
+    Height balanced condition should be followed at every node
+    
+    
 import java.util.LinkedList;
 import java.util.Queue;
 
