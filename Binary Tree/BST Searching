@@ -1,3 +1,5 @@
+Best case: O(logN)
+worst case: O(N)
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
