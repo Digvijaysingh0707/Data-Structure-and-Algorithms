@@ -1,4 +1,5 @@
 the value of a node should be greater than min valueof left subtree and greater than maximum value of right subtree
+complexity is O(n)
 
 Link:-https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
 
