@@ -17,7 +17,7 @@ class  BinaryTree{
     BinaryTree(){
         root=null;
     }
-    static Scanner sc = new Scanner(System.in);
+    
     static int replaceSum(Node root){
         if(root==null){
             return 0;
