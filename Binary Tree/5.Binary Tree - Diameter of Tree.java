@@ -1,4 +1,5 @@
 It have a complexity of O(n^2)
+    Diameter of a tree is the longest distance between any two nodes of a tree
 
 
 
