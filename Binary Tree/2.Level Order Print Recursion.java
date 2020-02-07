@@ -1,4 +1,5 @@
 Complexity is O(N^2)
+    using BFS this can be done in O(N) time
     
     skewed tree- tree having nodes in one direction
 
