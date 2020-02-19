@@ -1,0 +1,11 @@
+BST:- 
+insertion O(h)
+height O(h)
+for Balanced Binary Tree h =log2(n)
+
+Binary heap:-
+complete Binary  tree
+Every child has priority lesser than the parent
+insertion O(log2(n))
+deletion O(log2(n))
+get O(1)
