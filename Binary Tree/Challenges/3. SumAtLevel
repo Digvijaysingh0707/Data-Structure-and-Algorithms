@@ -1,0 +1,53 @@
+import java.net.Socket;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Node {
+    int key;
+    Node left,right;
+    public Node(int item){
+        this.key=item;
+        left=right=null;
+
+    }
+}
+
+class  BinaryTree{
+   static Node root;
+
+
+
+
+
+   
+    static int SumAt(Node n,int k){
+        if(k==0){
+            return n.key;
+        }
+        int left=n==null?0:SumAt(n.left,k-1);
+        int right=n==null?0:SumAt(n.right,k-1);
+        return left+right;
+    }
+
+
+
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root= new Node(1);
+        tree.root.left=new Node(2);
+        tree.root.right=new Node(3);
+
+        tree.root.left.right=new Node(2);
+        tree.root.right.left=new Node(3);
+       // System.out.println(isBalanced(root));
+        System.out.println(SumAt(root,1));
+
+
+
+
+
+
+    }
+}
