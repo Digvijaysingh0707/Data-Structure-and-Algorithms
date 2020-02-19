@@ -1,0 +1,72 @@
+import java.net.Socket;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Node {
+    int key;
+    Node left,right;
+    public Node(int item){
+        this.key=item;
+        left=right=null;
+
+    }
+}
+
+class  BinaryTree{
+   static Node root;
+
+
+
+
+
+    static boolean isBalanced(Node n ){
+        if (n==null){
+            return true;
+        }
+        int lh= height(n.left);
+        int rh=height(n.right);
+        if(Math.abs(lh-rh)<=1&&isBalanced(n.right)&&isBalanced(n.left)){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+    static int height(Node n){
+        if(n==null){
+            return 0;
+        }
+        int lh= height(n.left);
+        int rh=height(n.right);
+        if(lh>rh){
+            return lh+1;
+        }
+        else{
+            return rh+1;
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        tree.root= new Node(1);
+        tree.root.left=new Node(2);
+        tree.root.right=new Node(3);
+        tree.root.left.left=new Node(2);
+        tree.root.left.left.left=new Node(2);
+        tree.root.left.left.left.left=new Node(2);
+        tree.root.left.left.left.left.left=new Node(2);
+        tree.root.left.right=new Node(2);
+        tree.root.right.left=new Node(3);
+        System.out.println(isBalanced(root));
+
+
+
+
+
+
+    }
+}
