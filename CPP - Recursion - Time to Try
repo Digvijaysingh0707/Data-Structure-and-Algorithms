@@ -4,9 +4,9 @@ public class Main {
     static int product(int x, int y)
     {
         // if x is less than
-        // y swap the numbers
-        //if (x < y)
-          //  return product(y, x);
+        // y swap the numbers:- this is just to reduce the number of steps
+        if (x < y)
+            return product(y, x);
 
             // iteratively calculate
             // y times sum of x
