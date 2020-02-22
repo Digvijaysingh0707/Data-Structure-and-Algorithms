@@ -16,7 +16,8 @@ public class Node {
 
 
     static Node buildTreeFromArray(int[] arr,int s,int e){
-       if(s>e){
+       if(s>e)//or(s==e)
+       {
            return null;
        }
        int mid=(s+e)/2;
