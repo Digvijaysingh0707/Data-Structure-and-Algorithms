@@ -1,5 +1,10 @@
-Best case: O(logN)
-worst case: O(N)
+Complexity of the program is O(h)
+
+Best case for h: O(logN)
+worst case for h: O(N)
+
+
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -16,29 +21,15 @@ public class Node {
 
 class  BinaryTree{
     static Node root;
-    BinaryTree(){
-        root=null;
-    }
+//    BinaryTree(){
+//        root=null;
+//    }
     static Scanner sc = new Scanner(System.in);
-
-    static boolean search(Node root,int data){
-        if(root==null){
-            return false;
-        }
-        if(data==root.key){
-            return true;
-        }
-        if(data<=root.key){
-            return search(root.left,data);
-        }
-        else {
-            return search(root.right,data);
-        }
-    }
     static Node InsertInBst(Node root,int data){
         if (root==null){
             return new Node(data);
         }
+
         if(data<=root.key){
             root.left=InsertInBst(root.left,data);
         }
@@ -47,6 +38,12 @@ class  BinaryTree{
         }
         return root;
     }
+
+
+
+
+
+    //this is for taking the input
     static Node build(){
         int d = sc.nextInt();
         Node root = null;
@@ -56,8 +53,6 @@ class  BinaryTree{
         }
         return root;
     }
-
-
     static void Inorder(Node root){
         if(root==null){
             return;
@@ -66,21 +61,41 @@ class  BinaryTree{
         System.out.print(root.key+" ");
         Inorder(root.right);
     }
+    static boolean search(Node root,int data){
+        if(root==null){
+            return false;
+        }
+        if(data==root.key){
+            return true;
+        }
+        else{
+            if(data<=root.key){
+                return search(root.left,data);
+            }
+            else{
+                return search(root.right,data);
+            }
 
+        }
+
+
+    }
 
 
 
     public static void main(String[] args) {
-      
-       Node root = build();
-       Inorder(root);
-       int s = sc.nextInt();
-       if(search(root,s)){
-           System.out.print("present");
-       }
-       else{
-           System.out.print("Not present ");
-       }
+
+        Node root = build();
+        Inorder(root);
+        System.out.println();
+        System.out.println("enter element to be search:-");
+        int x= sc.nextInt();
+        if(search(root,x)){
+            System.out.print("Present");
+        }
+        else {
+            System.out.print("Not present");
+        }
 
     }
 }
