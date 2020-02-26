@@ -22,14 +22,15 @@ public class Node {
 
 class  BinaryTree{
     static Node root;
-    BinaryTree(){
-        root=null;
-    }
+//    BinaryTree(){
+//        root=null;
+//    }
     static Scanner sc = new Scanner(System.in);
     static Node InsertInBst(Node root,int data){
         if (root==null){
             return new Node(data);
         }
+
         if(data<=root.key){
             root.left=InsertInBst(root.left,data);
         }
@@ -38,6 +39,12 @@ class  BinaryTree{
         }
         return root;
     }
+
+
+
+
+
+    //this is for taking the input
     static Node build(){
         int d = sc.nextInt();
         Node root = null;
@@ -52,63 +59,63 @@ class  BinaryTree{
             return;
         }
         Inorder(root.left);
-        System.out.print(root.key);
+        System.out.print(root.key+" ");
         Inorder(root.right);
     }
-    static void bfs(Node root){
-        Queue<Node> q = new LinkedList<Node>();
-        ((LinkedList<Node>) q).push(root);
-        ((LinkedList<Node>) q).push(null);
-
-        while(!q.isEmpty()){
-            Node f = q.poll();
-            if(f==null){
-                System.out.println();
-                ((LinkedList<Node>) q).pop();
-                if(!q.isEmpty()){
-                    ((LinkedList<Node>) q).push(null);
-                }
-            }
-            else{
-                System.out.println(f.key+" ");
-                ((LinkedList<Node>) q).pop();
-                if(f.left!=null){
-                    ((LinkedList<Node>) q).push(f.left);
-
-                }
-                if(f.right!=null){
-                    ((LinkedList<Node>) q).push(f.right);
-                }
-            }
-        }
-        return;
-    }
-    static void printLevelOrder(Node root){
-        Queue<Node> queue = new LinkedList<Node>();
-        queue.add(root);
-
-        while(!queue.isEmpty()){
-            Node tempNode=queue.poll();
-            System.out.println(tempNode.key+" ");
-            if(tempNode.left!=null){
-                queue.add(tempNode.left);
-
-            }
-            if(tempNode.right!=null){
-                queue.add(tempNode.right);
-
-            }
-        }
-    }
-
+//    static void bfs(Node root){
+//        Queue<Node> q = new LinkedList<Node>();
+//        ((LinkedList<Node>) q).push(root);
+//        ((LinkedList<Node>) q).push(null);
+//
+//        while(!q.isEmpty()){
+//            Node f = q.poll();
+//            if(f==null){
+//                System.out.println();
+//                ((LinkedList<Node>) q).pop();
+//                if(!q.isEmpty()){
+//                    ((LinkedList<Node>) q).push(null);
+//                }
+//            }
+//            else{
+//                System.out.println(f.key+" ");
+//                ((LinkedList<Node>) q).pop();
+//                if(f.left!=null){
+//                    ((LinkedList<Node>) q).push(f.left);
+//
+//                }
+//                if(f.right!=null){
+//                    ((LinkedList<Node>) q).push(f.right);
+//                }
+//            }
+//        }
+//        return;
+//    }
+//    static void printLevelOrder(Node root){
+//        Queue<Node> queue = new LinkedList<Node>();
+//        queue.add(root);
+//
+//        while(!queue.isEmpty()){
+//            Node tempNode=queue.poll();
+//            System.out.println(tempNode.key+" ");
+//            if(tempNode.left!=null){
+//                queue.add(tempNode.left);
+//
+//            }
+//            if(tempNode.right!=null){
+//                queue.add(tempNode.right);
+//
+//            }
+//        }
+//    }
+//
 
 
     public static void main(String[] args) {
-       
+
         Node root = build();
         Inorder(root);
         System.out.println();
-        bfs(root);
+       // bfs(root);
 
     }
 }
