@@ -1,6 +1,6 @@
 Computer takes 10^8 instruction s in a second
 Dp is of two types :- (i) memoization (top down approach) previous ques 2 is solved 
-(ii) By Bottom up approach it takes 0(n) time
+(ii) By Bottom up approach(it is actual dp) it takes 0(n) time
 package com.company;
 import java.util.Scanner;
 
