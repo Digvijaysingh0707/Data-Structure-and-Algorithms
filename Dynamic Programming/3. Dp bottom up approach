@@ -1,0 +1,30 @@
+Computer takes 10^8 instruction s in a second
+Dp is of two types :- (i) memoization (top down approach) previous ques 2 is solved 
+(ii) By Bottom up approach it takes 0(n) time
+package com.company;
+import java.util.Scanner;
+
+public class Main{
+
+    
+    static int fib(int n){
+        int dp[]= new int[1000];
+        dp[0]=0;
+        dp[1]=1;
+        for (int curNum =2;curNum<=n;curNum++){
+            dp[curNum]=dp[curNum-1]+dp[curNum-2];
+
+        }
+        return dp[n];
+    }
+public static void main(String[]args){
+
+    Scanner sc = new Scanner(System.in);
+    int x =sc.nextInt();
+
+
+    System.out.println(fib(x));
+
+        }
+
+        }
