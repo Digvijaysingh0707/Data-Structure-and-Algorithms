@@ -1,0 +1,125 @@
+It has a time complexiity of O(3^n)
+package com.company;
+import javax.imageio.metadata.IIOMetadataNode;
+import java.util.Scanner;
+
+public class Main{
+    static int q = Integer.MAX_VALUE;
+
+    static int reduceNo(int n){
+
+        int q1=q,q2=q,q3=q;
+
+        if(n==1) return 0;
+
+        if(n%3==0) q1=1+reduceNo(n/3);
+
+        if(n%2==0) q2 =1+reduceNo(n/2);
+
+        q3=1+reduceNo(n-1);
+        
+        return Math.min(q1,Math.min(q2,q3));
+    }
+public static void main(String[]args){
+
+    Scanner sc = new Scanner(System.in);
+    int x =sc.nextInt();
+
+
+    System.out.println(reduceNo(x));
+
+        }
+
+        }
+        
+        By memoization:-
+        complexity:-O(n)
+        
+        package com.company;
+import javax.imageio.metadata.IIOMetadataNode;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main{
+    static int q = Integer.MAX_VALUE;
+    static int memo[]=new int[10000];
+
+    static int reduceNo(int n){
+
+        int q1=q,q2=q,q3=q;
+        if(memo[n]!=-1){
+            return memo[n];
+        }
+
+        if(n==1) return 0;
+
+        if(n%3==0) q1=1+reduceNo(n/3);
+
+        if(n%2==0) q2 =1+reduceNo(n/2);
+
+        q3=1+reduceNo(n-1);
+        memo[n]= Math.min(q1,Math.min(q2,q3));
+
+        return Math.min(q1,Math.min(q2,q3));
+    }
+
+public static void main(String[]args){
+
+    Scanner sc = new Scanner(System.in);
+    int x =sc.nextInt();
+    Arrays.fill(memo,0,x+1,-1);
+
+
+
+    System.out.println(reduceNo(x));
+
+        }
+
+        }
+        
+        By bottom up approch
+        
+        package com.company;
+import javax.imageio.metadata.IIOMetadataNode;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main{
+    static int q = Integer.MAX_VALUE;
+
+
+    
+    static int reduceNo_Dp(int n){
+        int dp[]=new int[10000];
+        dp[0]=0;
+        dp[1]=0;
+        dp[2]=1;
+        dp[3]=1;
+        for (int curNum=4;curNum<=n;curNum++){
+            int q1=q;
+            int q2=q;
+            int q3=q;
+            if(curNum%3==0) q1=1+dp[curNum/3];
+
+            if(curNum%2==0) q2 =1+dp[curNum/2];
+
+            q3=1+dp[curNum-1];
+
+            dp[curNum]= Math.min(q1,Math.min(q2,q3));
+
+        }
+        return dp[n];
+    }
+public static void main(String[]args){
+
+    Scanner sc = new Scanner(System.in);
+    int x =sc.nextInt();
+    //Arrays.fill(memo,0,x+1,-1);
+
+
+
+    System.out.println(reduceNo_Dp(x));
+
+        }
+
+        }
