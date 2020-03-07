@@ -1,0 +1,47 @@
+// Dp to be used when:-
+1. overlapping subproblem
+2. optical substructure( local best becomes the global best, mtlab hmko smaler cases ko bhi best banana padega)
+package com.company;
+import javax.imageio.metadata.IIOMetadataNode;
+import java.util.Arrays;
+import java.util.Scanner;
+// time complexity:-2^n
+
+public class Main{
+
+    static int minCost(int grid[][],int m,int n){
+        int dp[][]=new int[100][100];
+        //base case
+        dp[0][0]=grid[0][0];
+        //fill the row
+        for (int c = 1;c<n;c++) dp[0][c]=dp[0][c-1]+grid[0][c];
+
+        //fill the first coloumn
+        for (int r=1;r<m;r++) dp[r][0]=dp[r-1][0]+grid[r][0];
+
+        for (int r=1;r<m;r++){
+            for (int c=1;c<n;c++){
+                dp[r][c]=Math.min(dp[r-1][c],dp[r][c-1])+grid[r][c];// here grid[r][c] is the vaue at that grid
+            }
+        }
+        return dp[m-1][n-1];
+    }
+
+
+
+    public static void main(String[]args){
+
+       int grid[][]={{1,2,3},
+               {4,8,2},
+               {1,5,3}};
+       int ans=minCost(grid,3,3);
+        System.out.println(ans);
+
+
+
+
+
+
+}
+
+        }
