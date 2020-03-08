@@ -1,0 +1,113 @@
+Comparing the adjacent element and swap them
+In first iteration largest element comes at last
+n-1 iterations
+Inefficient
+Time complexity O(n^2)
+
+
+
+
+    
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1; j++) {
+                if (a[j + 1] < a[j]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+            for (int item : a) {
+                System.out.println(item + " ");
+
+        }
+
+    }
+}
+
+
+// New Approach
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n - 1; i++) {
+        
+        // n-1-i means ki last elemnent is sorted after each iteratin so we skip that part
+            for (int j = 0; j < n - 1-i; j++) {
+                if (a[j + 1] < a[j]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+            for (int item : a) {
+                System.out.println(item + " ");
+
+        }
+
+    }
+}
+
+
+// new Approach
+To run second for n-1-i times instead of n-1 times as last element get sorted after each iteration
+
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n - 1; i++) {
+            boolean sorted = true;
+            for (int j = 0; j < n - 1- i; j++) {
+                if (a[j + 1] < a[j]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                    sorted = false;
+                }
+            }
+            if(sorted)
+                break;
+        }
+            for (int item : a) {
+                System.out.println(item + " ");
+
+        }
+
+    }
+}
+/
+
