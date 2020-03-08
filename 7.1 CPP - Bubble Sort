@@ -1,41 +1,13 @@
 Comparing the adjacent element and swap them
 In first iteration largest element comes at last
 n-1 iterations
+Inefficient
 Time complexity O(n^2)
 
 
-private static void bubbleSort(int[] arr){
-       int temp=0;
-       int flag=0;
-       for(int i =0;i<arr.length;i++){
-           for(int j=1;j<arr.length-i;j++){
-               if(arr[j-1]>arr[j]){
-                   temp=arr[j];
-                   arr[j]=arr[j-1];
-                   arr[j-1]=temp;
-                   flag++;
-               }
-               if(flag==0){
-                   break;
-               }
-           }
-       }
-   }
 
-    public static void main(String[] args) {
-        int arr[]={5,2,88,22,66};
-        System.out.print("Array before sorting: ");
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
-        }
-        System.out.println();
-        bubbleSort(arr);
-        System.out.print("Array after sorting: ");
-        for(int i=0;i<arr.length;i++){
-            System.out.print(arr[i]+" ");
-        }
-    }
-}
+
+    
 package com.company;
 
 import java.util.Scanner;
