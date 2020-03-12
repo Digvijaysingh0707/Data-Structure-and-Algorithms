@@ -5,6 +5,10 @@ the unsorted part is the entire list.
 The smallest element is selected from the unsorted array and swapped with the leftmost element, and that element becomes a part of the
 sorted array. This process continues moving unsorted array boundary by one element to the right.
 
+1 swapping in each iteration
+No of swapping is less than bubble sort
+
+
 
 select the minimum element and bring it at begining
 
