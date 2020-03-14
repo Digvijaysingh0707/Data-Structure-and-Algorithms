@@ -1,0 +1,70 @@
+// this is for finding the square root without decimal
+// it has same time complexity as that of binary search (O(log n))
+public class Main {
+   static int squareRoor(int num){
+       int s=0;
+       int e=num;
+       int ans=-1;
+       while (s<=e){
+           int mid=(s+e)/2;
+           if (mid*mid==num){
+               ans=mid;
+               break;
+           }
+           if (mid*mid<num){
+               s=mid+1;
+               ans=mid;
+           }
+           else {
+               e=mid-1;
+           }
+       }
+       return ans;
+   }
+
+    public static void main(String[] args) {
+
+        System.out.print(squareRoor(49));
+        System.out.println(squareRoor(9));
+        
+        
+        // for both its time complexity is O(log n+p)
+        
+        public class Main {
+   static float squareRoot(int num,int p){
+       int s=0;
+       int e=num;
+       int mid;
+       double ans=0.0;
+       while (s<=e){
+            mid=(s+e)/2;
+           if (mid*mid==num){
+               ans=mid;
+               break;
+           }
+           if (mid*mid<num){
+               s=mid+1;
+               ans=mid;
+           }
+           else {
+               e=mid-1;
+           }
+       }
+       //for fractional part
+       double inc=0.1f;
+       for (int i=0;i<p;i++){
+           while(ans*ans<=num){
+               ans+=inc;
+           }
+           //ans*ans>num
+           ans=ans-inc;
+           inc=inc/10;
+       }
+       return (float)ans;
+   }
+
+    public static void main(String[] args) {
+
+        System.out.println(squareRoor(49,2));
+        System.out.println(squareRoor(10,3));
+        System.out.println(squareRoor(2,2));
