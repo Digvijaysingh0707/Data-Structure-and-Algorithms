@@ -1,0 +1,33 @@
+Timem  complexity is O(Log n)
+public class Main {
+    static int searchIn(int a[],int s ,int e,int key){
+        if(s>e){
+            return -1;
+        }
+        int mid =(s+e)/2;
+        if(a[mid]==key){
+            return mid;
+        }
+        if(a[mid]>=a[s]){// left part is sorted
+            if(key>=a[s]&&key<=a[mid]){
+                return searchIn(a,s,mid-1,key);
+            }
+            else{
+                return searchIn(a,mid+1,e,key);
+            }
+        }
+        else{// right part is sorted
+            if(key>=a[mid]&&key<=a[e]){
+                return searchIn(a,mid+1,e,key);
+            }
+            return searchIn(a,s,mid-1,key);
+        }
+    }
+    public static void main(String[] args) {
+        int a[] = {5,6,7,1,2,3,4};
+        Scanner sc = new Scanner(System.in);
+        int key = sc.nextInt();
+        int n =a.length;
+        System.out.println("Elemet is found at index "+searchIn(a,0,n-1,key));
+    }
+}
