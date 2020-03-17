@@ -18,6 +18,7 @@ this solution is taken from gfg
        return b;
 
     }*/
+    //spaceand time complexity is O(n)
     // from the course
     static int memo[]= new int[1000];
     static int fib(int n){
