@@ -1,3 +1,5 @@
+//Element can be randomly arranged
+Time :O(n)
 package com.company;
 import java.util.Scanner;
 public class Main {
