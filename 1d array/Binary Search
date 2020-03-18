@@ -1,0 +1,43 @@
+package com.company;
+import java.security.KeyPair;
+import java.util.ArrayList;
+//Time complexity is O(log n) base is 2
+//space complexity is O(n)
+// only in sorted array
+
+public class Main {
+    static int binarySearch(int a[], int n, int key) {
+        int s = 0;
+        int e = n - 1;
+        int mid;
+        while (s <= e) {
+            mid = (s + e) / 2;
+            if (a[mid] == key) {
+                return mid;
+            }
+            if (a[mid] > key) {
+                e = mid - 1;
+            } else {
+                s = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int a[] = {1, 3, 4, 7, 8, 9};
+        int n = a.length;
+        int searchIndex = binarySearch(a, n, 8);
+
+        if (searchIndex == -1) {
+            System.out.println("is not found");
+
+        } else {
+            System.out.println("  Present at index " + searchIndex);
+        }
+    }
+}
+
+
+
+
