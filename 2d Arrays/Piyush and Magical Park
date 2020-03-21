@@ -1,0 +1,52 @@
+public class Main {
+    static void magical_Park(char a[][],int m,int n,int k,int s){// k is threshold strength & s is initial strength
+        boolean success=true;
+        for (int i=0;i<m;i++){
+            for (int j=0;j<n;j++){
+                char ch=a[i][j];
+                if (s<k){
+                    success=false;
+                    break;
+                }
+                if (ch == '*') {
+
+                    s+=5;
+                }
+                else if (ch=='.'){
+                    s-=2;
+                }
+                else {
+                    break;
+                }
+                if (j!=n-1){
+                    s--;
+                }
+            }
+        }
+        if (success){
+            System.out.println("Yes");
+            System.out.print(s);
+        }
+        else {
+            System.out.println("No");
+        }
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m=sc.nextInt();
+        int n= sc.nextInt();
+       int k = sc.nextInt();
+       int s=sc.nextInt();
+        char park[][]= new char[m][n];
+        for (int i=0;i<m;i++){
+            for (int j=0;j<n;j++){
+                park[i][j]=sc.next().charAt(0);
+            }
+        }
+        magical_Park(park,m,n,k,s);
+
+
+
+            }
+        }
