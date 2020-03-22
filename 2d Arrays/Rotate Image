@@ -1,0 +1,51 @@
+public class Main {
+
+
+    static void rotate(int a[][],int n){
+        //reverse the elements of row
+
+        for (int row=0;row<n;row++){
+            int start_col=0;
+            int end_col=n-1;
+            while (start_col<end_col){
+                int temp=a[row][start_col];
+                a[row][start_col]=a[row][end_col];
+                a[row][end_col]=temp;
+                start_col++;
+                end_col--;
+
+            }
+        }
+        //takethe transpose
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                if (i<j){
+                    int temp=a[i][j];
+                    a[i][j]=a[j][i];
+                    a[j][i]=temp;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        int arr[][]= new int[n][n];
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        rotate(arr,n);
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                System.out.print(arr[i][j]+" ");
+            }
+        }
+
+
+
+
+            }
+        }
+
