@@ -1,4 +1,5 @@
 // Matrix is sorted row and coloumn wise
+time complexity is O(n)
 
 public class Main {
 static void search(int mat[][],int n,int x){
