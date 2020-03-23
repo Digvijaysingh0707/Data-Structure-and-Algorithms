@@ -1,0 +1,28 @@
+public class Main {
+   static void removeDuplicates(char a[]){
+       int l=a.length;
+       if (l==0||l==1){
+           return;
+       }
+       int pre=0;
+       for (int current=1;current<l;current++){
+           if (a[current]!=a[pre]){
+               pre++;
+               a[pre]=a[current];
+           }
+       }
+       a[pre+1]='\0';
+//       return;
+   }
+        public static void main(String[] args) {
+       Scanner sc =  new Scanner(System.in);
+       //int n = sc.nextInt();
+
+            char ch[]= sc.next().toCharArray();
+            int n=ch.length;
+            removeDuplicates(ch);
+            for (int i=0;i<n;i++){
+                System.out.print(ch[i]);
+            }
+        }
+            }
