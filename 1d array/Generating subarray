@@ -1,8 +1,7 @@
 Number of subarray generated is n(n+1)/2
-#include <iostream>
 
 
-//JAVA CODE
+
 package com.company;
 import java.util.Scanner;
 public class Main {
@@ -31,51 +30,5 @@ public class Main {
 
 	}
 	
-	//Printing the array having maximum sum
 	
-	package com.company;
-import java.util.Arrays;
-import java.util.Scanner;
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the value of n: ");
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        System.out.print("Enter the elements of array: ");
-        int left =-1;
-        int right =-1;
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-        int maxSum = 0;
-        int currentSum = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                currentSum = 0;
-                for (int k = i; k <= j; k++) {
-                    currentSum += arr[k];
-
-                }
-                if (currentSum > maxSum) {
-                    maxSum = currentSum;
-                    left = i;
-                    right=j;
-                }
-            }
-
-
-        }
-        System.out.println(maxSum);
-        int k;
-        for( k =left;k<=right;k++){
-            System.out.print(arr[k]+" ");
-        }
-        //System.out.print(Arrays.toString(arr[k]));
-    }
-}
-
-
-
-
-
+       
