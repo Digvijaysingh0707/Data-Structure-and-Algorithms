@@ -1,0 +1,19 @@
+   
+   // sort both the arrays and then find the diffrernce between  each of the element and then ad the diff
+   public class Main {
+
+
+    public static void main(String[] args) {
+            int a[]={3,4,1};
+            int b[]={2,5,6};
+            Arrays.sort(a);
+            Arrays.sort(b);
+            int sum=0;
+            for (int i=0;i<3;i++){
+                 int diff=Math.abs(a[i]-b[i]);
+                 sum+=diff;
+            }
+        System.out.print(sum);
+
+ }
+            }
