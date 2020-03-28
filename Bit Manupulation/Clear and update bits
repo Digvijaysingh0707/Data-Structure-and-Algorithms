@@ -1,0 +1,20 @@
+public class Main {
+    static int clearBit(int n,int i){
+        int mask=~(1<<i);
+        int ans =n&mask;
+        return ans;
+    }
+    static int updateBit(int n,int i,int v){
+        int mask=~(1<<i);
+        int cleared_n=n&mask;
+        n=cleared_n|(v<<i);
+        return n;
+
+    }
+
+    public static void main(String[] args) {
+ 
+        System.out.println(clearBit(5,2));
+        System.out.println(updateBit(10,1,0));
+    }
+}
