@@ -1,4 +1,5 @@
-N & 1 makes 1 at last
+N & 1 makes 1 at last then it is odd 
+if 0 then even
 
 1<<2 =100
 import java.util.List;
