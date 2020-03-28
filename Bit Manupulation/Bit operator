@@ -1,6 +1,9 @@
-XOR when differet values then it give the output
+XOR when differet values then it give the output as 1
 1^0=1
 0^1=1
+1^1=0
+0^0=0
+
 and when both are same then it gives 0
 and when both are different it gives one
 5^5=0
