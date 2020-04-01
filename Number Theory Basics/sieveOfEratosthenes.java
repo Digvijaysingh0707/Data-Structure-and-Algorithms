@@ -51,7 +51,7 @@ public class Main {
             for (int i=3;i<=100000;i+=2){
                 p[i]=1;
             }
-            for (long i=3;i<=100000;i+=2){
+            for (long i=3;i<=100000;i++){
                 if (p[(int)i]==1){
                     // mark all ultiples of i as not prime
                     for (long j=i*i;j<=1000000;j+=i){
