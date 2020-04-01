@@ -38,7 +38,8 @@ public class Main {
 
         System.out.print("Following are the prime numbers ");
         System.out.println("smaller than or equal to " + n);
-        sieveOfEratosthenes(n);
+       Main g=new Main();
+             g.sieveOfEratosthenes(n);
 
     }
 }
