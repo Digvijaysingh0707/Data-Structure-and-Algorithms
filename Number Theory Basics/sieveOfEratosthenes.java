@@ -1,7 +1,7 @@
 Time complexity : O(n*log(log(n)))
 
 
-
+// from gfg
 package com.company;
 import java.security.KeyPair;
 import java.util.*;
@@ -43,6 +43,51 @@ public class Main {
 
     }
 }
+//Coding blocks
+
+public class Main {
+        static void primeSieve(int[] p){
+            //mark all odd number,even numbers will not be prime
+            for (int i=3;i<=100000;i+=2){
+                p[i]=1;
+            }
+            for (long i=3;i<=100000;i+=2){
+                if (p[(int)i]==1){
+                    // mark all ultiples of i as not prime
+                    for (long j=i*i;j<=1000000;j+=i){
+                        p[(int)j]=0;
+                    }
+                }
+            }
+            p[2]=1;
+            p[1]=0;
+        }
+
+
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            int p[]= new int[10000005];
+            Arrays.fill(p,0);
+            int count=0;
+            primeSieve(p);
+            for (int i=0;i<=n;i++){
+                if (p[i]==1){
+                    count++;
+                    System.out.print(i+" ");
+                }
+
+            }
+
+            System.out.println("Total = "+count);
+
+
+
+
+
+        }
+    }
+
 
 
 
