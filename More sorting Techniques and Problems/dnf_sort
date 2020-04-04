@@ -1,0 +1,59 @@
+It is used to sort only 0,1,2
+can also be done with counting sort with same complexity but dnf does it in single pass
+O(N)
+
+
+package com.company;
+import java.security.KeyPair;
+import java.util.*;
+
+public class Main {
+    static void dnf_sort(int a[],int n){
+        int lo=0;
+        int high=n-1;
+        int mid=0;
+        while (mid<=high){
+            if (a[mid]==0){
+                int temp=a[mid];
+                a[mid]=a[lo];
+                a[lo]=temp;
+                lo++;
+                mid++;
+            }
+            if (a[mid]==1){
+                mid++;
+            }if (a[mid]==2){
+                int temp=a[mid];
+                a[mid]=a[high];
+                a[high]=temp;
+                high--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int a[] = {2,1,1,1,1,0,1,1,1,0,0,2,0};
+        int n = a.length;
+        dnf_sort(a,n);
+        for (int i=0;i<n;i++){
+            System.out.print(a[i]+" ");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
