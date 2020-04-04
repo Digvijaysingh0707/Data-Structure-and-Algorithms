@@ -1,0 +1,78 @@
+Divide & conquer
+nlogn in avr case
+n^2 in worst case
+
+choose pivot elmt can be at start or at end
+put elmt grtr than pivot on Rhs and less on Lhs
+Recursively sort both parts
+
+
+
+
+
+
+package com.company;
+import java.security.KeyPair;
+import java.util.*;
+
+public class Main {
+    static int partition(int a[], int s, int e) {
+        int i = s - 1;
+        int j = s;
+        int pivot = a[e];
+        for (; j <=e - 1; ) {
+            if (a[j] <= pivot) {
+                //merge the element in the smaller regions where elements are less than pivot element
+                i++;
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+            //expant region where element are greater than pivot
+            j++;
+        }
+        //place the pivot element in correct order
+        int temp = a[i + 1];
+        a[i + 1] = a[e];
+        a[e] = temp;
+        return i + 1;//pivot index
+
+    }
+
+
+    static void quickSort(int a[], int s, int e) {
+        if (s >= e) {
+            return;
+        }
+        int p = partition(a, s, e);
+        quickSort(a, s, p - 1);
+        quickSort(a, p+1, e);
+    }
+
+
+    public static void main(String[] args) {
+        int a[] = {2, 7, 8, 6, 1, 5, 4};
+        int n = a.length;
+        quickSort(a, 0, n - 1);
+        for (int i=0;i<n;i++){
+            System.out.print(a[i]+" ");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
