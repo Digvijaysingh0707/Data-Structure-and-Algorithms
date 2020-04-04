@@ -22,41 +22,34 @@ public class Main {
 
 
 
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            int t = sc.nextInt();
-            int n = sc.nextInt();
-            long a[] = new long[n];
-            int pre[] = new int[n]; // it is frequency array , we are not builing cumulative sum array
-
-            while (t != 0) {
-                t--;
-                Arrays.fill(pre,0,n,0);
-                pre[0] = 0;
-                //read the input
-                int sum = 0;
-                for (int i = 0; i < n; i++) {
-                    a[i] = sc.nextInt();
-                    sum += a[i];
-                    sum %= n;
-                    sum = (sum + n) % n;// cumulative sum array will not contain any negative element
-                    pre[sum]++;
+       public static void main(String[] args) {
+                    Scanner sc = new Scanner(System.in);
+                    int t = sc.nextInt();
+                    int n = sc.nextInt();
+                    long a[] = new long[n];
+                    long pre[] = new long[n]; // it is frequency array , we are not builing cumulative sum array
+                    while (t != 0) {
+                        t--;
+                        Arrays.fill(pre,0,n,0);
+                        pre[0] = 1;
+                        //read the input
+                        int sum = 0;
+                        for (int i = 0; i < n; i++) {
+                            a[i] = sc.nextInt();
+                            sum += a[i];
+                            sum %= n;
+                            sum = (sum + n) % n;// cumulative sum array will not contain any negative element
+                            pre[sum]++;
+                        }
+                        int ans = 0;
+                        for (int i = 0; i < n; i++) {
+                            long m = pre[i];
+                            ans += (m) * (m - 1) / 2;//mC2
+                        }
+                        System.out.println(ans);
+                    }
                 }
-
-            long ans = 0;
-            for (int i = 0; i < n; i++) {
-                long m = pre[i];
-                ans += (m) * (m - 1) / 2;//mC2
             }
-            System.out.print(ans);
-        }
-
-        }
-    }
-
-
-
-
 
 
 
