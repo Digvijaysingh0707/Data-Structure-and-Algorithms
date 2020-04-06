@@ -1,0 +1,56 @@
+O(N+range)
+helpul for small range
+
+
+package com.company;
+import java.security.KeyPair;
+import java.util.*;
+
+public class Main {
+    static void counting_sort(int a[],int n) {
+        int largest = -1;
+        for (int i = 0; i < n; i++) {
+            largest = Math.max(largest, a[i]);
+        }
+        int frequency[] = new int[largest + 1];
+        for (int i = 0; i < n; i++) {
+            frequency[a[i]]++;
+        }
+        //put the element back into array a by reading frequency
+        int j = 0;
+        for (int i = 0; i <=largest; i++) {
+            while (frequency[i]>0){
+                a[j]=i;
+                frequency[i]--;
+                j++;
+            }
+
+        }
+    }
+    public static void main(String[] args) {
+        int a[] = {88,97,10,12,15,1,5,6,12,5,8};
+        int n = a.length;
+        counting_sort(a,n);
+
+        for (int i=0;i<n;i++){
+            System.out.print(a[i]+" ");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
