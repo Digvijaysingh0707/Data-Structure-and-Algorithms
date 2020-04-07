@@ -1,5 +1,7 @@
 O(N+range)
 helpul for small range
+Ex is sort the mark of students in jee range will be 360
+we atke the array and record their frequency
 
 
 package com.company;
@@ -8,7 +10,7 @@ import java.util.*;
 
 public class Main {
     static void counting_sort(int a[],int n) {
-        int largest = -1;
+        int largest = -1; // for finding range
         for (int i = 0; i < n; i++) {
             largest = Math.max(largest, a[i]);
         }
