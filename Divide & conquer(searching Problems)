@@ -1,0 +1,53 @@
+Monotonic function is a function which is always increasing or decresing
+
+
+package com.company;
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    static float findSquare(int n,int p){
+        int s=0;
+        int e=n;
+        double ans=-1;
+        //binary Search
+        while (s<=e){
+            int mid=(s+e)>>1;
+            if (mid*mid==n){
+                return mid;
+            }
+            if (mid*mid<n){
+                ans=mid;
+                s=mid+1;
+            }
+            else{
+                e=mid-1;
+            }
+        }
+        double inc=0.1;
+        for (int times=1;times<=p;times++){
+            while (ans*ans<=n){
+                ans=ans+ inc;
+            }
+            //overshoot the value
+            ans=ans-inc;
+            inc=inc/10;
+        }
+
+        return (float)ans;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       int n =sc.nextInt();
+       int p=sc.nextInt();
+        System.out.println(findSquare(n,p));
+
+    }
+
+    }
+
+
+
+
+
+
+
