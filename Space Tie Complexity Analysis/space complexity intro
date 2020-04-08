@@ -1,0 +1,21 @@
+space complexity is the maximum auxillary or extra space for solving a problem
+Bubble sort is implace algo as it does not need any extra space for holding data
+it take O(1) space as it need constant number of variables to solve the problem
+
+Fibonacci series:- 
+by takeing two variables then it take o(1) space and o(N) time
+when done by recursion then it takes O(N) spce and O(2^n) time
+
+for Merge Sort:-
+time O(NlogN)
+space O(n)
+
+
+merge Sort
+time O(nlog n)
+
+in worst case like array 0f 1,2,3,4,5 pivot elmt 5 will not move will be at last so time will be O(n*n), to overcome this we have randomise 
+quicksort in which we shuffle the elemnt
+
+space is O(logN)
+
