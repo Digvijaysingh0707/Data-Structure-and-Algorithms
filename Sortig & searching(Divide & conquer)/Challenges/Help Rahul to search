@@ -48,11 +48,11 @@ public class Main {
                     }
             }
             else{
-                if ((key>=a[mid]) && (key<=a[e])){
-                    s=mid-1;
+                if ((a[mid]>=key) && (key>=a[s])){
+                    e=mid-1;
                 }
                 else{
-                    e=mid-1;
+                    s=mid+1;
                 }
 
             }
@@ -72,6 +72,7 @@ public class Main {
     }
 
     }
+
 
 
 
