@@ -25,6 +25,7 @@ public class LinkedList {
             this.next=null;
         }
     }
+    we move fastPtr n-1 times then we move both pointer 1 time
    public static Listnode getNodeFromLast(Listnode head,int n){
         if(head==null){
             return head;
@@ -32,21 +33,21 @@ public class LinkedList {
         if(n<=0){
             throw new IllegalArgumentException("Invalid value of n:"+n);
         }
-        Listnode mainPtr = head;
-        Listnode refPtr = head;
+        Listnode slowPtr = head;
+        Listnode FastPtr = head;
         int count =0;
-        while(count<n){
+        while(count<n){//this while loop move fast pointer n-1 times
             if(refPtr==null){
                 throw new IllegalArgumentException(n+" is greater than the number of nodes");
             }
-            refPtr = refPtr.next;
+            Fast.ptr = fastPtr.next;
             count++;
         }
-        while (refPtr!=null){
-            refPtr = refPtr.next;
-            mainPtr = mainPtr.next;
+        while (FsatPtr!=null){
+            FastPtr = fastPtr.next;
+            slwPtr = slwPtr.next;
         }
-        return mainPtr;
+        return slwPtr;
    }
 
     public static void main(String[] args){
