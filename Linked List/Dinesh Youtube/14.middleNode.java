@@ -32,7 +32,7 @@ public class LinkedList {
             return head;
         }
         Listnode slwPtr = head;
-        Listnode fstPtr = head.next;
+        Listnode fstPtr = head;
         while(fstPtr!=null&& fstPtr.next!=null){
             slwPtr = slwPtr.next;
             fstPtr = fstPtr.next.next;
