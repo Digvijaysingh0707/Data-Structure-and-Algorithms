@@ -29,10 +29,10 @@ public static void insertAtBottom(Stack<Integer> st,int x){
         s.push(3);
         s.push(4);
         revese(s);
-        while(s.isEmpty()==false){
-            System.out.println(s);
-            break;
-        }
+        while (s.isEmpty()==false){
+                System.out.print(s.peek()+" ");
+                s.pop();
+            }
 
 
     }
