@@ -1,32 +1,39 @@
-import java.util.List;
-import java.util.Stack;
+algorithm:-
+for(day(0-n)
+while(s.top)<curPrice) pop 
+compute the span
+push the current day into the stack
 
 // by stack O(N)
- class LinkedList {
-    static int[] printSpan(int arr[],int n){
-        Stack<Integer> s= new Stack<>();
-        int ans[]={};
-        for (int day=0; day<n; day++){
-            int curPrice = arr[day];
-            while (s.isEmpty()==false && arr[s.peek()]<curPrice){
+ package com.company;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+    static void printSpan(int a[], int n) {
+        Stack<Integer> s = new Stack<>();
+        int ans[] = new int[100];
+        for (int day = 0; day < n; day++) {
+            int curprice = a[day];
+            while (s.isEmpty() == false && a[s.peek()] < curprice) {
                 s.pop();
             }
-            int betterDay = s.isEmpty()? 0:s.peek();
+            int betterDay = s.isEmpty() ? 0 : s.peek();
             int span = day - betterDay;
-            ans[day]=span;
+            
+            ans[day] = span;
             s.push(day);
         }
-        for(int i =0;i<n;i++){
-            System.out.print(arr[i]+" ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(ans[i] + " ");
         }
-        return ans;
 
     }
 
     public static void main(String[] args) {
-        int n =6;
-        int arr[]={100,80,60,70,60,75,85};
-        printSpan(arr,n);
-
+        int n = 7;
+        int arr[] = {100, 80, 60, 70, 60, 75, 85};
+        printSpan(arr, n);
     }
 }
