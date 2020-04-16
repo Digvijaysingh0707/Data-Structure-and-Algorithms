@@ -3,3 +3,67 @@ POP(dequeue) at front
 FIFO
 Linear DS
 EX Operatng System
+
+package com.company;
+
+class  Queue {
+    static int arr[];
+    static int ms;
+    static int cs;
+    static int front;
+    static int rear;
+    public  Queue(int default_size){
+        default_size=7;
+        this.front=0;
+        this.rear=default_size-1;
+        this.ms=default_size;
+        this.arr=new int[this.ms];
+        this.cs=0;
+
+    }
+    static boolean isFull(){
+        return cs==ms;
+    }
+    static boolean isEmpty(){
+        return cs==0;
+    }
+    static void enqueue(int data){
+        if (!isFull()){
+            rear=(rear+1)%ms;
+            arr[rear]=data;
+            cs+=1;
+        }
+    }
+    static void dequeue(){
+        if (!isEmpty()){
+            front=(front+1)%ms;
+            cs-=1;
+
+        }
+    }
+    static int getFront(){
+        return arr[front];
+    }
+}
+
+public class Main {
+
+
+
+
+    public static void main(String[] args) {
+        Queue q=new Queue(10) ;
+        for (int i=1;i<=6;i++){
+            q.enqueue(i);
+        }
+        q.dequeue();
+        q.enqueue(8);
+        while (!q.isEmpty()){
+            System.out.println(q.getFront());
+            q.dequeue();
+        }
+
+
+    }
+}
+
