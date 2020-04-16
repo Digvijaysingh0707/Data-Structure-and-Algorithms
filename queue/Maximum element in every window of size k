@@ -1,0 +1,46 @@
+package com.company;
+
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+
+public class Main {
+    static void printMax(int a[], int n, int k) {
+        Deque<Integer> q = new LinkedList<>();
+        int i;
+        for (i = 0; i < k; i++) {
+            while (!q.isEmpty() && a[i] >= a[q.peekLast()]) {
+                q.pollLast();
+            }
+            q.addLast(i);
+        }
+        for (; i < n; i++) {
+            System.out.println(q.peekFirst() + " ");
+            while (!q.isEmpty() && q.peekFirst() <= i - k) {
+                q.pollFirst();
+            }
+            while (!q.isEmpty() && a[i] >= a[q.peekLast()]) {
+                q.pollLast();
+            }
+            q.addLast(i);
+
+        }
+
+        System.out.println(q.peekFirst());
+    }
+    
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        int k = sc.nextInt();
+        printMax(a, n, k);
+
+
+    }
+}
