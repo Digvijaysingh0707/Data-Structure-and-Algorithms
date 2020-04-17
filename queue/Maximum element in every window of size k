@@ -11,25 +11,25 @@ public class Main {
         int i;
         for (i = 0; i < k; i++) {
             while (!q.isEmpty() && a[i] >= a[q.peekLast()]) {
-                q.pollLast();
+                q.removeLast();
             }
             q.addLast(i);
         }
         for (; i < n; i++) {
             System.out.println(q.peekFirst() + " ");
             while (!q.isEmpty() && q.peekFirst() <= i - k) {
-                q.pollFirst();
+                q.removeFirst();
             }
             while (!q.isEmpty() && a[i] >= a[q.peekLast()]) {
-                q.pollLast();
+                q.removeLast();
             }
             q.addLast(i);
 
         }
 
-        System.out.println(q.peekFirst());
+        System.out.println(a[q.peek()]);
     }
-    
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
