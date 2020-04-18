@@ -1,0 +1,63 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    static boolean isValid(long books[], long n, long k, long ans) {
+        int studets = 1;
+        long currentPages = 0;
+        for (int i = 0; i < n; i++) {
+            if (currentPages + books[i] > ans) {
+                currentPages = books[i];
+                studets++;
+                if (studets > k) {
+                    return false;
+                }
+
+            } else {
+                currentPages += books[i];
+            }
+        }
+        return true;
+    }
+
+    static int binarySearch(long books[], long n, long k) {
+        long total_pages = 0;
+        long s = books[(int) n - 1];
+        long e = 0;
+        for (int i = 0; i < n; i++) {
+            total_pages += books[i];
+            s = Math.max(s, books[i]);//take last book
+        }
+        e = total_pages;
+        long finalAns = 0;
+        while (s <= e) {
+            long mid = (s + e) / 2;
+            if (isValid(books, n, k, mid)) {
+                //true
+                finalAns = mid;
+                e = mid - 1;
+            } else {
+                //false
+                s = mid + 1;
+            }
+        }
+        return (int) finalAns;
+    }
+
+    public static void main(String[] args) {
+        // write your code here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            long n = sc.nextLong();
+            long k = sc.nextLong();
+            long book[] = new long[10000];
+            for (int i = 0; i < n; i++) {
+                book[i] = sc.nextInt();
+            }
+            System.out.println(binarySearch(book, n, k));
+
+        }
+    }
+}
