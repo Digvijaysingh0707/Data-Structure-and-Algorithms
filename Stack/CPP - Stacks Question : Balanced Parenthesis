@@ -1,3 +1,5 @@
+Approach 1 count kr lenge ( and ) it will give wrong output as )(
+
 package com.company;
 
 import java.util.Scanner;
