@@ -1,0 +1,51 @@
+package com.company;
+
+import com.sun.source.doctree.SeeTree;
+
+import java.util.*;
+public class Main{
+    static boolean check(String s){
+        Stack<Character> c=new Stack<>();
+        for (int i=0;i<s.length();i++){
+            char current = s.charAt(i);
+            if ((current=='(')||(current=='{')||(current=='[')){
+                c.push(current);
+            }
+            else if((current==')')){
+                if (c.isEmpty()||c.peek()!='('){
+                    return false;
+                }
+                c.pop();
+            }
+            else if (current=='}'){
+                if (c.isEmpty()||c.peek()!='{'){
+                    return false;
+                }
+                c.pop();
+            }
+            else if (current==']'){
+                if (c.isEmpty()||c.peek()!='{'){
+                    return false;
+                }
+                c.pop();
+            }
+        }
+        return c.isEmpty();
+    }
+
+
+public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.next();
+      boolean valid =check(s);
+        if (valid){
+            System.out.print("Yes");
+        }
+        else{
+            System.out.print("No");
+        }
+        }
+    }
+
+
