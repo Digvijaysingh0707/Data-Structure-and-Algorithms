@@ -1,0 +1,76 @@
+package com.company;
+import java.util.*;
+import java.util.Stack;
+public class Main{
+    static int[] printSpan(int a[], int n,int ans[]) {
+    Stack<Integer> s = new Stack<>();
+    s.push(0);
+    ans[0]=1;
+    for (int day = 1; day < n; day++) {
+        int curprice = a[day];
+        while (s.isEmpty() == false && a[s.peek()] < curprice) {
+            s.pop();
+        }
+        if (s.size()==0){
+            ans[day]=day+1;
+        }
+        else{
+            ans[day]=day-s.peek();
+        }
+      s.push(day);
+    }
+        return ans;
+
+}
+//static int[] StockSpanUsingStacks(int[] prices, Stack<Integer> stack)  {
+//
+//    // span array stores the value of stock span for each day
+//    int[] span = new int[prices.length];
+//
+//    // pushing the index of first day
+//    stack.push(0);
+//
+//    // span for 1st day will always be 1
+//    span[0] = 1;
+//
+//    // Iterating over the prices array
+//    for (int i = 1; i < prices.length; i++) {
+//
+//        // poping days from stack when price of the i th day is greater than the price of day which is on top of stack
+//        while (stack.size() != 0 && prices[i] > prices[stack.peek()]) {
+//            stack.pop();
+//        }
+//
+//        if (stack.size() == 0) {
+//
+//            // then all the previous prices are smaller than the price on the  ith day
+//            span[i] = i + 1;
+//        } else {
+//
+//            // the previous highest price will be on the top of the stack
+//            span[i] = i - stack.peek();
+//        }
+//
+//        // pushing the index of the price array which is the number of day in stack
+//        stack.push(i);
+//    }
+//    return span;
+//
+//}
+public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int ar[]= new int[n];
+        for (int i=0;i<n;i++){
+            ar[i]=sc.nextInt();
+        }
+        int ans[]= new int[n];
+    printSpan(ar,n,ans);
+        for (int i=0;i<n;i++){
+            System.out.println(ans);
+        }
+
+        }
+    }
+
+
