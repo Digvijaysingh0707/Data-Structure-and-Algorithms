@@ -1,76 +1,90 @@
+The stock span problem is a financial problem where we have a series of N daily price quotes for a stock and we need to calculate span 
+
+of stock’s price for all N days. You are given an array of length N, where ith element of array denotes the price of a stock on ith.
+Find the span of stock's price on ith day, for every 1<=i<=N.
+A span of a stock's price on a given day, i, is the maximum number of consecutive days before the (i+1)th day, for which stock's price 
+on these days is less than or equal to that on the ith day.
+
+Input Format
+First line contains integer N denoting size of the array.
+Next line contains N space separated integers denoting the elements of the array.
+
+Constraints
+1 <= N <= 10^6
+
+Output Format
+Display the array containing stock span values.
+
+Sample Input
+5
+30 35 40 38 35
+Sample Output
+1 2 3 1 1 END
+Explanation
+For the given case
+for day1 stock span =1
+for day2 stock span =2 (as 35>30 so both days are included in it)
+for day3 stock span =3 (as 40>35 so 2+1=3)
+for day4 stock span =1 (as 38<40 so only that day is included)
+for day5 stock span =1 (as 35<38 so only that day is included)
+hence output is 1 2 3 1 1 END
+
+
+
+
+
+
+
+
+
 package com.company;
-import java.util.*;
+
+import java.util.Scanner;
 import java.util.Stack;
-public class Main{
-    static int[] printSpan(int a[], int n,int ans[]) {
-    Stack<Integer> s = new Stack<>();
-    s.push(0);
-    ans[0]=1;
-    for (int day = 1; day < n; day++) {
-        int curprice = a[day];
-        while (s.isEmpty() == false && a[s.peek()] < curprice) {
-            s.pop();
-        }
-        if (s.size()==0){
-            ans[day]=day+1;
-        }
-        else{
-            ans[day]=day-s.peek();
-        }
-      s.push(day);
-    }
-        return ans;
 
-}
-//static int[] StockSpanUsingStacks(int[] prices, Stack<Integer> stack)  {
-//
-//    // span array stores the value of stock span for each day
-//    int[] span = new int[prices.length];
-//
-//    // pushing the index of first day
-//    stack.push(0);
-//
-//    // span for 1st day will always be 1
-//    span[0] = 1;
-//
-//    // Iterating over the prices array
-//    for (int i = 1; i < prices.length; i++) {
-//
-//        // poping days from stack when price of the i th day is greater than the price of day which is on top of stack
-//        while (stack.size() != 0 && prices[i] > prices[stack.peek()]) {
-//            stack.pop();
-//        }
-//
-//        if (stack.size() == 0) {
-//
-//            // then all the previous prices are smaller than the price on the  ith day
-//            span[i] = i + 1;
-//        } else {
-//
-//            // the previous highest price will be on the top of the stack
-//            span[i] = i - stack.peek();
-//        }
-//
-//        // pushing the index of the price array which is the number of day in stack
-//        stack.push(i);
-//    }
-//    return span;
-//
-//}
-public static void main(String[] args) {
+public class Main {
+    static void printSpan(int a[], int n) {
+        Stack<Integer> s = new Stack<>();
+        int ans[] = new int[100];
+        s.push(0);
+        ans[0] = 1;
+
+        for (int day = 1; day < n; day++) {
+            int curprice = a[day];
+            while (s.isEmpty() == false && a[s.peek()] < curprice) {
+                s.pop();
+            }
+            if (s.size() == 0) {
+
+                ans[day] = day + 1;
+            } else {
+                ans[day] = day - s.peek();
+            }
+            s.push(day);
+        }
+
+
+        int i=0;
+        while (i<n) {
+                System.out.print(ans[i] + " ");
+                i++;
+            }
+            System.out.print("END");
+        }
+
+
+
+
+
+
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n=sc.nextInt();
-        int ar[]= new int[n];
+        int n =sc.nextInt();
+        int a[]=new int[n];
         for (int i=0;i<n;i++){
-            ar[i]=sc.nextInt();
-        }
-        int ans[]= new int[n];
-    printSpan(ar,n,ans);
-        for (int i=0;i<n;i++){
-            System.out.println(ans);
+            a[i]=sc.nextInt();
         }
 
-        }
+        printSpan(a, n);
     }
-
-
+}
