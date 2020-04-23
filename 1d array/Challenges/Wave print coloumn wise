@@ -6,26 +6,6 @@ import java.util.Scanner;
 import java.util.Stack;
 
 public class Main {
-static Stack<Integer> s= new Stack<>();
-static Stack<Integer> s2= new Stack<>();
-static void enqueue(int x){
-    while (!s.isEmpty()){
-        s2.push(s.pop());
-    }
-    s.push(x);
-    while (!s2.isEmpty()){
-        s.push(s2.pop());
-    }
-}
-static int dequeue(){
-    if (s.isEmpty()){
-        System.out.println("Q is empty");
-        System.exit(0);
-    }
-    int x=s.peek();
-    s.pop();
-    return x;
-}
 
     public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
