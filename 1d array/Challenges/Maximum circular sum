@@ -1,0 +1,44 @@
+import java.util.*;
+public class Main {
+	static int Kadane(int[] a,int n){
+    int cs=0;
+    int ms=0;
+    for (int i=0;i<n;i++){
+        cs+=a[i];
+        if (cs<0){
+            cs=0;
+        }
+        ms=Math.max(cs,ms);
+    }
+    return ms;
+}
+static int maxCircular(int a[],int n){
+    int k=Kadane(a,n);
+    int wrap_sum=0;
+    for (int i=0;i<n;i++){
+        wrap_sum+=a[i];
+        a[i]=-a[i];
+    }
+    wrap_sum+=Kadane(a,n);
+    return (wrap_sum>k)?wrap_sum:k;
+}
+
+
+    public static void main(String[] args) {
+        Scanner sc =  new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->0) {
+            int n = sc.nextInt();
+            int a[] = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+            }
+            System.out.println(maxCircular(a,n));
+        }
+
+
+
+
+    }
+
+}
