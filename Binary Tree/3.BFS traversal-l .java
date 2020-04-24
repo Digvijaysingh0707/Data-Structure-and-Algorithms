@@ -3,6 +3,14 @@ Time and Space complexity is O(n)
     
     Queue should not be of int type it should be of node type and if we make it of int type we would not be able to find from which node
     it is coming
+    
+    Algo:-
+    q.push(root){
+        while(!q.isempty)
+            pick one node at front
+            pop it
+            push its children
+        
 
 import java.util.LinkedList;
 import java.util.Queue;
