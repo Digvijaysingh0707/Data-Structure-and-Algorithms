@@ -3,77 +3,70 @@ Complexity is O(N^2)
     
     skewed tree- tree having nodes in one direction
 
-public class Node {
+package com.company;
+ class Node {
+
     int key;
     Node left,right;
     public Node(int item){
         this.key=item;
         left=right=null;
-
     }
 }
-class  BinaryTree{
+class Binarytree  {
+
     static Node root;
-    BinaryTree(){
-        root=null;
+
+    Binarytree() {
+        root = null;
     }
-    static int height(Node root){
-        if(root==null){
+    public static int height(Node root){
+        if (root==null){
             return 0;
         }
         int Lheight=height(root.left);
         int Rheight=height(root.right);
-
-        if(Lheight>Rheight){
+        if (Lheight>Rheight){
             return (Lheight+1);
-
         }
         else{
             return (Rheight+1);
         }
-
-
-
     }
-    static void printAllLevel(){
-        int h =height(root);
-        for (int i =1;i<=h;i++){
-            printGivenLevel(root,i);
+    public void printGivenLevel(Node root,int level){
+        if (root==null){
+            return;
+        }
+        if (level==1){
+            System.out.print(root.key+" ");
+        }
+        printGivenLevel(root.left,level-1);
+        printGivenLevel(root.right,level-1);
+    }
+    public void printAlllevels() {
+        int h = height(root);
+        for (int i = 0; i <=h; i++) {
+            printGivenLevel(root, i);
             System.out.println();
         }
     }
-    static void printGivenLevel(Node root,int level){
-        if(root==null){
-            return;
-        }
-        if(level==1){
-            System.out.print(root.key);
-            return;
-        }
-        else{
-            printGivenLevel(root.left,level-1);
-            printGivenLevel(root.right,level-1);
-            return;
-        }
 
-    }
+}
 
+
+
+
+public class Main {
 
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+	// write your code here
 
-        tree.root=new Node(1);
-
-        tree.root.left=new Node(2);
-
-        tree.root.right=new Node(3);
-
-        tree.root.left.left=new Node(4);
-
-        tree.root.left.right = new Node(5);
-
-        System.out.println("Level order traversal of Binary tree:- ");
-        tree.printAllLevel();
-
+        Binarytree tree = new Binarytree();
+        tree.root= new Node(1);
+        tree.root.left= new Node(2);
+        tree.root.right= new Node(3);
+        tree.root.left.left= new Node(4);
+        tree.root.left.right= new Node(5);
+        tree.printAlllevels();
     }
 }
