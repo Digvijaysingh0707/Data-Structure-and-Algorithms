@@ -1,0 +1,43 @@
+https://www.geeksforgeeks.org/maximum-length-bitonic-subarray/
+
+
+import java.util.*;
+public class Main {
+	static int bitonic(int a[],int n){
+    int inc[]= new int[n];
+    int dec[]= new int[n];
+    inc[0]=1;
+    dec[n-1]=1;
+    for (int i=1;i<n;i++){
+        inc[i]=(a[i]>=a[i-1])?inc[i-1]+1:1;
+    }
+    for (int i=n-2;i>=0;i--){
+        dec[i]=(a[i]>=a[i+1])?dec[i+1]+1:1;
+    }
+    int max=inc[0]+dec[0]-1;
+    for (int i=1;i<n;i++){
+        if (inc[i]+dec[i]-1>max){
+            max=inc[i]+dec[i]-1;
+        }
+    }
+    return max;
+}
+ public static void main(String[] args) {
+        Scanner sc =  new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->0) {
+            int n = sc.nextInt();
+            int a[] = new int[n];
+            for (int i = 0; i < n; i++) {
+                a[i] = sc.nextInt();
+            }
+
+            System.out.println(bitonic(a,n));
+        }
+
+
+
+
+    }
+
+}
