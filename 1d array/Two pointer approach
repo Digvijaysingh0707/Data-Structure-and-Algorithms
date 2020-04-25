@@ -1,5 +1,12 @@
+Ques. Given sorted array.find pairs of two elements whose sum  is equal to k.
 // array is sorted
 //it takes n iterations
+
+Approaches:- 1 by two for loop   n^2
+
+2. pick one element the do binary search for another element too make sum=k
+
+3 two pointer approach works only in sorted array n iteration
 public static void main(String[] args) {
 
             int arr[]= {1,3,5,7,9,11,78};
@@ -17,7 +24,7 @@ public static void main(String[] args) {
                 }
                 else if(currentSum==s){
                     System.out.println(arr[i]+" and "+arr[j]);
-                    i++;
+                    i++;//this is for finding another pair
                     j--;
                 }
             }
