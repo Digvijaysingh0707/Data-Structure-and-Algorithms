@@ -1,3 +1,4 @@
+//Inspired fromgame of card , place a card into its correct posiion
 public class Main {
    static void InsertionSort(int arr[],int n){
        for(int i=1;i<n;i++){
