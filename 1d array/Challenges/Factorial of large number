@@ -1,0 +1,43 @@
+https://www.youtube.com/watch?v=2fYZERB2Yng
+
+package com.company;
+
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args)
+        {
+            Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            int q=2;
+            int arr[]= new int[100000];
+            arr[0]=1;
+            int len=1;
+            int x=0;
+            int num=0;
+            while(q<=n){
+                x=0;
+                num=0;
+                while (x<len){
+                    arr[x]=arr[x]*q;
+                    arr[x]=arr[x]+num;
+                    num=arr[x]/10;
+                    arr[x]=arr[x]%10;
+                    x++;
+                }
+                while (num!=0){
+                    arr[len]=num%10;
+                    num=num/10;
+                    len++;
+                }
+                q++;
+            }
+            len--;
+            while (len>=0){
+                System.out.print(arr[len]);
+                len--;
+            }
+
+        }
+    }
+
