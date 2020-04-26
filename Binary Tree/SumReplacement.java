@@ -22,7 +22,7 @@ class  BinaryTree{
         if(root==null){
             return 0;
         }
-        if(root.left==null&& root.right==null){
+        if(root.left==null&& root.right==null){// leaf node
             return root.key;
         }
         int leftsum=replaceSum(root.left);
