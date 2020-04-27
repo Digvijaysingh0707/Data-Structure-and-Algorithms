@@ -1,4 +1,6 @@
-
+//Height of balanced binary tree is log n
+//Height of skewd tree is O(n)
+//Height of left and right subtree should be similar
 import java.util.LinkedList;
 import java.util.Queue;
 
