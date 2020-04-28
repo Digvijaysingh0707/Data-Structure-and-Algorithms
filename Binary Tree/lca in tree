@@ -1,3 +1,8 @@
+Tim &space  coplexity is O(n)
+Prepare alist of ancestors of p and q
+then find the common part for p and q
+as we are moving from top to bottom the last element of commmon part will be the lca
+
 package com.company;
 
 
