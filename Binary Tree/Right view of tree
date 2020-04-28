@@ -1,3 +1,7 @@
+[Preorder,inorder,postorder] are depth first search
+Level order traversal is breadth first search
+
+
 https://www.geeksforgeeks.org/print-right-view-binary-tree-2/
 
 class Node{
