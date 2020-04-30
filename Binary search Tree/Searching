@@ -1,0 +1,101 @@
+Complexity of the program is O(h)
+
+Best case for h: O(logN)
+worst case for h: O(N)
+
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Node {
+    int key;
+    Node left,right;
+    public Node(int item){
+        this.key=item;
+        left=right=null;
+
+    }
+}
+
+class  BinaryTree{
+    static Node root;
+//    BinaryTree(){
+//        root=null;
+//    }
+    static Scanner sc = new Scanner(System.in);
+    static Node InsertInBst(Node root,int data){
+        if (root==null){
+            return new Node(data);
+        }
+
+        if(data<=root.key){
+            root.left=InsertInBst(root.left,data);
+        }
+        else{
+            root.right=InsertInBst(root.right,data);
+        }
+        return root;
+    }
+
+
+
+
+
+    //this is for taking the input
+    static Node build(){
+        int d = sc.nextInt();
+        Node root = null;
+        while (d!=-1){
+            root=InsertInBst(root,d);
+            d=sc.nextInt();
+        }
+        return root;
+    }
+    static void Inorder(Node root){
+        if(root==null){
+            return;
+        }
+        Inorder(root.left);
+        System.out.print(root.key+" ");
+        Inorder(root.right);
+    }
+    static boolean search(Node root,int data){
+        if(root==null){
+            return false;
+        }
+        if(data==root.key){
+            return true;
+        }
+        else{
+            if(data<=root.key){
+                return search(root.left,data);
+            }
+            else{
+                return search(root.right,data);
+            }
+
+        }
+
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+        Node root = build();
+        Inorder(root);
+        System.out.println();
+        System.out.println("enter element to be search:-");
+        int x= sc.nextInt();
+        if(search(root,x)){
+            System.out.print("Present");
+        }
+        else {
+            System.out.print("Not present");
+        }
+
+    }
+}
