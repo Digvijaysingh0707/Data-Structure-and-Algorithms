@@ -1,0 +1,79 @@
+///* package codechef; // don't place package name! */
+//
+//import java.util.*;
+//import java.lang.*;
+//import java.io.*;
+//
+///* Name of the class has to be "Main" only if the class is public. */
+//class Codechef
+//{
+//    public static void main (String[] args) throws java.lang.Exception
+//    {
+//        Scanner sc = new Scanner(System.in);
+//        int test= sc.nextInt();
+//        while(test>0){
+//            int num= sc.nextInt();
+//            StringBuilder str = new StringBuilder();
+//
+//            if(num==1){
+//                str.append(1+"\n");
+//                str.append(1+" "+1+"\n");
+//            }
+//            else{
+//                str.append(num/2+"\n");
+//                if(num%2==0){
+//                    for(int i=1;i<num;i+=2)
+//                        str.append(2+" "+i+" "+(i+1)+"\n");
+//                }
+//                else{
+//                    str.append(3+" "+1+" "+2+" "+3+"\n");
+//                    for(int i=4;i<num;i+=2)
+//                        str.append(2+" "+i+" "+(i+1)+"\n");
+//
+//                }
+//            }
+//            test--;
+//            System.out.print(str);
+//
+//        }
+//    }
+//
+//}
+package com.company;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int a[][] = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = sc.nextInt();
+            }
+        }
+        int k=0;
+        int l=0;
+        while (k<m&&l<n){
+            for (int i=l;i<n;i++){
+                System.out.println(a[k][i]);
+            }
+            k++;
+            for (int i=k;i<n;i++){
+                System.out.println(a[i][n-1]);
+
+            }
+            n--;
+            for (int i=n-1;i>=l;i--){
+                System.out.println(a[m-1][i]);
+            }
+            m--;
+            for (int i=m-1;i>=k;i--){
+                System.out.println(a[i][l]);
+            }
+            l++;
+
+        }
+
+    }
+}
