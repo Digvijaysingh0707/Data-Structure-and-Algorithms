@@ -1,0 +1,143 @@
+Bst helps in searching as node are arranged in sorted order
+Complexity:- O(logN) best case
+    O(N) worst case
+    
+    Inorder of bst is always sorted
+
+
+// Data structure to store a Binary Search Tree node
+class Node
+{
+	int data;
+	Node left, right;
+
+	// Function to create a new binary tree node having given key
+	Node(int key)
+	{
+		data = key;
+		left = right = null;
+	}
+};
+
+class BST
+{
+	// Function to perform inorder traversal of the tree
+	public static void inorder(Node root)
+	{
+		if (root == null) {
+			return;
+		}
+
+		inorder(root.left);
+		System.out.print(root.data + " ");
+		inorder(root.right);
+	}
+
+	// Recursive function to insert a key into BST
+	public static Node insert(Node root, int key)
+	{
+		// if the root is null, create a new node and return it
+		if (root == null) {
+			return new Node(key);
+		}
+
+		// if given key is less than the root node,
+		// recur for left subtree
+		if (key < root.data) {
+			root.left = insert(root.left, key);
+		}
+
+		// else recur for right subtree
+		else {
+			// key >= root.data
+			root.right = insert(root.right, key);
+		}
+
+		return root;
+	}
+
+	// main function
+	public static void main(String[] args)
+	{
+		Node root = null;
+		int[] keys = { 15, 10, 20, 8, 12, 16, 25 };
+
+		for (int key: keys) {
+			root = insert(root, key);
+		}
+
+		inorder(root);
+	}
+}
+
+
+
+Using build
+Code link: https://ide.codingblocks.com/s/23076
+
+package com.company;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+ class Node {
+    int key;
+    Node left,right;
+    public Node(int item){
+        this.key=item;
+        left=right=null;
+
+    }
+}
+
+class  BinaryTree{
+    static Node root;
+    //    BinaryTree(){
+//        root=null;
+//    }
+    static Scanner sc = new Scanner(System.in);
+    static Node InsertInBst(Node root,int data){
+        if (root==null){
+            return new Node(data);
+        }
+
+        if(data<=root.key){
+            root.left=InsertInBst(root.left,data);
+        }
+        else{
+            root.right=InsertInBst(root.right,data);
+        }
+        return root;
+    }
+
+
+
+
+
+    //this is for taking the input
+    static Node build(){
+        int d =sc.nextInt();
+        Node root = null;
+        while (d!=-1){
+            root=InsertInBst(root,d);
+            d=sc.nextInt();
+        }
+        return root;
+    }
+    static void Inorder(Node root){
+        if(root==null){
+            return;
+        }
+        Inorder(root.left);
+        System.out.print(root.key+" ");
+        Inorder(root.right);
+    }
+
+    public static void main(String[] args) {
+
+        Node root = build();
+        Inorder(root);
+        System.out.println();
+
+    }
+}
