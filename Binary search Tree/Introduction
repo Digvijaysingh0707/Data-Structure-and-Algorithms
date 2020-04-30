@@ -1,0 +1,4 @@
+Left side is smaller than root and right side is greater than root
+Searching in Bt takes O(n)
+but in BST searching,deletion,insertion takes O(D),D is depth of tree == logN  but in worst case(in case of skewed tree) it takes O(N)
+in BSt each subtree is a bst
