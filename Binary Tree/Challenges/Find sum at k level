@@ -1,0 +1,250 @@
+Take input of a generic tree using buildtree() function and also take input K the level at which we need to find the sum.
+
+Input Format
+Take a generic tree input where you are first given the data of the node and then its no of children. The input is of preorder form and 
+it is assured that the no of children will not exceed 2. The input of the tree is followed by a single integer K.
+
+Constraints
+1 <= Nodes in tree <=1000
+1<K<10
+
+Output Format
+A single line containing the sum at level K.
+
+Sample Input
+1 2
+2 2
+3 0
+4 0
+5 2
+6 0
+7 0
+2
+Sample Output
+20
+Explanation
+Here the tree looks like
+
+                     1                                 Level 0
+                /          \
+              2              5                         Level 1
+           /      \       /     \
+          3       4      6        7                    Level 2
+Sum at Level 2 = 3 + 4 + 6 + 7 = 20
+
+The Generic trees are the n-ary trees which have the following properties:
+
+Many children at every node.
+The number of nodes for each node is not known in advance.
+
+Approach 1:-Naive Approach
+A Naive approach would be to recursively traverse the tree and add the node's data to our sum value if it is at the required level. 
+Else recursively call nodes on the lower levels and repeat the process.
+
+Note : In this problem we are given a binary tree only. Only the input format is that of a generic tree. Hence we need not implement a 
+generic tree. We only need to modify the input function to take the input as a generic tree.
+
+
+
+
+
+package com.company;
+
+
+import java.util.Scanner;
+
+// Data structure to store a Binary Tree node
+class Node {
+    int data;
+    Node left,right;
+
+    Node(int data) {
+        this.data = data;
+        left=right=null;
+
+    }
+}
+
+class Main {
+    static int sum = 0; // Variable to store final answer
+
+    static void traverseTree(Node root, int k) {
+        if (root == null) {
+            return;
+        }
+        if (k == 0) {
+            sum += root.data;
+            return;
+        }
+        traverseTree(root.left, k - 1);
+        traverseTree(root.right, k - 1);
+    }
+    static Scanner sc = new Scanner(System.in);
+
+    static Node buildTree(Node root) {
+        int d = sc.nextInt();
+        int n = sc.nextInt();
+        root = new Node(d);
+        if (n == 0) {
+            return root;
+        } else if (n == 1) {
+            root.left = buildTree(root.left);
+            return root;
+        } else {
+            root.left = buildTree(root.left);
+            root.right = buildTree(root.right);
+            return root;
+        }
+    }
+    public static void main(String[] args) {
+        Node root=null;
+        root=buildTree(root);
+        int k=sc.nextInt();
+        traverseTree(root,k);
+        System.out.println(sum);
+
+
+        }
+    }
+    
+    
+    
+    Another approach:- Optimised Approach
+The above approach is a recursive approach and hence take up space i.e. the space taken by the recursive stack. Further we know that
+recursion is comparitively slower than iterative approaches since a recursive stack has to be created and maintained for it. 
+Iterative approaches are comparitively. Even though the time complexity for the approaches is O(n) for worst case , this approach 
+will generally take time lesser than O(n) and do so without the recursive overload.
+
+The idea is to do a level order traversal. While doing so , we count the number of levels traversed. At each level we reduce the count 
+of k. If the value of k reaches 0 , it indicates that we have finally reached the required level and should start computing the sum. 
+We raise a flag to mark this. We compute the sum of the node data only if this flag is raised else simply continue to traverse the
+tree level order wise.
+    
+    
+    package com.company;
+
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+// Data structure to store a Binary Tree node
+class Node {
+    int data;
+    Node left,right;
+
+    Node(int data) {
+        this.data = data;
+        left=right=null;
+
+    }
+}
+
+class Main {
+static int sumOfNodesAtNthLevel(Node root,int k)
+{
+
+    // If the current node is null
+    if (root == null)
+        return 0;
+
+    // Create Queue
+    Queue<Node> que = new LinkedList<>();
+
+    // Enqueue the root node
+    que.add(root);
+
+    // Level is used to track
+    // the current level
+    int level = 0;
+
+    // To store the sum of nodes
+    // at the Kth level
+    int sum = 0;
+
+    // flag is used to break out of
+    // the loop after the sum of all
+    // the nodes at Nth level is found
+    int flag = 0;
+
+    // Iterate the queue till its not empty
+    while (!que.isEmpty())
+    {
+
+        // Calculate the number of nodes
+        // in the current level
+        int size = que.size();
+
+        // Process each node of the current
+        // level and enqueue their left
+        // and right child to the queue
+        while (size-- >0)
+        {
+            Node ptr = que.peek();
+            que.remove();
+
+            // If the current level matches the
+            // required level then calculate the
+            // sum of all the nodes at that level
+            if (level == k)
+            {
+
+                // Flag initialized to 1
+                // indicates that sum of the
+                // required level is calculated
+                flag = 1;
+
+                // Calculating the sum of the nodes
+                sum += ptr.data;
+            }
+            else {
+
+                // Traverse to the left child
+                if (ptr.left != null)
+                    que.add(ptr.left);
+
+                // Traverse to the right child
+                if (ptr.right != null)
+                    que.add(ptr.right);
+            }
+        }
+
+        // Increment the variable level
+        // by 1 for each level
+        level++;
+
+        // Break out from the loop after the sum
+        // of nodes at K level is found
+        if (flag == 1)
+            break;
+    }
+    return sum;
+}
+    static Scanner sc = new Scanner(System.in);
+
+    static Node buildTree(Node root) {
+        int d = sc.nextInt();
+        int n = sc.nextInt();
+        root = new Node(d);
+        if (n == 0) {
+            return root;
+        } else if (n == 1) {
+            root.left = buildTree(root.left);
+            return root;
+        } else {
+            root.left = buildTree(root.left);
+            root.right = buildTree(root.right);
+            return root;
+        }
+    }
+    public static void main(String[] args) {
+        Node root=null;
+        root=buildTree(root);
+        int k=sc.nextInt();
+        System.out.println(sumOfNodesAtNthLevel(root,k));
+
+
+
+        }
+    }
+
