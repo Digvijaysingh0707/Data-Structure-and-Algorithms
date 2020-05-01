@@ -7,3 +7,8 @@ Can beimplementated as:
 
 6 Binary heap:- it is complete bt ,every child has priority lesser than parent
 insert O(log n),deletion O(log n),get O(1)
+
+
+Tpes of heaps:
+min heap=value of parent <value of child
+max heap=value of parent >value of child
