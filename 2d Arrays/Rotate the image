@@ -1,0 +1,49 @@
+// this is without taking any extra space 
+// first reverse each row and then take the transpose
+package com.company;
+
+
+import java.util.Scanner;
+
+class Main{
+    static void reverse(int a[][],int n){
+        for (int row=0;row<n;row++){
+           int startCol=0;
+           int end_col=n-1;
+           while (startCol<end_col) {
+               int temp = a[row][startCol];
+               a[row][startCol] = a[row][end_col];
+               a[row][end_col] = temp;
+               startCol++;
+               end_col--;
+           }
+       }
+       //to take transpose
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                if (i<j){
+                    int temp=a[i][j];
+                    a[i][j]=a[j][i];
+                    a[j][i]=temp;
+                }
+            }
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[][]= new int[n][n];
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                a[i][j]=sc.nextInt();
+            }
+        }
+        reverse(a,n);
+        for (int i=0;i<a.length;i++){
+            for (int j=0;j<a.length;j++){
+                System.out.print(a[i][j]+" ");
+            }
+        }
+
+    }
+}
