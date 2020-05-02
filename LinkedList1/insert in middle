@@ -1,0 +1,94 @@
+import java.util.LinkedList;
+import java.util.*;
+
+public class MainLinkedList {
+    public static void main(String[] args) {
+        MyLinkedList myLL= new MyLinkedList();
+//
+        myLL.add(1);
+        myLL.add(2);
+        myLL.add(5);
+        myLL.add(4);
+        myLL.print();
+        System.out.println();
+        int x=3;
+        myLL.insertAtMid(x);
+        myLL.print();
+
+    }
+}
+
+
+
+import java.util.LinkedList;
+
+public class MyLinkedList {
+    static Node head;
+    static class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data=data;
+            next=null;
+        }
+
+    }
+    void add(int data){
+        Node toAdd= new Node(data);
+        if (head==null){
+            head=toAdd;
+            return;
+        }
+        Node temp= head;
+        while (temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=toAdd;
+    }
+
+static void insertAtMid(int x)
+{
+    // if list is empty
+    if (head == null)
+        head = new Node(x);
+    else {
+        // get a new node
+        Node newNode = new Node(x);
+
+        Node ptr = head;
+        int len = 0;
+
+        // calculate length of the linked list
+        //, i.e, the number of nodes
+        while (ptr != null) {
+            len++;
+            ptr = ptr.next;
+        }
+
+        // 'count' the number of nodes after which
+        // the new node is to be inserted
+        int count = ((len % 2) == 0) ? (len / 2) :
+                (len + 1) / 2;
+        ptr = head;
+
+        // 'ptr' points to the node after which
+        // the new node is to be inserted
+        while (count-- > 1)
+            ptr = ptr.next;
+
+        // insert the 'newNode' and adjust
+        // the required links
+        newNode.next = ptr.next;
+        ptr.next = newNode;
+    }
+}
+
+    void print(){
+        Node temp=head;
+        while (temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+
+}
