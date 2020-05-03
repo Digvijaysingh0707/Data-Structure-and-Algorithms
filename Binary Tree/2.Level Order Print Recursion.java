@@ -33,6 +33,7 @@ class Binarytree  {
             return (Rheight+1);
         }
     }
+	//As we go down we reduce the value of k by 1 and when the valu of k becomes 1 then we are at the right level
     public void printGivenLevel(Node root,int level){
         if (root==null){
             return;
@@ -45,7 +46,7 @@ class Binarytree  {
     }
     public void printAlllevels() {
         int h = height(root);
-        for (int i = 0; i <=h; i++) {
+        for (int i = 1; i <=h; i++) {
             printGivenLevel(root, i);
             System.out.println();
         }
