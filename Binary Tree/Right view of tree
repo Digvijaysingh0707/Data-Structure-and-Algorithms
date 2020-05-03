@@ -1,6 +1,11 @@
 [Preorder,inorder,postorder] are depth first search
 Level order traversal is breadth first search
 
+Approach 1 :- it can be done using level order traversal in which we write all elements presents in a particular level(from left to right)
+then the element at the end will be the element seen from the right view and the first elemnt is the elemnt seen from the left view. this 
+approach is not implememted
+ we have used depth search approach in which root will always be  the answer and we first visit the right subtree
+
 
 https://www.geeksforgeeks.org/print-right-view-binary-tree-2/
 
