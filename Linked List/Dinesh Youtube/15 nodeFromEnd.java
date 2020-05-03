@@ -25,7 +25,9 @@ public class LinkedList {
             this.next=null;
         }
     }
-    we move fastPtr n-1 times then we move both pointer 1 time
+   
+    //move fast ptr k steps ahead
+    //now move both slw && fast one one step
    public static Listnode getNodeFromLast(Listnode head,int n){
         if(head==null){
             return head;
