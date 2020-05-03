@@ -27,6 +27,19 @@ public class deletionHeap {
 			heapify(arr, n, largest); 
 		} 
 	} 
+	void insertNode(int arr[], int& n, int Key) 
+{ 
+    // Increase the size of Heap by 1 
+    n = n + 1; 
+  
+    // Insert the element at end of Heap 
+    arr[n - 1] = Key; 
+  
+    // Heapify the new node following a 
+    // Bottom-up approach 
+    heapify(arr, n, n - 1); 
+} 
+
 
 	// Function to delete the root from Heap 
 	static int deleteRoot(int arr[], int n) 
