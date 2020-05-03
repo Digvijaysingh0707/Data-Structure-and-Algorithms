@@ -1,0 +1,70 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data,Node next) {
+        this.data = data;
+        this.next=next;
+    }
+}
+
+public class Main {
+    static Node head=null;
+
+
+    public static void printList(String msg,Node head) {
+        System.out.print(msg);
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public static Node Sorted(Node a, Node b) {
+        if (a == null) return b;
+        if (b == null) return a;
+
+        if (a.data < b.data) {
+            a.next = Sorted(a.next, b);
+            return a;
+        }
+
+        else {
+
+            b.next = Sorted(a, b.next);
+            return b;
+        }
+    }
+    public static Node getMiddle(Node head)
+    {
+        if (head == null)
+            return head;
+
+        Node slow = head, fast = head;
+
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    static Node merge(Node head){
+        if (head==null||head.next==null){
+            return head;
+        }
+        Node middle=getMiddle(head);
+        Node nextTomiddle=middle.next;
+        middle.next=null;
+        Node left=merge(head);
+        Node right=merge(nextTomiddle);
+        Node sortedList=Sorted(left,right);
+        return sortedList;
+
+    }
