@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data,Node next) {
+        this.data = data;
+        this.next=next;
+    }
+}
+
+public class Main {
+
+
+    public static void printList(String msg,Node head) {
+        System.out.print(msg);
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp.data + "->");
+            temp = temp.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public static Node Sorted(Node a, Node b) {
+        if (a == null) return b;
+        if (b == null) return a;
+
+        if (a.data < b.data) {
+            a.next = Sorted(a.next, b);
+            return a;
+        }
+
+        else {
+
+            b.next = Sorted(a, b.next);
+            return b;
+        }
+    }
+
+
+    public static void main(String[] args) {
+        int[] keys = { 1, 2, 3, 4, 5, 6, 7 };
+        Node a = null, b = null;
+        for (int i = keys.length - 1; i >= 0; i = i - 2) {
+            a = new Node(keys[i], a);
+        }
+
+        for (int i = keys.length - 2; i >= 0; i = i - 2) {
+            b = new Node(keys[i], b);
+        }
+
+        // print both linked list
+        printList("First List  : ", a);
+        printList("Second List : ", b);
+
+        Node head = Sorted(a, b);
+        printList("After Merge : ", head);
+
+
+
+    }
+}
