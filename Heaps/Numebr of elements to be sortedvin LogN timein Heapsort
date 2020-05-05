@@ -1,0 +1,3 @@
+Ques.The numer of elemneyts that can be sorted inT(log n)time using heap sort
+
+ans=O(logn/log(log n))
