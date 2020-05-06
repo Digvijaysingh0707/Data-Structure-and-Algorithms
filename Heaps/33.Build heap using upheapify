@@ -1,11 +1,17 @@
 read from https://www.geeksforgeeks.org/building-heap-from-array/
 Given unsorted array
+
 O(nlogn) approach
+
 here heapification s done from top to down
+when we are at i the consider elemets from 0-(i-1) are already a heap
 
 It contains proof of complexity
 
-Optimised solution of O(n)(down heapify)
+the below solution isOptimised solution of O(n)(down heapify)
+
+Number of leaf nodes in a complete bt (n+1)/2
+elemets from i+1 to n-1 are already in heap
 
 // Java program for building Heap from Array 
 
