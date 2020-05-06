@@ -1,12 +1,12 @@
 Can beimplementated as:
 1 Unsortec array:- insert O(1),deletion O(n),get O(n)
-2 sorted array :- insert O(n),deletion O(n),get O(n)
+2 sorted array :- insert O(n),deletion O(n),get O(n)(when we want to seaarch for specific element) and O(1) when we want to get min or max elements
 3 unsorted arry:- insert O(1),deletion O(n),get O(n)
-4 sorted list:- insert O(n),deletion O(1)( for specific position O(n)),get O(n)
-5 BST:- insert O(h),deletion O(h),get O(h) for balanced bst h==logn bse 2
+4 sorted list(linked list):- insert O(n),deletion O(1)(O(1) when we want to delete min  or max elements( for specific position O(n)),get O(n)
+5 BST:- insert O(h),deletion O(h),get/search O(h) for balanced bst h==logn bse 2
 
 6 Binary heap:- it is complete bt ,every child has priority lesser than parent
-insert O(log n),deletion O(log n),get O(1)
+insert O(log n),deletion O(log n),get O(1)(best)
 
 
 Tpes of heaps:
