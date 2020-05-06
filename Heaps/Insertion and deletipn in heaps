@@ -1,3 +1,5 @@
+//for insertion first add the eleemnt at the end then upheapify it
+for insertion:- complexity O(log n)(worst case) ,O(1) (best case)
 // Java program for implement deletion in Heaps 
 public class deletionHeap { 
 
