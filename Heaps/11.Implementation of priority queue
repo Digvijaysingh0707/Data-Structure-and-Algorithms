@@ -8,6 +8,7 @@ Can beimplementated as:
 6 Binary heap:- it is complete bt ,every child has priority lesser than parent
 insert O(log n),deletion O(log n),get O(1)(best)
 
+Complete binary tree is a tree in which every level is filled except the last level and last levelis filled from left to right
 
 Tpes of heaps:
 min heap=value of parent <value of child
