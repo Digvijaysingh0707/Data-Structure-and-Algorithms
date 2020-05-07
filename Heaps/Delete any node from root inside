@@ -1,5 +1,5 @@
 consider given heap is max heap
 to do thsi we have move the node to be deleted at the top(this can be done by replacing the value 20 with  maximum possible priority
-value(infinity))
+value(infinity)) then swap the value with the leaf node at the end and delete it
 
 complexity=logn(upheapify)+logn(downheapify)=O(logn)
