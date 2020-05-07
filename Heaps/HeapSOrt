@@ -1,3 +1,9 @@
+In heap sort unsorted array is given and we have to arrange in ascending order
+First we make the max heap
+swap last and first node
+remove the last node
+
+
 //time compexity:-=O(nlogn)
 //Space complexity=O(logn)
 //Not better than merge sort because it is not stable 
