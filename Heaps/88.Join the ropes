@@ -1,4 +1,4 @@
-[Link1](https://medium.com/@vivek_ranjan/connect-n-ropes-with-minimum-cost-a865bcf12bdc)
+(https://medium.com/@vivek_ranjan/connect-n-ropes-with-minimum-cost-a865bcf12bdc)
 Join the minimum ropes first 
 why using heaps?
 it can give mini element in O(1) time
@@ -7,3 +7,38 @@ Algo:-
 find the smallest ropes
 find the 2nd smallest element
 join them and put them back in heapjoi
+
+import java.util.PriorityQueue;
+import java.util.Scanner;
+
+public class Joinropes {
+    static int minCost(int a[],int n){
+        PriorityQueue<Integer> pq= new PriorityQueue<>();
+        for (int i=0;i<n;i++){
+            pq.add(a[i]);
+        }
+        int res=0;
+        while (pq.size()>1){
+            int first=pq.poll();
+            int second=pq.poll();
+            res+=first+second;
+            pq.add(first+second);
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        PriorityQueue<Integer> pq= new PriorityQueue<>();
+        int ar[]=new int[n];
+        for (int i=0;i<n;i++){
+            ar[i]=sc.nextInt();
+            pq.add(ar[i]);
+        }
+        System.out.println(minCost(ar,n));
+
+    }
+
+}
+
