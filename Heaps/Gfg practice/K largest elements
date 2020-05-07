@@ -1,0 +1,55 @@
+problem https://www.geeksforgeeks.org/k-largestor-smallest-elements-in-an-array/
+Solution https://www.youtube.com/watch?v=hGK_5n81drs
+
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class klargestelements {
+    public static void main(String[] args) {
+
+
+        {
+            Scanner sc = new Scanner(System.in);
+            int t = sc.nextInt();
+
+            while(t-- > 0)
+            {
+                int n = sc.nextInt();
+                int k = sc.nextInt();
+                int elem = 0;
+
+                Queue<Integer> q = new PriorityQueue<Integer>();
+                ArrayList<Integer> list = new ArrayList<>();
+                for(int i = 0; i < n; i++)
+                {
+                    elem = sc.nextInt();
+
+                    if(q.size() == k)
+                    {
+                        if(q.peek() < elem)
+                        {
+                            q.poll();
+                            q.add(elem);
+                        }
+                    }
+                    else {
+                        q.add(elem);
+
+                    }
+                }
+
+                while(q.isEmpty() == false)
+                {
+                    list.add(q.peek());
+                    q.poll();
+                }
+                for(int i = list.size() - 1; i >= 0; i--)
+                    System.out.print(list.get(i) + " ");
+
+                System.out.println();
+            }
+        }
+    }
+
+    }
+
