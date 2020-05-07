@@ -1,7 +1,14 @@
+https://java2blog.com/heap-sort-in-java/
+
 In heap sort unsorted array is given and we have to arrange in ascending order
 First we make the max heap
 swap last and first node
 remove the last node
+
+extract any element inO(1)
+remove O(log n)
+
+It is inplace sorting as we dont need any extra array for sorting the array
 
 
 //time compexity:-=O(nlogn)
