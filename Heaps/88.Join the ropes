@@ -1,0 +1,9 @@
+[Link1](https://medium.com/@vivek_ranjan/connect-n-ropes-with-minimum-cost-a865bcf12bdc)
+Join the minimum ropes first 
+why using heaps?
+it can give mini element in O(1) time
+
+Algo:-
+find the smallest ropes
+find the 2nd smallest element
+join them and put them back in heapjoi
