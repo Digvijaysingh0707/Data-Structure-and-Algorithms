@@ -1,0 +1,53 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+
+
+    /* Helper function that allocates a new node with the
+    given data and NULL left and right pointers. */
+    static Node newNode(int data) {
+        Node node = new Node();
+        node.data = data;
+        node.left = null;
+        node.right = null;
+        return (node);
+    }
+}
+public class MaxNodes {
+    static int maxLevel(Node root) {
+        if (root == null) return -1;
+
+        Queue<Node> q = new LinkedList<Node>();
+        q.add(root);
+        int level = 0;
+        int max = Integer.MIN_VALUE;
+        int level_no = 0;
+        while (true){
+            int Nodecount=q.size();
+            if (Nodecount==0) break;
+            if (Nodecount>max){
+                max=Nodecount;
+                level_no=level;
+
+            }
+            while (Nodecount>0){
+                Node node= q.peek();
+                q.remove();
+                if (node.left!=null){
+                    q.add(node.left);
+                }
+                if (node.right!=null){
+                    q.add(node.right);
+                }
+            }
+            level++;
+        }
+        return level_no;
+
+
+    }
+}
