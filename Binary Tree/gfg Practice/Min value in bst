@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/minimum-element-in-bst/1
+class Tree
+{
+    int minValue(Node node)
+    {
+        Node current=node;
+        while(current.left!=null){
+            current=current.left;
+        }
+        return (current.data);
+        
+    }
+}
