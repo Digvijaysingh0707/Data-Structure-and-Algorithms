@@ -1,4 +1,4 @@
-Tim &space  coplexity is O(n)
+Tim &space  coplexity is O(n) as we are traversing everyelement once
 Prepare alist of ancestors of p 
 
 Prepare alist of ancestors of q
