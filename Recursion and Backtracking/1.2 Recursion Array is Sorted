@@ -1,41 +1,32 @@
 // Break the array into two parts of 1 ,n-1
 check that a[0] is less than a[1] of other part
 
-package com.company;
+package Recursion;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
+public class ArrayIsSorted {
+    static boolean isSorted(int[] a,int i, int n) {
 
-
-public class Main {
-	static
-	boolean isSorted(int a[],int n) {
-	// Base case
-		if (n == 1) {
-			return true;
-		}
-	if(a[n-1]<a[n-2])
-		return false;
-	// For n-1 part of array
-	return isSorted(a,n-1);
-	}
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int[] a = new int[n];
-		for(int i =0;i<a.length;i++){
-			a[i]=sc.nextInt();
-		}
-		System.out.println(Arrays.toString(a));
-		if(isSorted(a,n)){
-			System.out.println("Yes Sorted");
-		}
-		else{
-			System.out.println("Not Sorted");
-		}
-	}
-
-
+        if (n == 0 || n == 1) return true;
+        if (a[i] < a[i+1] && isSorted(a,i+1, n - 1)) return true;
+        return false;
     }
 
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = sc.nextInt();
+        }
+        System.out.println(Arrays.toString(a));
+        if (isSorted(a,0, n)) {
+            System.out.println("Yes Sorted");
+        } else {
+            System.out.println("Not Sorted");
+        }
+    }
+}
