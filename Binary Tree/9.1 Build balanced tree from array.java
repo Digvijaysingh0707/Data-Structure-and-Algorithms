@@ -46,29 +46,6 @@ public class Node {
 
 
     public static void main(String[] args) {
-       /* BinaryTree tree = new BinaryTree();
-
-        tree.root=new Node(1);
-
-        tree.root.left=new Node(2);
-
-        tree.root.right=new Node(3);
-
-        tree.root.left.left=new Node(4);
-
-        tree.root.left.right = new Node(5);
-        tree.root.left.left.left=new Node(8);
-        if (tree.isBalanced(tree.root)) {
-            System.out.println("Balanced tree");
-
-
-        }
-        else
-
-        {
-            System.out.println("Not");
-
-        }*/
        int arr[]={1,2,3,4,2,1,4,2};
        int n = 8;
        Node root = buildTreeFromArray(arr,0,n-1);
