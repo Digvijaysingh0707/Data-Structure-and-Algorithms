@@ -146,7 +146,7 @@ class  BinaryTree {
 }
 
         
-    Another solution using O(n)    
+    Another solution using O(n) //techiedelight.com/check-given-binary-tree-is-height-balanced-not/   
         import java.util.concurrent.atomic.AtomicBoolean;
 
 // Data structure to store a Binary Tree node
