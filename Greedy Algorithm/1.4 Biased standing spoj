@@ -1,0 +1,36 @@
+
+package Greedy;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class BiasedStanding {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a[]= new int[100000];
+        int t=sc.nextInt();
+        while (t-->=1){
+            Arrays.fill(a,0,a.length-1,0);
+            String name="";
+            int n=sc.nextInt();
+            int rank;
+            for (int i=0;i<n;i++){
+                name=sc.next();
+                rank=sc.nextInt();
+                a[rank]++;
+            }
+            int actual_rank=1;
+            int sum=0;
+            for (int i=1;i<=n;i++){
+                while (a[i]!=0){
+                    sum+=Math.abs(actual_rank-i);
+                    a[i]--;
+                    actual_rank++;
+                }
+
+            }
+            System.out.println(sum);
+        }
+    }
+}
