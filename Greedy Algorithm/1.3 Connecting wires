@@ -1,4 +1,4 @@
-   
+ 
    // sort both the arrays and then find the diffrernce between  each of the element and then ad the diff
    public class Main {
 
