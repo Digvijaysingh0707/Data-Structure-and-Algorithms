@@ -1,46 +1,54 @@
 Based on divide & conquer:- divide the array into 2 prts,sort each part & merges them
 complexity is O(nlog n)
-//not working
 
 
-package com.company;
+
+package Recursion;
+
 import java.util.Scanner;
-public class Main {
-   static void merge(int[] a,int s,int e){
-       int mid=(s+e)/2;
-       int i =s;
-       int j=mid+1;
-       int k=s;
-       int[] temp={0};
-       while (i<=mid&&j<=e){
-           if(a[i]<a[j]){
-                temp[k++]=a[i++];
-           }
-           else{
-               temp[k++]=a[j++];
-           }
-       }
-       //suppose j part gets exhausted
-       while(i<=mid){
-           temp[k++]=a[i++];
-       }
-       //suppose j part gets exhausted
-       while(j<=e){
-           temp[k++]=a[j++];
-       }
-       for( i=s;i<=e;i++){
-           a[i]=temp[i];
-       }
 
-   }
-   static void mergeSort(int[] a,int s,int e){
-       if(s>=e)
-           return;
-       int mid=(s+e)/2;
-       mergeSort(a,s,mid);
-       mergeSort(a,mid+1,e);
-       merge(a,s,e);
-   }
+public class MergeSort {
+    static void merge(int[] a,int s,int e){
+        //For merging both the parts
+        int mid=(s+e)/2;
+        int i =s;
+        int j=mid+1;
+        int k=s;
+        int[] temp={0};
+        while (i<=mid&&j<=e){
+            if(a[i]<a[j]){
+                temp[k++]=a[i++];
+            }
+            else{
+                temp[k++]=a[j++];
+            }
+        }
+        //suppose j part gets exhausted
+        while(i<=mid){
+            temp[k++]=a[i++];
+        }
+        //suppose i part gets exhausted
+        while(j<=e){
+            temp[k++]=a[j++];
+        }//copy all the elemnt back to "a" array
+        for( i=s;i<=e;i++){
+            a[i]=temp[i];
+        }
+
+    }
+    static void mergeSort(int[] a,int s,int e){
+        //base case when array has 1or 0 element
+        if(s>=e)
+            return;
+        //Follow 3 steps
+        //1.Divide
+        int mid=(s+e)/2;
+        //2.Sort the two parts
+        mergeSort(a,s,mid);
+        mergeSort(a,mid+1,e);
+        //3. merge both the parts
+        merge(a,s,e);
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -55,3 +63,5 @@ public class Main {
         }
     }
 }
+
+
