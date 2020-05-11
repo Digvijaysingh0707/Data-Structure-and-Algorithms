@@ -1,0 +1,30 @@
+  
+// first move n-1 disk from A to B(helper)
+// Move Last disk from A(Source) to C(destination)
+// Move n-1 disks from B to C
+
+// Java code
+static void towerOfHanoi(int n,char src,char dest,char help){
+        
+        //Base case
+        if(n==0){
+            return;
+        }
+        //Moving n-1 disk from src to help
+        towerOfHanoi(n-1,src,help,dest);
+        System.out.println("Move "+n+" from "+src+" to "+dest);
+        towerOfHanoi(n-1,help,dest,src);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the value of n: ");
+                int n = sc.nextInt();
+                towerOfHanoi(n,'A','C','B');
+
+
+    }
+
+
+
+    }
