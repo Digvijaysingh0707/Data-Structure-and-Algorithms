@@ -1,0 +1,37 @@
+package Recursion;
+
+import java.util.Scanner;
+
+public class Susequences {
+    static void subsequences(char[] in,char[] out,int i,int j){
+        //Base case
+        if (in[i]=='\0'){
+            out[i]='\0';
+            System.out.print(out+" ");
+            return;
+        }
+        //Rec case
+        //1 Include the current character
+        out[j]=in[i];
+        subsequences(in,out,i+1,j+1);
+        //2 exclude the current char
+        subsequences(in,out,i+1,j);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char in[]= new char[100];
+        String s=sc.next();
+        while (s!="") {
+            for (int i = 0; i < 100; i++) {
+                in[i] = s.charAt(i);
+            }
+        }
+
+            char out[]= new char[100];
+            subsequences(in,out,0,0);
+        }
+
+
+
+    }
+
