@@ -1,10 +1,11 @@
 Divide the array into 2 parts about the element called pivot element
 divide and conquer
 O(nlog n) time in average case
-n*n in worst case
+n*n in worst case(when the given array is already sorted, to overcome this we use randomised quicksort)
 inplace sorting algo
 choose a pivot element at the end an put it at the correct position
 before pivot point put samller element and after pivot put larger element
+//Not faster
 
 
 package Recursion;
