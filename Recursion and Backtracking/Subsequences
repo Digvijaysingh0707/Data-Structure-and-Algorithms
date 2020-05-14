@@ -1,12 +1,13 @@
+//Given a string containing n characters find out all subsets of that string
 package Recursion;
 
 import java.util.Scanner;
 
 public class Susequences {
-    static void subsequences(char[] in,char[] out,int i,int j){
+    static void subsequences(char[] in,char[] out,int i,int j){//i is input pointer and j is output pointer
         //Base case
         if (in[i]=='\0'){
-            out[i]='\0';
+            out[j]='\0';
             System.out.print(out+" ");
             return;
         }
