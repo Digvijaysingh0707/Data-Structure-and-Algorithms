@@ -1,0 +1,42 @@
+package Greedy;
+
+import java.util.Scanner;
+
+public class LoadBalancer {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->=1){
+            int n=sc.nextInt();
+            int sum=0;
+            int a[]= new int[n];
+            for (int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+
+            }
+//            for (int i=0;i<n;i++){
+//                sum+=a[i];
+//
+//            }
+
+            int Each_load=0;
+            for (int i=0;i<n;i++){
+                sum+=a[i];
+            }
+            Each_load=sum/n;
+            if (sum%n!=0){
+                System.out.println("-1");
+                continue;
+            }
+            int diff=0;
+            int max_load=0;
+            for (int i=0;i<n;i++){
+                diff+=(a[i]-Each_load);
+                int ans=Math.max(diff,-diff);
+                max_load=Math.max(max_load,ans);
+            }
+            System.out.println(max_load);
+        }
+
+    }
+}
