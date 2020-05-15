@@ -1,0 +1,24 @@
+package DP;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+//Recursive
+public class ReduceToOne {
+    static int minSteps(int n){
+        int q1= Integer.MAX_VALUE;
+        int q2= Integer.MAX_VALUE;
+        int q3= Integer.MAX_VALUE;
+        if (n==1)return 0;
+        if (n%3==0)q1= 1+minSteps(n/3);
+        if (n%2==0)q2= 1+minSteps(n/2);
+        q3=1+minSteps(n-1);
+        return Math.min(q1,Math.min(q2,q3));
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(minSteps(n));
+    }
+}
