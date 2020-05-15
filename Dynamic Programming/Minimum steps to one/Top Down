@@ -1,0 +1,35 @@
+package DP;
+
+import java.util.Arrays;
+import java.util.Scanner;
+//Compelxity is O(n)
+public class TopDown {
+
+        static int TopDown(int n,int dp[]){
+            int q1= Integer.MAX_VALUE;
+            int q2= Integer.MAX_VALUE;
+            int q3= Integer.MAX_VALUE;
+            //Base acse
+            if (n==1)return 0;
+            //Recursive case
+            //Lookup if n is already computated
+            if (dp[n]!=0) {
+                return dp[n];
+            }
+            //compute if dp is not known(for first time)
+            if (n%3==0)q1= 1+TopDown(n/3,dp);
+            if (n%2==0)q2= 1+TopDown(n/2,dp);
+            q3=1+TopDown(n-1,dp);
+            int ans= Math.min(q1,Math.min(q2,q3));
+            return dp[n]=ans;
+
+        }
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int n=sc.nextInt();
+            int dp[]= new int[100];
+            Arrays.fill(dp,0);
+            System.out.println(TopDown(n,dp));
+        }
+    }
+
