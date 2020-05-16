@@ -1,0 +1,24 @@
+package DP;
+
+public class WineProblem {
+    //This is the recursive approach
+    static int profit(int wine[],int i,int j,int y) {
+        //y denotes the current year
+        //i denotes initial index of array
+        //y denotes initial index of array
+
+        //base case
+        if (i > j) return 0;
+        //Recur case
+        int op1 = wine[i] * y + profit(wine, i + 1, j, y + 1);//bottle 1 sold
+        int op2 = wine[j] * y + profit(wine, i, j - 1, y + 1);//last bottle sold
+        return Math.max(op1, op2);
+    }
+
+    public static void main(String[] args) {//Greedy approach will give 49 
+        int wine[]={2,3,5,1,4};
+        int n=wine.length;
+        int y=1;
+        System.out.println(profit(wine,0,n-1,y));
+    }
+}
