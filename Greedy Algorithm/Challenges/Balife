@@ -1,0 +1,54 @@
+Given an array A of size n, In a single operation you can subtract one from A[i] and add it to either A[i-1] (if i>0) or A[i+1] 
+(if i < n-1).
+Find the minimum number of operation required to make all the array elements same.
+If it is not possible to do , print -1.
+
+Input Format
+The First line contains the size of the array N The Second line contains the N number of elements
+
+Constraints
+0 < N < 100000
+
+Output Format
+Output Number denoting the minimum number of operations required.
+
+Sample Input
+8
+16 17 15 0 20 1 1 2
+Sample Output
+23
+
+
+package Greedy;
+
+import java.util.Scanner;
+
+public class Balife {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]= new int[n];
+        int load=0;
+        for (int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+            load+=a[i];
+        }
+
+        if (load%n!=0){
+            System.out.println("-1");
+        }
+        else{
+            load/=n;
+            int max_load=0;
+            int diff=0;
+            for (int i=0;i<n;i++){
+                diff+=a[i]-load;
+                max_load=Math.max(max_load,Math.abs(diff));
+
+            }
+            System.out.println(max_load);
+        }
+
+    }
+}
+
