@@ -1,0 +1,33 @@
+package DP;
+
+import java.util.Arrays;
+
+public class WineProblem {
+    static int profit(int wine[],int i,int j,int y,int[][] dp) {
+        //y denotes the current year
+        //i denotes initial index of array
+        //y denotes initial index of array
+
+        //base case
+        if (i > j) return 0;
+        //Return if dp[i][j] is known
+        if (dp[i][j]!=0){
+            return dp[i][j];
+        }
+        //Recur case
+        int op1 = wine[i] * y + profit(wine, i + 1, j, y + 1,dp);//bottle 1 sold
+        int op2 = wine[j] * y + profit(wine, i, j - 1, y + 1,dp);//last bottle sold
+        return dp[i][j]= Math.max(op1, op2);
+    }
+
+    public static void main(String[] args) {//Greedy approach will give 49
+        int wine[]={2,3,5,1,4};
+        int dp[][]=new int[100][100];
+        for (int[] i:dp) {
+            Arrays.fill(i, 0);
+        }
+        int n=wine.length;
+        int y=1;
+        System.out.println(profit(wine,0,n-1,y,dp));
+    }
+}
