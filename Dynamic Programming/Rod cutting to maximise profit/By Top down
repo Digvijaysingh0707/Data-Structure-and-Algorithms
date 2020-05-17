@@ -5,17 +5,20 @@ import java.util.Scanner;
 
 public class RodCuttingToMaximiseProfit {
     static int maxProfit(int arr[],int totalLen){
-       
+        int dp[]= new int[100];
+        Arrays.fill(dp,0);
 
         if (totalLen==0) return 0;
-       
+        if (dp[totalLen]!=0){
+            return dp[totalLen];
+        }
         int best=0;
         for (int len=1;len<=totalLen;len++){
             int netProfit=arr[len]+maxProfit(arr,totalLen-len);
             best=Math.max(best,netProfit);
 
         }
-        return best; 
+        return dp[totalLen]=best;
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -25,7 +28,8 @@ public class RodCuttingToMaximiseProfit {
     for (int eachlen=1;eachlen<=totalLen;eachlen++){
         priceOfEachLen[eachlen]=sc.nextInt();
     }
-
+        int dp[]= new int[100];
+        Arrays.fill(dp,-1);
     int ans=maxProfit(priceOfEachLen,totalLen);
         System.out.println(ans);
 }
