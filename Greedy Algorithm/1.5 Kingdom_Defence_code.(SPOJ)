@@ -1,4 +1,7 @@
-    public class Main {
+  //Area lying between two consecutive towers will be the undefended area so find the distances between two consecutive towers
+  //Sort the x and y coordintes
+  
+  public class Main {
  public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
            int t;
@@ -14,7 +17,7 @@
             h = sc.nextInt();//size of grid
             n = sc.nextInt();//no of towers
             for (int i = 0; i < n; i++) {
-                x[i] = sc.nextInt();
+                x[i] = sc.nextInt();//x and y denotes coordinates of tower
                 y[i] = sc.nextInt();
             }
             Arrays.sort(x,0,n);
