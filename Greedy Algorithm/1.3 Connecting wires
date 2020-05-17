@@ -1,11 +1,13 @@
- 
+ //{Problem given n and m white nad black dots connect them such that length of wire formed is minimum
+   
+ //connect the white with nearest black  
    // sort both the arrays and then find the diffrernce between  each of the element and then ad the diff
    public class Main {
 
 
     public static void main(String[] args) {
-            int a[]={3,4,1};
-            int b[]={2,5,6};
+            int a[]={3,4,1};//Position of white dots
+            int b[]={2,5,6};//Position of blaack dots
             Arrays.sort(a);
             Arrays.sort(b);
             int sum=0;
