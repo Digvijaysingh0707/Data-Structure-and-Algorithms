@@ -1,0 +1,34 @@
+package DP;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class RodCuttingToMaximiseProfit {
+   
+    static int maxBU(int a[],int totallen){
+        int dp[]= new int[100];
+
+
+        for (int len=1;len<=totallen;len++){
+            int best=0;
+            for (int cut=1;cut<=len;cut++){
+                best=Math.max(best,a[cut]+dp[len-cut]);
+            }
+            dp[len]=best;
+        }
+        return dp[totallen];
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+    int priceOfEachLen[] = new int[100];
+    int totalLen = sc.nextInt();
+
+    for (int eachlen=1;eachlen<=totalLen;eachlen++){
+        priceOfEachLen[eachlen]=sc.nextInt();
+    }
+        int dp[]= new int[100];
+        Arrays.fill(dp,-1);
+    int ans=maxBU(priceOfEachLen,totalLen);
+        System.out.println(ans);
+}
+}
