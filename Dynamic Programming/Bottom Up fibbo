@@ -1,4 +1,4 @@
- //Bottom up approach compleity O(1)
+ //Bottom up approach compleity O(n) both
     static int bottom(int n){
         int dp[]= new int[100];
         Arrays.fill(dp,0);
