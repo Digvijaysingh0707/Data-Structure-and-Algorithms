@@ -1,0 +1,34 @@
+package DP;
+
+import java.util.Scanner;
+
+public class LongestIncreasingSubsequences {
+    static int lis(int a[],int n){
+        int dp[]= new int[100];
+        //Base case
+        for (int i=0;i<n;i++)dp[i]=1;
+        int best=0;
+        for (int i=1;i<n;i++){
+
+            for (int j=0;j<i;j++){
+                if (a[j]<=a[i]){
+                    //jth element is absorbed by ith element
+                    int curLen=1+dp[j];
+                    dp[i]=Math.max(curLen,dp[i]);
+                }
+            }
+            best=Math.max(best,dp[i]);
+        }
+        return best;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]= new int[100];
+        for (int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        System.out.println(lis(a,n));
+    }
+}
