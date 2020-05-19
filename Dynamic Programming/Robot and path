@@ -1,0 +1,67 @@
+https://www.codechef.com/problems/CD1IT4
+package DP;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+
+public class RobotAndPath {
+    static int dp[][]=new int[1001][1001];
+    static int Ways(int r,int c){
+
+        //base case
+        if (dp[0][0]==-1)return 0;
+        //count no of ways for first row
+        for (int j=0;j<c;j++){
+            if (dp[0][j]==-1){
+                break;
+            }
+            dp[0][j]=1;
+        }
+        //count no of ways for first co
+        for (int i=0;i<r;i++){
+            if (dp[i][0]==-1){
+                break;
+            }
+            dp[i][0]=1;
+        }
+        //Bottom up a[[roach for rest of the matrix
+        for (int i=1;i<r;i++) {
+            for (int j = 1; j < c; j++) {
+                //if cell is blocled leave it
+                if (dp[i][j] == -1) {
+                    continue;
+                }
+                dp[i][j] = 0;
+                if (dp[i][j - 1] != -1) {
+                    dp[i][j] = dp[i][j - 1] % 1000000007;
+                }
+
+                if (dp[i - 1][j] != -1) {
+                    dp[i][j] = (dp[i][j] + dp[i - 1][j]) % 1000000007;
+                }
+
+
+            }
+        }
+        //check for the final cell
+        if (dp[r-1][c-1]==-1)return 0;
+        return dp[r-1][c-1];
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        for (int tem[]:dp)
+            Arrays.fill(tem,0);
+        int m=sc.nextInt();
+        int n=sc.nextInt();
+        int p=sc.nextInt();
+        for (int i=0;i<p;i++){
+            int x=sc.nextInt();
+            int y=sc.nextInt();
+            //Marked all the blocked cells as -1;
+            dp[x-1][y-1]=-1;
+        }
+        System.out.println(Ways(m,n));
+    }
+}
