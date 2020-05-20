@@ -5,7 +5,7 @@ public class WineProblem {
     static int profit(int wine[],int i,int j,int y) {
         //y denotes the current year
         //i denotes initial index of array
-        //y denotes initial index of array
+        //j denotes last index of array
 
         //base case
         if (i > j) return 0;
