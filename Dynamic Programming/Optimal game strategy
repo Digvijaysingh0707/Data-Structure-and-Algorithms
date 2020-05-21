@@ -1,0 +1,21 @@
+package DP;
+
+public class OptimalGameSttrategy {
+    static long dp[][]=new long[1000][1000];
+   static long optimal_strategy(long ar[],int i,int j){
+       if (i>j)return 0;
+       if (dp[i][j]!=0)return dp[i][j];
+       long q1=ar[i]+Math.min(optimal_strategy(ar,i+2,j),optimal_strategy(ar,i+1,j-1));
+       long q2=ar[j]+Math.min(optimal_strategy(ar,i,j-2),optimal_strategy(ar,i+1,j-1));
+       long q=Math.max(q1,q2);
+       dp[i][j]=q;
+       return dp[i][j];
+
+   }
+
+    public static void main(String[] args) {
+        long coins[]={2,4,7,6};
+        int n=coins.length;
+        System.out.println(optimal_strategy(coins,0,n-1));
+    }
+}
