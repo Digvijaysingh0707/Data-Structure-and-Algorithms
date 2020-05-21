@@ -1,0 +1,15 @@
+https://www.geeksforgeeks.org/count-possible-paths-top-left-bottom-right-nxm-matrix/
+
+
+package DP;
+
+public class RatAndElephant {
+    static int ways(int m,int n){
+        if (m==1||n==1)return 1;
+        return ways(m-1,n)+ways(m,n-1);
+    }
+    public static void main(String args[])
+    {
+        System.out.println(ways(3, 3));
+    }
+}
