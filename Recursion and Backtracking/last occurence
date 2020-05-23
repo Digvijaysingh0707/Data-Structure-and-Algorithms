@@ -1,0 +1,30 @@
+package Recursion;
+
+public class LastOccurence {
+    static int last(int a[],int j,int n,int key){
+
+        //base case
+        if (n==0)return -1;//we have reched to the last
+        //rec case
+        int i=last(a,j+1,n-1,key);
+        if (i==-1){//we have reached to the last
+            if (a[0]==key){
+                return 0;
+            }
+            else{
+                return -1;
+            }
+
+        }
+        return i+1;
+
+    }
+
+    public static void main(String[] args) {
+        int a[]={1,2,3,7,8,7,9};
+        int key=7;
+        int n=a.length;
+        System.out.println(last(a,0,n,key));
+    }
+
+}
