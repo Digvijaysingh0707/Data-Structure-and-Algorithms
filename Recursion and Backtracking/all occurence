@@ -1,0 +1,30 @@
+package Recursion;
+
+public class AllOccurence {
+    static int storeOccur(int a[],int i,int n,int out[],int j,int key){
+        if (i==n)return j;
+        if (a[i]==key) {
+            out[j]=i;
+            return storeOccur(a, i + 1, n, out, j + 1, key);
+        }
+        return storeOccur(a,i+1,n,out,j,key);
+    }
+    static void allOccur(int a[],int i,int n,int key){
+        if (i==n)return;
+        if (a[i]==key) System.out.println(i+" ");
+        allOccur(a,i+1,n,key);
+    }
+
+    public static void main(String[] args) {
+        int a[]={1,2,3,4,5,3,3};
+        int key=3;
+        int n=a.length;
+        allOccur(a,0,n,key);
+        System.out.println();
+        int out[]= new int[100];
+        int cnt=storeOccur(a,0,n,out,0,key);
+        for (int i=0;i<cnt;i++){
+            System.out.print(out[i]+" ");
+        }
+    }
+}
