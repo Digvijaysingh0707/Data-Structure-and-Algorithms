@@ -1,0 +1,12 @@
+package Recursion;
+
+public class TillingProblem {
+    static int tillling(int n){
+        if (n<=3)return 1;
+        return tillling(n-1)+tillling(n-4);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(tillling(5));
+    }
+}
