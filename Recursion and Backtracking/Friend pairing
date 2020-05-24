@@ -1,0 +1,14 @@
+package Recursion;
+
+public class FriendPairing {
+    static int pair(int n){
+        if (n==0||n==1)return 1;
+        int ans= pair(n-1)+(n-1)*pair(n-2);
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int n=3;
+        System.out.println(pair(n));
+    }
+}
