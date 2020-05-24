@@ -15,7 +15,7 @@ public class Main {
                     temp[k] = a[i];
                     k++;
                     i++;
-                } else {
+                } else {//a[i]>a[j]
                     temp[k] = a[j];
                     k++;
                     j++;
