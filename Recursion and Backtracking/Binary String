@@ -1,0 +1,11 @@
+//count binary string of length n which have no consecutive 1
+
+package Recursion;
+
+public class BinaryString {
+    static int binaryString(int n){
+        if (n==0)return 1;
+        if (n==1)return 2;
+        int ans=binaryString(n-1)+binaryString(n-2);
+    }
+}
