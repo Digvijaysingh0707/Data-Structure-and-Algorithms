@@ -43,7 +43,7 @@ public class MergeSort {
         //Follow 3 steps
         //1.Divide
         int mid=(s+e)/2;
-        //2.Sort the two parts
+        //2.Sort the two parts recursively
         mergeSort(a,s,mid);
         mergeSort(a,mid+1,e);
         //3. merge both the parts
