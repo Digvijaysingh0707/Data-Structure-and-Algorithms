@@ -1,0 +1,52 @@
+package Recursion;
+
+import java.util.Scanner;
+
+public class replacePi {
+    static void replace(char c[],int i){
+        if (c[i]=='\0'|| c[i+1]=='\0'){
+            return;
+        }
+
+        if (c[i]=='p'&&c[i+1]=='i'){
+            //shifting+ replacement with 3.14
+            int j=i+2;
+            //take j to the end
+            while (c[j]!='\0'){
+                j++;
+            }
+            //shifting(right to left)
+            while (j>=i+2){
+                c[j+2]=c[j];
+                j--;
+            }
+            //replacement +recursive call for remaining part
+            c[i]='3';
+            c[i+1]='.';
+            c[i+2]='1';
+            c[i+3]='4';
+            replace(c,i+4);
+
+        }
+        else{
+            //go to the next position
+            replace(c,i+1);
+        }
+        return;
+    }
+
+    public static void main(String[] args) {
+
+//        String s= sc.next();
+
+        String s="xpi";
+        char c[]=s.toCharArray();
+
+//        for (int i=0;i<s.length();i++){
+//            c[i]=s.charAt(i);
+//
+//        }
+        replace(c,0);
+        System.out.println(c);
+    }
+}
