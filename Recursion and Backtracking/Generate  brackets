@@ -1,0 +1,33 @@
+package Recursion;
+
+import java.util.Scanner;
+
+//generate balanced brackets using n pairs of round brackets
+public class GenerateBrackets {
+    static void generate(char out[],int n,int open,int close,int index){
+        //Base case
+        if (index==2*n){
+            out[index]='\0';
+            System.out.println(out);
+            return;
+        }
+        if (open<n){//we can only add ( when it is leass than n if it becomes equal to n then we cant add
+            out[index]='(';
+            generate(out,n,open+1,close,index+1);
+        }
+        if (close<open){
+            out[index]=')';
+            generate(out,n,open,close+1,index+1);
+
+        }
+        return;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        char out[]= new char[1000];
+        int index=0;
+        generate(out,n,0,0,0);
+    }
+}
