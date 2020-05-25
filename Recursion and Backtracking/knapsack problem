@@ -1,0 +1,26 @@
+package Recursion;
+
+public class knapsackProblem {
+    static int knapsack(int n,int c,int prices[],int weight[]){
+        if (n==0||c==0)return 0;
+        int ans=0;
+        int include=0;
+        int exclude=0;
+        if (c>=weight[n-1]) {
+            include = prices[n - 1] + knapsack(n - 1, c - weight[n - 1], prices, weight);
+        }
+
+            exclude=knapsack(n-1,c,prices,weight);
+
+        ans=Math.max(include,exclude);
+        return ans;
+    } 
+
+    public static void main(String[] args) {
+        int weight[]={1,2,3,4};
+        int prices[]={40,20,35,100};
+        int n=4;
+        int c=6;
+        System.out.println(knapsack(n,c,prices,weight));
+    }
+}
