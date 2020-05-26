@@ -1,0 +1,52 @@
+package Recursion;
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class Permutation {
+    static void permute(char[] in, int i,int n) {
+        if (in[i] == '\0') {
+            System.out.println(in);
+            return;
+        }
+        for (int j = i; j<n; j++) {
+            boolean check=shouldswap(in,i,j);
+            if (check) {
+                swap(in, i, j);
+                permute(in, i + 1, n);
+                //Backtracking - to restore the original array
+                swap(in,i,j);
+            }
+        }
+    }
+
+    static void swap(char a[], int i, int j) {
+        char temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+
+        static boolean shouldswap(char[] s,int start,int curr){
+        for (int j=start;j<curr;j++){
+            if (s[start]==s[curr]){
+                return false;
+            }
+        }
+            return true;
+        }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char c[]=new char[100];
+        String s= sc.next();
+        for (int i=0;i<s.length();i++){
+            c[i]=s.charAt(i);
+        }
+        int n=s.length();
+
+        permute(c,0,n);
+
+
+    }
+}
