@@ -1,75 +1,34 @@
-//Not done in java
+package Recursion;
 
-#include <iostream>
-using namespace std;
-   void permute(char in[],int i){
-       if(in[i]=='\0'){
-        cout<<in<<" ,";
-        return;
-       }
-       for(int j =i;in[j]!='\0';j++){
-        swap(in[i],in[j]);
-        permute(in,i+1);
-        //This is for Backtracking
-        swap(in[i],in[j]);
-}
-   }
-   int main(){
-       char in[100];
-       cin>>in;
-       permute(in,0);
-       return 0;
-   }
-
-
-
-package com.company;
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
-
-    static void permute(char[] in,int i) {
-        if (in[i] == ' ') {
-            System.out.print(" ");
+//Given a string s,task is to find all permutations of the String s
+public class Permutation {
+    static void permute(char[] in,int i){
+        if (in[i]=='\0'){
+            System.out.println(in);
             return;
         }
-
-
-        for (int j = 0; in[j] != ' '; j++) {
-            char temp = in[i];
-            in[i] = in[j];
-            in[j] = temp;
-            permute(in, i + 1);
-            temp = in[i];
-            in[i] = in[j];
-            in[j] = temp;
+        for (int j=i;in[j]!='\0';j++){
+            char temp=in[i];
+            in[i]=in[j];
+            in[j]=temp;
+            permute(in,i+1);
+            //Backtracking - to restore the original array
+            char temp1=in[j];
+            in[j]=in[i];
+            in[i]=temp;
 
         }
+
     }
-
-
-
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String inp;
-        int x = sc.nextInt();
-        char[] in= new char[x];
-        inp=sc.next();
-
-        for(int i =0;i<x;i++){
-            in[x]=inp.charAt(i);
-
-                    //Scanner sc = new Scanner(System.in);
-            //String inp;
-            //char arr[] = new char[6];
-            //System.out.println("Enter character array: ");
-            //inp = sc.next();
-            //for(int i=0; i!= 6; i++)
-            //	arr[i] = inp.charAt(i);
+        char c[]=new char[100];
+        String s= sc.next();
+        for (int i=0;i<s.length();i++){
+            c[i]=s.charAt(i);
         }
-        permute(in,0);
-
-
+        permute(c,0);
     }
 }
