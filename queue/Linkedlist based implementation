@@ -1,0 +1,45 @@
+package Queue;
+
+import java.util.List;
+
+class  Queues {
+    static int cs;
+    static List<Integer> qu;
+    public  Queues(){
+        this.cs=0;
+    }
+
+    static boolean isEmpty(){
+        return cs==0;
+    }
+    static void enqueue(int data){
+        qu.add(data);
+        cs+=1;
+    }
+    static void dequeue(){
+        if (!isEmpty()){
+            cs-=1;
+            qu.remove(0);
+
+        }
+    }
+    static int getFront(){
+        return qu.get(0);
+    }
+}
+public class LinkedListImplementation {
+    public static void main(String[] args) {
+        Queue q=new Queue(10) ;
+        for (int i=1;i<=6;i++){
+            q.enqueue(i);
+        }
+        q.dequeue();
+        q.enqueue(8);
+        while (!q.isEmpty()){
+            System.out.println(q.getFront());
+            q.dequeue();
+        }
+
+
+    }
+}
