@@ -1,3 +1,7 @@
+Ref:
+https://gist.github.com/SuryaPratapK/c483adb1be61d94498652f98efe87aa4
+https://www.youtube.com/watch?v=TCHSXAu5pls
+
 package com.company;
 
 import java.util.Deque;
@@ -27,7 +31,7 @@ public class Main {
 
         }
 
-        System.out.println(a[q.peek()]);
+        System.out.println(a[q.peek()]);//printing the last element
     }
 
 
