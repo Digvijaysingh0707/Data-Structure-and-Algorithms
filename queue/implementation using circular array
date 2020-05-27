@@ -5,7 +5,7 @@ Linear DS
 EX Operatng System
 
 package com.company;
-
+Dequeue and enqueue both are O(1)
 class  Queue {
     static int arr[];
     static int ms;
@@ -13,7 +13,7 @@ class  Queue {
     static int front;
     static int rear;
     public  Queue(int default_size){
-        default_size=7;
+        default_size=7;//if someone does not defined the size then simply default size will be given 
         this.front=0;
         this.rear=default_size-1;
         this.ms=default_size;
