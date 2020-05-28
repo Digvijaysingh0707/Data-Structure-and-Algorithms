@@ -9,8 +9,16 @@ public class FirstOccurence {
         if (a[0]==key)return 0;
 
         int i=first(a,j+1,n-1,key);
-        if (i==-1)return -1;
+        if (i==-1)return -1;//(n-1) part does not contain key 
         return i+1;
+    }
+    //Another approach of linear search using recursion
+    static int fir(int a[],int i,int n,int key){
+        if (i==n)return -1;
+        if (a[i]==key){
+            return i;
+        }
+        return fir(a,i+1,n,key);
     }
     public static void main(String[] args) {
         int a[]={1,2,3,7,4,5,6,7,10};
