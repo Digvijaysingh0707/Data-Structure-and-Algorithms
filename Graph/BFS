@@ -1,3 +1,4 @@
+Time Complexity: O(V+E) where V is number of vertices in the graph and E is number of edges in the graph.
 private int V;   // No. of vertices
          private LinkedList<Integer> adj[]; //Adjacency Lists
 
