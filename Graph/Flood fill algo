@@ -1,0 +1,54 @@
+package Graph;
+
+import java.util.Scanner;
+
+public class FloodFillAlgo {
+    static int R;
+    static int C;
+    static void print(char input[][]){
+        for (int i=0;i<R;i++){
+            for (int j=0;j<C;j++){
+                System.out.print(input[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    //W,N,E,S
+    static int dx[]={-1,0,1,0};
+    static int dy[]={0,-1,0,1};
+    //ch is the character to be replaced
+    //color is the character to be added
+    static void floodFill(char mat[][],int i,int j,char ch,char color){
+        //Base case- matrix bounds
+        if (i<0||j<0||i>=R||j>=R){
+            return;
+        }
+        //Figure boundary condition
+        if (mat[i][j]!=ch){//other than . character found leave it
+            return;
+        }
+        //recursive call
+        mat[i][j]=color;
+        for (int k=0;k<4;k++){
+            floodFill(mat,i+dx[k],j+dy[k],ch,color);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int r=sc.nextInt();//size of the matrix
+        int c=sc.nextInt();//character in the matrix
+        char input[][]= new char[50][50];
+        String s=sc.next();
+        for (int i=0;i<r;i++){
+            for (int j=0;j<c;j++){
+                input[i][j]=s.charAt(0);
+            }
+        }
+        print(input);
+        floodFill(input,8,13,'.','r');
+        print(input);
+
+    }
+}
