@@ -1,0 +1,11 @@
+package Arrays;
+
+public class CharARray {
+    public static void main(String[] args) {
+        char a[][]={{'a','b','c','\0'},
+                {'d','e','f','g','\0'}};
+        
+        System.out.println(a[0]);
+        System.out.println(a[1]);
+    }
+}
