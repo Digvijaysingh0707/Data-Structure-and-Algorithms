@@ -1,0 +1,33 @@
+package Arrays;
+
+import java.util.Scanner;
+
+public class RemoveDuplicate {
+    static void duplicate(char c[]){
+        int l=c.length;
+        if (l==1||l==0)return;
+
+        int pre=0;
+
+        for (int current=1;current<l;current++){
+            if (c[pre]!=c[current]){
+                pre++;
+                c[pre]=c[current];
+            }
+        }
+        if (c[pre+1]=='\0')return;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        String s=sc.next();
+        char c[]= new char[s.length()];
+        for (int i=0;i<s.length();i++){
+            c[i]=s.charAt(i);
+        }
+        duplicate(c);
+        System.out.println(c);
+    }
+
+}
