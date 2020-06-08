@@ -1,0 +1,42 @@
+O(n^2)
+
+package Arrays;
+
+import java.util.Scanner;
+
+public class MaximumSum2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        int cs[] = new int[n];
+        arr[0]=sc.nextInt();
+        cs[0]=arr[0];
+        for (int i = 1; i < n; i++) {
+            arr[i] = sc.nextInt();
+            cs[i]=cs[i-1]+arr[i];
+        }
+        int curSum = 0;
+        int MaxSum = 0;
+        int left=0;
+        int right=0;
+        for (int i=1;i<n;i++){
+            for (int j=i;j<n;j++){
+                curSum=0;
+                curSum=cs[j]-cs[i-1];
+
+                if (curSum>MaxSum) {
+                    MaxSum = curSum;
+                    left = i;
+                    right = j;
+                }
+
+            }
+        }
+        System.out.println(MaxSum);
+        for (int i=left;i<=right;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    }
+
