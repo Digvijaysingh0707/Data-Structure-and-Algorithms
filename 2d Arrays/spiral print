@@ -19,13 +19,17 @@ public class Spiral {
             }
             System.out.println();
             EndColoumn--;
-            for (int i = EndColoumn; i >= StartColoumn; i--) {
-                System.out.print(a[EndRow][i]+" ");
+            if (EndRow>StartRow) {//for odd numbers of row and coloumns
+                for (int i = EndColoumn; i >= StartColoumn; i--) {
+                    System.out.print(a[EndRow][i] + " ");
+                }
             }
             System.out.println();
             EndRow--;
-            for (int i = EndRow; i >= StartRow; i--) {
-                System.out.print(a[i][StartColoumn]+" ");
+            if (EndColoumn>StartColoumn) {//for odd numbers of row and coloumns
+                for (int i = EndRow; i >= StartRow; i--) {
+                    System.out.print(a[i][StartColoumn] + " ");
+                }
             }
             System.out.println();
             StartColoumn++;
