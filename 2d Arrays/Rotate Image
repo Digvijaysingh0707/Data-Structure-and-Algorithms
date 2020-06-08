@@ -2,7 +2,7 @@ public class Main {
 
 
     static void rotate(int a[][],int n){
-        //reverse the elements of all the rows
+        //reverse the elements of all the rows 
 
         for (int row=0;row<n;row++){
             int start_col=0;
