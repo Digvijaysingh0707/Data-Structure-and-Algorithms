@@ -1,5 +1,6 @@
 public class Main {
     static void magical_Park(char a[][],int m,int n,int k,int s){// k is threshold strength & s is initial strength
+    //Assuming Piyush can get out of the park
         boolean success=true;
         for (int i=0;i<m;i++){
             for (int j=0;j<n;j++){
