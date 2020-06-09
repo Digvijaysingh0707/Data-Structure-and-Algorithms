@@ -39,6 +39,13 @@ public class LinkedList {
         return false;
 
     }
+    
+    //Recursive way
+    public static boolean find(Listnode head,int searchKey){
+        if(head==null)return false;
+        if(head.data==key) return true;
+        else{
+            return find(head.next,searchKey);
 
 
 
