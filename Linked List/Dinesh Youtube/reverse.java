@@ -40,6 +40,15 @@ public class LinkedList {
         }
         return previous;
     }
+    //Recursively
+    static ListNode reverseRecursion(Listnode head){
+        if(head==null||head.next==null){
+            return head;}
+Listnode smallhead=reverseRecursion(head.next);
+        Node c=head;
+        c.next.next=c;
+        c.next=null;
+        return smallhead;
 
     public static void main(String[] args){
         Listnode head =new Listnode(10);
@@ -165,45 +174,4 @@ public class LinkedList {
 
 
 
-       // head =ll.insertAt(head,111,3);
-        //ll.display(head);
-       // System.out.print("Length of Linked List is:- "+ll.length(head));
-
-
-    }
-}
-   /* public static int length(Listnode head){
-        if(head==null){
-            return 0;
-        }
-        int count =0;
-        Listnode current = head;
-        while(current!=null){
-            count++;
-            current=current.next;
-        }
-        return count;
-    }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
+       
