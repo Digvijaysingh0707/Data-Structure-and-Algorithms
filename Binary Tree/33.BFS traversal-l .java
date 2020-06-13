@@ -2,7 +2,7 @@ Time and Space complexity is O(n)
     Insert a root node,pop it and add its children into the queue
     
     Queue should not be of int type it should be of node type and if we make it of int type we would not be able to find from which node
-    it is coming
+    it is coming and we can find the address of that node
     
     Algo:-
     q.push(root){
