@@ -1,0 +1,27 @@
+package StringMatching;
+
+import java.util.Scanner;
+
+public class NaiveAlgo {
+    static void match(String str,String patttern){
+       for (int i=0;i<str.length()-patttern.length();i++){
+           int j=0;
+           for (j=0;j<patttern.length();j++){
+               if (str.charAt(i+j)!=patttern.charAt(j)){
+                   break;
+               }
+           }
+           if (j==patttern.length()){
+               System.out.println("Pattern is found at "+i);
+           }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        String pat=sc.next();
+        match(str,pat);
+    }
+
+}
