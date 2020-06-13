@@ -1,0 +1,43 @@
+package LinkedList;
+
+ class ListNode{
+    int data;
+ListNode next;
+ListNode(int data){
+    this.data=data;
+}
+
+}
+public class CircularLL {
+     static void print(ListNode head){
+         ListNode temp=head;
+         while (temp.next!=null){
+             System.out.print(temp.data+"->");
+         }
+         System.out.print(temp.data+"END");
+     }
+     static void push(ListNode head,int data){
+         ListNode ptr1= new ListNode(data);
+         ListNode temp=head;
+         ptr1.next=head;
+         if (head!=null){
+             while (temp!=null){
+                 temp=temp.next;
+             }
+             temp.next=ptr1;
+         }
+         else{
+             ptr1.next=ptr1;
+         }
+         head=ptr1;
+     }
+
+    public static void main(String[] args) {
+        ListNode head=new ListNode(0);
+        push(head,10);
+        push(head,20);
+        push(head,30);
+        push(head,40);
+        print(head);
+    }
+}
