@@ -1,0 +1,27 @@
+package Tree;
+class TreeNode{
+    int data;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int data){
+        this.data=data;
+    }
+}
+
+public class B2DLL {
+    static TreeNode head;
+    static TreeNode pre;
+    static void B2DLL(TreeNode root){
+        if (root==null)return;
+        B2DLL(root.left);
+        //to do
+        if (pre==null)head=root;
+        else{
+            root.left=pre;
+            pre.right=root;
+        }
+        pre=root;
+        B2DLL(root.right);
+    }
+
+}
