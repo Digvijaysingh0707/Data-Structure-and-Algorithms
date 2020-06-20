@@ -1,0 +1,28 @@
+package Tree;
+
+import java.util.Scanner;
+
+class TreeNode{
+        int data;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int data){
+        this.data=data;
+        this.left=null;
+        this.right=null;
+    }
+}
+public class BuildUsingPre {
+    static TreeNode buildusigPre(){
+        Scanner sc = new Scanner(System.in);
+
+        int d=sc.nextInt();
+        if (d==-1)return null;
+        TreeNode root = new TreeNode(d);
+        root.left=buildusigPre();
+        root.right=buildusigPre();
+        return root;
+
+    }
+
+}
