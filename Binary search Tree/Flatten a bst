@@ -1,0 +1,91 @@
+package BST;
+class Node {
+        int key;
+    Node left,right;
+    public Node(int item){
+        this.key=item;
+        left=right=null;
+
+    }
+}
+class LinkedList{
+    Node head;
+    Node tail;
+}
+
+public class Flatten {
+    static Node root;
+    Flatten(){
+        root=null;
+    }
+    public static void inorder(Node root){
+        if (root==null) {
+            return;
+        }
+        inorder(root.left);
+        System.out.print(root.key+"->");
+        inorder(root.right);
+    }
+    static LinkedList Flatten(Node root){
+        LinkedList l = new LinkedList() ;
+        if (root==null){
+            l.head=l.tail=null;
+            return l;
+        }
+        //Leaf node
+        if (root.left==null&& root.right==null){
+            l.head=l.tail=root;
+            return l;
+        }
+        //Left is not null
+        if (root.left!=null&&root.right==null){
+            LinkedList leftLL = Flatten(root.left);
+            leftLL.tail.right=root;
+            //New head remains same
+            l.head=leftLL.head;
+            //New tail changes
+            l.tail=root;
+            return l;
+        }
+        //Right is not null
+        if (root.left==null&&root.right!=null){
+            LinkedList rightLL = Flatten(root.right);
+            //connect head with root
+            root.right=rightLL.head;
+
+            l.head=root;
+            l.tail=rightLL.tail;
+            return l;
+        }
+        //Both side is not null
+        LinkedList leftLL = Flatten(root.left);
+        LinkedList rightLL = Flatten(root.right);
+        leftLL.tail.right=root;
+        root.right=rightLL.head;
+
+        l.head=leftLL.head;
+        l.tail=rightLL.tail;
+        return l;
+    }
+
+    public static void main(String[] args) {
+        Flatten tree = new Flatten();
+        tree.root = new Node(5);
+        tree.root.left = new Node(3);
+        tree.root.right = new Node(7);
+        tree.root.left.left = new Node(1);
+        tree.root.right.left= new Node(6);
+        tree.root.right.right= new Node(8);
+        inorder(root);
+        System.out.println();
+
+        LinkedList l = Flatten(root);
+        Node temp=l.head;
+        while (temp!=null){
+            System.out.print(temp.key+"-->");
+            temp=temp.right;
+        }
+
+
+    }
+}
