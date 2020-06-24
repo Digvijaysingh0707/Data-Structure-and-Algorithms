@@ -1,6 +1,6 @@
 
 Bottom up approach:-the value of a node should be greater than min valueof left subtree and greater than maximum value of right subtree
-Another is Top down approach
+Another is Top down approach which we have implemented
 complexity is O(n)
 
 Link:-https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
