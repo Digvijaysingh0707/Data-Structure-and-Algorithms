@@ -1,0 +1,30 @@
+//unoptimised approach of O(NlogN)
+public class BuildHeap {
+    public static void buildHeap(int a[]){
+        for (int i=2;i<a.length;i++){
+            int idx=i;
+            int parent=i/2;
+            while (idx>1 && a[idx]>a[parent]){
+                int temp=a[idx];
+                a[idx]=a[parent];
+                a[parent]=temp;
+                idx=parent;
+                parent=parent/2;
+
+            }
+        }
+    }
+    static void print(int a[]){
+        for (int x:a){
+            System.out.print(x+" ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int a[]={-1,10,20,5,6,1,8,9,4};
+        print(a);
+        buildHeap(a);
+        print(a);
+    }
+}
