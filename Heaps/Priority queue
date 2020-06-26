@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class PriorityQueue {
+    public static void main(String[] args){
+        java.util.PriorityQueue<Integer> pq= new java.util.PriorityQueue<>();
+        Scanner sc = new Scanner(System.in);
+
+        int n=sc.nextInt();
+        for (int i=0;i<n;i++){
+            int no=sc.nextInt();
+            pq.add(no);//Insertion in pq takes O(logN)
+        }
+        //Remove the element from pq
+        while (!pq.isEmpty()){
+            System.out.println(pq.peek()+" ");
+            pq.remove();
+        }
+
+    }
+}
