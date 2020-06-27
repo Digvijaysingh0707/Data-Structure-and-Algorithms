@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class PrimeFactorisation {
+    static void printFactor(int n){
+            int count=0;
+            ArrayList<Integer> a= new ArrayList<>();
+        ArrayList<Integer> b= new ArrayList<>();
+        for (int i=2;i*i<=n;i++){
+            if (n%i==0){
+                //keep on dividing it by i till it is divisible
+                count=0;
+                while (n%i==0){
+                    count++;
+                    n/=i;
+                }
+                a.add(i);
+                b.add(count);
+            }
+        }
+        if (n!=1){
+            //whatever is left will be prime in itself
+            a.add(n);
+            b.add(1);
+
+        }
+        //print the factors
+        for (int i=0;i<a.size();i++){
+            System.out.println(a.get(i)+"^"+b.get(i));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        printFactor(n);
+    }
+}
