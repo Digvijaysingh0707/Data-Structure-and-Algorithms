@@ -1,0 +1,51 @@
+from hackerblocks
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class PrimeVisits {
+    static void primeSieve(int p[]){
+        //first mark all odd number as prime
+        for (int i=3;i<1000000;i+=2){
+            p[i]=1;
+        }
+        //sieve
+        for (long i=3;i<1000000;i+=2){
+            //if the current number is not marked then it is prime
+            if (p[(int)i]==1){
+//mark all multiple of i as not prime
+                for (long j=i*i;j<1000000;j+=i){
+                    p[(int)j]=0;
+                }
+            }
+        }
+        //special case
+        p[2]=1;// 2 is a prime
+        p[1]=p[0]=0;//0 and 1 is not prime
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int p[]= new int[10000005];
+
+        Arrays.fill(p,0);
+        primeSieve(p);
+
+        int csum[]= new int[10000005];
+        Arrays.fill(csum,0);
+
+        //precompute the prime upto index i
+        for (int i=1;i<=1000000;i++){
+            csum[i]=csum[i-1]+p[i];
+        }
+        int q=sc.nextInt();
+        while (q!=0){
+            q--;
+            int a=sc.nextInt();
+            int b=sc.nextInt();
+            System.out.println(csum[b]-csum[a-1]);
+        }
+
+    }
+}
