@@ -1,0 +1,87 @@
+O(logN)
+
+
+import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class UsingSieve {
+    static ArrayList<Integer> primeSieve(int p[],int n){
+        //first mark all odd number as prime
+        for (int i=3;i<n;i+=2){
+            p[i]=1;
+        }
+        //sieve
+        //Mark non prime numbers as 0
+        //1.Optimisation :-Iterate over only odd  numbers
+        for (long i=3;i<=n;i+=2){
+            //if the current number is not marked then it is prime
+            if (p[(int)i]==1){
+//mark all multiple of i as not prime
+                //2.Optimistation Teke a jump of 2*i starting from i*i
+                for (long j=i*i;j<=n;j+=2*i){
+                    p[(int)j]=0;
+                }
+            }
+        }
+        //special case
+        p[2]=1;// 2 is a prime
+        p[1]=p[0]=0;//0 and 1 is not prime
+
+        ArrayList<Integer> primes = new ArrayList<>();
+        primes.add(2);
+
+        for(int i=3;i<=n;i+=2){
+            if (p[i]==1){
+                primes.add(i);
+            }
+        }
+        return primes;
+    }
+    //this return list of prime factors
+    static ArrayList<Integer> factorize(int m,ArrayList<Integer> primes){
+        ArrayList<Integer> factors= new ArrayList<>();
+        factors.clear();
+        int i=0;
+        int p=primes.get(0);
+        // if m is not prime then it must factor less than sqrt(m)
+        while (p*p<=m){
+            if (m%p==0) {
+                factors.add(p);
+                while (m % p == 0) {//reduce m further
+                    m = m / p;
+                }
+            }
+                //go to the next position
+                i++;
+                p=primes.get(i);//update your prime
+            }
+            if (m!=1){
+                factors.add(m);
+            }
+        return factors;
+
+        }
+
+
+
+    public static void main(String[] args) {
+        int N=1000000;
+        int p[]= new int[N];
+        Arrays.fill(p,0);
+        ArrayList<Integer> primes=primeSieve(p,100);
+        Scanner sc= new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->=1){
+            int no=sc.nextInt();
+            ArrayList<Integer> factors = factorize(no,primes);
+            for (int f:factors){
+                System.out.println(f+" ");
+            }
+
+        }
+
+    }
+
+}
