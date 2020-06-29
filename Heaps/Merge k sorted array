@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=zLcNwcR6yO4
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class ListNode{
+    int val;
+    ListNode next;
+    ListNode(int val){
+        this.val=val;
+    }
+}
+public class MergeKSortedArray {
+    static ListNode merge(ListNode[] lists){
+        PriorityQueue<Integer> pq= new PriorityQueue<>();
+        for (ListNode head:lists){
+            while (head!=null){
+                pq.add(head.val);
+                head=head.next;
+            }
+        }
+        ListNode dummy = new ListNode(-1);
+        ListNode head= dummy;
+        while (!pq.isEmpty()){
+            head.next=new ListNode(pq.remove());
+            head=head.next;
+        }
+        return dummy.next;
+    }
+    
+}
