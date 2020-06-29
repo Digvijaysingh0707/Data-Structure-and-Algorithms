@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class NotSoEasy {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long t=sc.nextLong();
+        while (t-->=1){
+            long primes[]={2,3,5,7,11,13,17,19};
+            while (t-->=1){
+                long n=sc.nextInt();
+                long subsets=(1<<8)-1;//total number of subsets will be 2^8 as there are 8 primes
+                long ans=0;
+                for (long i=1;i<=subsets;i++){
+                    long denom=1L;
+                    long setsBits=Integer.bitCount((int)i);//this count the set bit
+                    for (long j=0;j<=7;j++){
+                        if ((i&(1<<j))>=1){//this check whether set bit sis 1 or not
+                            denom=denom*primes[(int)j];
+
+                        }
+                    }
+                    if (setsBits%2!=0){
+                        ans+=n/denom;
+                    }
+                    else{
+                        ans-=n/denom;
+                    }
+                }
+                System.out.println(ans);
+            }
+        }
+    }
+}
