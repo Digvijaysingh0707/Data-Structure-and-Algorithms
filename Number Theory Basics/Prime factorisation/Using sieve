@@ -45,7 +45,7 @@ public class UsingSieve {
         factors.clear();
         int i=0;
         int p=primes.get(0);
-        // if m is not prime then it must factor less than sqrt(m)
+        // if m is not prime then it  must have factor less than sqrt(m)
         while (p*p<=m){
             if (m%p==0) {
                 factors.add(p);
@@ -53,7 +53,7 @@ public class UsingSieve {
                     m = m / p;
                 }
             }
-                //go to the next position
+                //go to the next position in prime sieve
                 i++;
                 p=primes.get(i);//update your prime
             }
