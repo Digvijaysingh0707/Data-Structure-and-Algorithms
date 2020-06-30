@@ -1,0 +1,57 @@
+package DP;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class Coinchange {
+    static int minCoins(int N,int coins[],int T,int dp[]){//T is the type of coin and N is the total amount
+        //Base case
+        if (N==0)return 0;
+        //Look up
+        if (dp[N]!=0){
+            return dp[N];
+        }
+        //REc case
+        int ans=Integer.MAX_VALUE;
+        for (int i=0;i<T;i++) {
+            if (N - coins[i] >= 0) {
+                int subProblem = minCoins(N - coins[i], coins, T, dp)+1;
+                ans = Math.min(ans, subProblem) ;
+            }
+
+        }
+        dp[N]=ans;
+        return ans;
+
+
+    }
+    
+    //Bottom uo
+    static int min(int N,int coins[],int T){
+        int dp[]= new int[100];
+        Arrays.fill(dp,0);
+        //Iterate over all coins from 1.....N
+        for (int i=1;i<=N;i++){
+            dp[i]=Integer.MAX_VALUE;//This is the current ans as int max
+            for (int j=0;j<T;j++){
+                if (i-coins[j]>=0){
+                    int subProblem=dp[i-coins[j]]+1;
+                    dp[i]=Math.min(dp[i],subProblem);
+                }
+            }
+
+        }
+        return dp[N];
+    }
+
+
+    public static void main(String[] args) {
+        int N=15;
+        int coins[]={1,7,10};
+        int dp[]= new int[100];
+        Arrays.fill(dp,0);
+        int T=coins.length;
+        System.out.println(minCoins(N,coins,T,dp));
+
+    }
+}
