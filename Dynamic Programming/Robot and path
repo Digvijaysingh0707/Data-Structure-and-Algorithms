@@ -32,7 +32,7 @@ public class RobotAndPath {
                 if (dp[i][j] == -1) {
                     continue;
                 }
-                dp[i][j] = 0;
+                dp[i][j] = 0;//this initialize the dp for current cell
                 if (dp[i][j - 1] != -1) {
                     dp[i][j] = dp[i][j - 1] % 1000000007;
                 }
