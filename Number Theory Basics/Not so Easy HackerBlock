@@ -10,9 +10,11 @@ public class NotSoEasy {
                 long n=sc.nextInt();
                 long subsets=(1<<8)-1;//total number of subsets will be 2^8 as there are 8 primes
                 long ans=0;
+                //Iterate over all subsets
                 for (long i=1;i<=subsets;i++){
-                    long denom=1L;
+                    long denom=1L;//this is denominator
                     long setsBits=Integer.bitCount((int)i);//this count the set bit
+                    //Iterate over all the bits of that number
                     for (long j=0;j<=7;j++){
                         if ((i&(1<<j))>=1){//this check whether set bit sis 1 or not
                             denom=denom*primes[(int)j];
