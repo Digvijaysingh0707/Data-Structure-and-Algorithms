@@ -1,0 +1,28 @@
+https://www.youtube.com/watch?v=jaNZ83Q3QGc
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Contest {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int coins[] = new int[m];
+        for (int i = 0; i < coins.length; i++) {
+            coins[i] = sc.nextInt();
+        }
+        long change[] = new long[n + 1];
+        Arrays.fill(change, 0);
+        change[0] = 1;
+        for (int i = 0; i < m; i++) {
+            for (int j = coins[i]; j <= n; j++) {
+                change[j] += change[j - coins[i]];
+            }
+
+
+
+        }
+        System.out.println(change[n]);
+    }
+}
+
