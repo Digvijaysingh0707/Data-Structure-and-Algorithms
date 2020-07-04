@@ -1,4 +1,5 @@
 https://www.hackerrank.com/challenges/fibonacci-modified/problem
+https://github.com/BlakeBrown/HackerRank-Solutions/blob/master/Algorithms/Dynamic%20Programming/Fibonacci%20Modified.java
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.util.*;
