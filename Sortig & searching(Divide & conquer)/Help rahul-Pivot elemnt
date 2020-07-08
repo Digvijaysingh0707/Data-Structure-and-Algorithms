@@ -1,0 +1,53 @@
+//from hackerblock
+
+package DP;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Codechef {
+    static int find(int a[],int n,int key){
+        int s=0;
+        int e=n-1;
+        while (s<=e){
+            int mid=(s+e)/2;
+            if (a[mid]==key)return mid;
+            //mid point lies on first part
+            if (a[s]<=a[mid]){
+                //Now two cases key lies on part1 or part2
+                if (a[s]>=key&&key<=a[mid]){
+                    e=mid-1;
+                }
+                else {
+                    s=mid+1;
+                }
+            }
+            //mid lies on part2
+            else {
+                if (a[mid]<=key&&key<=a[e]){
+                    s=mid+1;
+                }
+                else{
+                    e=mid-1;
+                }
+            }
+        }
+        return -1;//if the elememt is not found
+    }
+    public static void main(String[] args) {
+        Scanner sc=  new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]=  new int[100000];
+        for (int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        int key=sc.nextInt();
+        System.out.println(find(a,n,key));
+
+
+        }
+    }
+
+
+
