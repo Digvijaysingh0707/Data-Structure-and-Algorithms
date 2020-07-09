@@ -1,0 +1,63 @@
+From hackerBlocks
+
+package DP;
+
+import java.util.Scanner;
+
+public class tcoder {
+    static boolean isPossible(int a[],int n,int m,int curr_min){
+        int studentUsed=1;
+        int pages_reading=0;//number of pages student is reading
+        for (int i=0;i<n;i++){
+            if (pages_reading+a[i]>curr_min){
+                studentUsed++;
+                pages_reading=a[i];
+                if(studentUsed>m)return false;
+            }
+            else {
+                pages_reading+=a[i];
+            }
+        }
+        return true;
+    }
+static int findPages(int a[],int n,int m){
+    int sum=0;
+    if (n<m){
+        return -1;//no such configuration is possible
+    }
+    //count the number of pages
+    for (int i=0;i<n;i++){
+        sum+=a[i];
+    }
+    int s=a[n-1];
+int e=sum;
+    int ans=Integer.MAX_VALUE;
+    while (s<=e){
+        int mid=(s+e)/2;
+        if (isPossible(a,n,m,mid)){
+            ans=Math.min(ans,mid);
+            e=mid-1;
+        }
+        else{
+            //it is not possible to divide at x pages
+            //so increase the number of pages
+            s=mid+1;
+        }
+    }
+    return ans;
+}
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->=1){
+            int n=sc.nextInt();
+            int m=sc.nextInt();
+            int a[]= new int[1000];
+            for (int i=0;i<n;i++){
+                a[i]=sc.nextInt();
+            }
+            System.out.println(findPages(a,n,m));
+        }
+    }
+}
+
