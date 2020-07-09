@@ -1,0 +1,46 @@
+From spoj
+
+package DP;
+public class tcoder {
+static boolean canPlacecow(int stalls[],int n,int c,int min_sep){
+    int lastCow=stalls[0];
+    //place the first cow at first stall
+    int count=1;
+    for (int i=1;i<n;i++){
+        if (stalls[i]-lastCow>=min_sep){
+            lastCow=stalls[i];
+            count++;
+            if (count==c){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+    public static void main(String[] args) {
+        int stalls[]={1,2,4,8,9};
+        int n=5;
+        int cows=3;
+
+        //Binary search algo
+        int s=0;
+        int e=stalls[n-1]-stalls[0];
+        int ans=0;
+        while (s<=e){
+            int mid=(s+e)/2;
+            //we are applying binary not on array but on search space
+            //from s to e
+            boolean cowsRakhpae=canPlacecow(stalls,n,cows,mid);
+            if (cowsRakhpae==true){
+                ans=mid;
+                s=mid+1;
+            }
+            else{
+                e=mid-1;
+            }
+        }
+        System.out.println(ans);
+        return;
+    }
+}
+
