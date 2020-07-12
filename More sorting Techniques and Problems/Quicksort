@@ -24,6 +24,7 @@ public class Main {
             if (a[j] <= pivot) {
                 //merge the element in the smaller regions where elements are less than pivot element
                 i++;
+                //swap a[i] and a[j]
                 int temp = a[i];
                 a[i] = a[j];
                 a[j] = temp;
@@ -32,6 +33,7 @@ public class Main {
             j++;
         }
         //place the pivot element in correct order
+        //swap a[i+1} and a[e]
         int temp = a[i + 1];
         a[i + 1] = a[e];
         a[e] = temp;
