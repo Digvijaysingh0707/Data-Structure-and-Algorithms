@@ -6,9 +6,9 @@ public class FirstOccurence {
     static int first(int a[],int j,int n,int key){
         j=0;
         if (n==0) return -1;
-        if (a[0]==key)return 0;
+        if (a[0]==key)return 0;//if key is present at the starting
 
-        int i=first(a,j+1,n-1,key);
+        int i=first(a,j+1,n-1,key);if key is not present in first then check on the remanining part
         if (i==-1)return -1;//(n-1) part does not contain key 
         return i+1;
     }
