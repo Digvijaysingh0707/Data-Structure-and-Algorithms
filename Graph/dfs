@@ -1,1 +1,83 @@
 https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+https://www.youtube.com/watch?v=oD-LQ4cN014&list=PLM8hb123F969o-FOHGnCWJoTzlCcda8zH&index=3
+
+package Graph;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+class Graph{
+    ArrayList<ArrayList<Integer>> graph;
+    int V; //no of nodes or vertices
+    Graph(int nodes){
+        V=nodes;
+        graph=new ArrayList<ArrayList<Integer>>();
+        for (int i=0;i<V;i++){
+            graph.add(new ArrayList<Integer>());
+        }
+    }
+    void addEdge(int u,int v){
+        graph.get(v).add(u);
+        graph.get(u).add(v);
+    }
+    void printGraph(){
+        for (int i=0;i<V;i++){
+            System.out.print("Node "+i);
+            for (int x:graph.get(i)){
+                System.out.print("--> "+x);
+            }
+            System.out.println();
+        }
+    }
+    void BFS(int start){
+        boolean visited[] = new boolean[V];
+        Queue<Integer> q=  new LinkedList<Integer>();
+        q.add(start);
+        System.out.print("BFS Traverssal:-");
+        visited[start]=true;
+        while (!q.isEmpty()){
+            int node=q.poll();
+            System.out.print(node+" ");
+            for (int x:graph.get(node)){
+                if (visited[x]==false){
+                    visited[x]=true;
+                    q.add(x);
+                }
+            }
+        }
+    }
+    void DfsUtil(int node,boolean visited[]){
+        visited[node]=true;
+        System.out.print(node+" ");
+        for (int x:graph.get(node)){
+            if (visited[x]==false){
+                DfsUtil(x,visited);
+            }
+        }
+    }
+    void DFS(int start){
+        boolean visited[]= new boolean[V];
+        System.out.print("DFS traversal of graph:-");
+        DfsUtil(start,visited);
+
+    }
+
+    public static void main(String[] args)
+    {
+       Graph g= new Graph(5);
+       g.addEdge(0,1);
+        g.addEdge(3,3);
+        g.addEdge(2,4);
+        g.addEdge(1,4);
+        g.addEdge(3,1);
+        g.addEdge(2,0);
+//        g.printGraph();
+        g.DFS(0);
+    }
+}
+
+
+
+
