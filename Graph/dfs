@@ -31,23 +31,7 @@ class Graph{
             System.out.println();
         }
     }
-    void BFS(int start){
-        boolean visited[] = new boolean[V];
-        Queue<Integer> q=  new LinkedList<Integer>();
-        q.add(start);
-        System.out.print("BFS Traverssal:-");
-        visited[start]=true;
-        while (!q.isEmpty()){
-            int node=q.poll();
-            System.out.print(node+" ");
-            for (int x:graph.get(node)){
-                if (visited[x]==false){
-                    visited[x]=true;
-                    q.add(x);
-                }
-            }
-        }
-    }
+    
     void DfsUtil(int node,boolean visited[]){
         visited[node]=true;
         System.out.print(node+" ");
