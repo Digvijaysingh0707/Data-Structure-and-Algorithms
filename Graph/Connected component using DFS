@@ -1,77 +1,73 @@
 Complexity isO(V+E)
+https://www.youtube.com/watch?v=Zi4NoNyF_4I
+
 package Graph;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
-public class ConnectedComponentDFS {
-    // A user define class to represent a graph.
-    // A graph is an array of adjacency lists.
-    // Size of array will be V (number of vertices
-    // in graph)
-    int V;
-    LinkedList<Integer>[] adjListArray;
-
-    // constructor
-    ConnectedComponentDFS(int V) {
-        this.V = V;
-        // define the size of array as
-        // number of vertices
-        adjListArray = new LinkedList[V];
-
-        // Create a new list for each vertex
-        // such that adjacent nodes can be stored
-
-        for(int i = 0; i < V ; i++){
-            adjListArray[i] = new LinkedList<Integer>();
+class Graph{
+    ArrayList<ArrayList<Integer>> graph;
+    int V; //no of nodes or vertices
+    Graph(int nodes){
+        V=nodes;
+        graph=new ArrayList<ArrayList<Integer>>();
+        for (int i=0;i<V;i++){
+            graph.add(new ArrayList<Integer>());
         }
     }
-
-    // Adds an edge to an undirected graph
-    void addEdge( int src, int dest) {
-        // Add an edge from src to dest.
-        adjListArray[src].add(dest);
-
-        // Since graph is undirected, add an edge from dest
-        // to src also
-        adjListArray[dest].add(src);
+    void addEdge(int u,int v){
+        graph.get(v).add(u);
+        graph.get(u).add(v);
     }
-
-    void DFSUtil(int v, boolean[] visited) {
-        // Mark the current node as visited and print it
-        visited[v] = true;
-        System.out.print(v+" ");
-        // Recur for all the vertices
-        // adjacent to this vertex
-        for (int x : adjListArray[v]) {
-            if(!visited[x]) DFSUtil(x,visited);
-        }
-
-    }
-    void connectedComponents() {
-        // Mark all the vertices as not visited
-        boolean[] visited = new boolean[V];
-        for(int v = 0; v < V; ++v) {
-            if(!visited[v]) {
-                // print all reachable vertices
-                // from v
-                DFSUtil(v,visited);
-                System.out.println();
+    
+    
+    void DfsUtil(int node,boolean visited[]){
+        visited[node]=true;
+//        System.out.print(node+" ");
+        for (int x:graph.get(node)){
+            if (visited[x]==false){
+                DfsUtil(x,visited);
             }
         }
     }
+    void DFS(int start){
+        boolean visited[]= new boolean[V];
+//        System.out.print("DFS traversal of graph:-");
+        DfsUtil(start,visited);
+
+    }
+     int count(){
+        int count=0;
+        boolean v[]= new boolean[V];
+        for (int i=0;i<v.length;i++){
+            if (v[i]==false){
+                v[i]=true;
+                DfsUtil(i,v);
+                count++;
+            }
+        }
+        return count;
+
+    }
 
 
-    // Driver program to test abov
-    public static void main(String[] args){
-        // Create a graph given in the above diagram
-        ConnectedComponentDFS g = new ConnectedComponentDFS(5); // 5 vertices numbered from 0 to 4
-
-        g.addEdge(1, 0);
-        g.addEdge(2, 3);
-        g.addEdge(3, 4);
-        System.out.println("Following are connected components");
-        g.connectedComponents();
+    public static void main(String[] args)
+    {
+       Graph g= new Graph(9);
+       g.addEdge(0,1);
+        g.addEdge(0,3);
+        g.addEdge(1,2);
+        g.addEdge(2,3);
+//        g.addEdge(4,5);
+//        g.addEdge(5,6);
+//        g.addEdge(7,8);
+        int ans=g.count();
+        System.out.println(ans);
     }
 }
+
 
 
