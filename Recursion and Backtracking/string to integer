@@ -5,7 +5,7 @@ public class StringToInt {
         int i=n-1;
         if (n==0)return 0;
 
-        int digit=s.charAt(n-1)-'0';
+        int digit=s.charAt(n-1)-'0';//it give the last digit
         int sub_problem=(convert(s,n-1));
 
         return sub_problem*10+digit;
