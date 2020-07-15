@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main {
+     static void printSubsequences(String inp, String out) {
+        if (inp.length() == 0) {
+            System.out.print(out+" ");
+            return;
+        }
+
+        char ch = inp.charAt(0);
+        inp = inp.substring(1);
+        printSubsequences(inp, out);
+        printSubsequences(inp, out + ch);
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+
+        printSubsequences(s, "");
+        System.out.println();
+
+        int n = (1 << s.length());
+        System.out.println(n);
+    }
+}
