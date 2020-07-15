@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+    static String replace(String s){
+        if (s.length()<=1)return s;
+        if (s.substring(0,2).equals("pi")){
+            String s1=replace(s.substring(2));
+            return "3.14"+s1;
+        }
+
+            String s1=replace(s.substring(1));
+
+
+        return s.charAt(0)+s1;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t=sc.nextInt();
+        while (t-->=1) {
+
+
+            String s = sc.next();
+            System.out.println(replace(s));
+        }
+
+    }
+}
