@@ -11,7 +11,7 @@ public class AllOccurence {
     
     //Approach 2
     static int storeOccur(int a[],int i,int n,int out[],int j,int key){// j tells the count of occurence of key stored in output array or we can say it is the index of output array
-        if (i==n)return j;//when we reached the end of array "a" then we have to give j which tells the no of element present in the sout array
+        if (i==n)return j;//when we reached the end of array "a" then we have to give j which tells the no of element present in the out array
         if (a[i]==key) {
             out[j]=i;
             //increment j
