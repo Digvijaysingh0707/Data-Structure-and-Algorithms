@@ -13,9 +13,9 @@ void printKeypadString(char *in,char *out,int i,int j){
         return;
     }
     //Rec case
-    int digit=in[i]-'0';
+    int digit=in[i]-'0';//Extract the first digit
 
-    if(digit==1||digit==0){
+    if(digit==1||digit==0){//skip the first two of keypad array 
         printKeypadString(in,out,i+1,j);
     }
     for(int k =0;keypad[digit][k]!='\0';k++){
