@@ -53,7 +53,7 @@ public class SolveNqueen {
                     System.out.println();
                 }
                 System.out.println();
-                return false;
+                return false;//this generates all the configurations
             }
             //Recursive case
             //Try to place the queen in the current row and call on the remaining part which can be solved by recursion
