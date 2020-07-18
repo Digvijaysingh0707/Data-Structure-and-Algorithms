@@ -1,0 +1,41 @@
+From hackerblocks
+
+
+import java.util.Scanner;
+
+public class bit {
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]= new int[n];
+        int xor=0;
+        for (int i=0;i<n;i++){
+            int no=sc.nextInt();
+            a[i]=no;
+            xor=xor^no;
+        }
+        //Now xor=a^b;
+        int pos=0;
+        int temp=xor;
+        while ((temp&1)==0){
+            pos++;
+            temp=temp>>1;
+        }
+        //the first set bit is at position pos
+        int mask=(1<<pos);
+
+        //find those no which contain set bit at position pos
+        int x=0;
+        int y=0;
+
+        for (int i=0;i<n;i++){
+            if ((a[i]&mask)>0){
+                x=x^a[i];
+            }
+        }
+        y=xor^x;
+        System.out.println(Math.min(x,y)+" "+Math.max(x,y));
+    }
+}
