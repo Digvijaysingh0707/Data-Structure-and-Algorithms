@@ -32,6 +32,19 @@ public class LinkedList {
       n=cleared_n|(v<<i);
        return n;
     }
+   static int clearLastBits(int n,int i){
+        int mask=(-1<<i);
+        n=n&mask;
+        return n;
+    }
+    static int clearRangeItoJ(int n,int i,int j){
+        int ones=(~0);
+        int a=ones<<(j+1);
+        int b=(1<<i)-1;
+        int mask=a|b;
+        n=n&mask;
+        return n;
+    }
 
 
 
