@@ -26,6 +26,12 @@ public class LinkedList {
        int ans=n&mask;
        return ans;
     }
+   static int updateBit(int n ,int i,int v){
+       int mask=~(1<<i);
+       int cleared_n=n&mask;
+      n=cleared_n|(v<<i);
+       return n;
+    }
 
 
 
