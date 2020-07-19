@@ -1,0 +1,30 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class bit {
+    static void filter(int n, String a) {
+        int j = 0;
+        while (n > 0) {
+            int last_bit = (n & 1);
+            if (last_bit == 1) {
+                System.out.print(a.charAt(j));
+            }
+            j++;
+            n = n >> 1;
+        }
+        System.out.println();
+    }
+
+    static void printSubsets(String a) {
+        int n = a.length();
+        for (int i = 0; i < (1 << n); i++) {
+            filter(i, a);
+
+        }
+        return;
+    }
+
+    public static void main(String[] args) {
+        printSubsets("abc");
+    }
+}
