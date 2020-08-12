@@ -25,6 +25,7 @@ public class LinkedList {
             this.next=null;
         }
     }
+    //Code
     public static Listnode reverse(Listnode head){
         if(head==null){
             return head;
@@ -33,8 +34,11 @@ public class LinkedList {
         Listnode previous=null;
         Listnode next = null;
         while(current!=null){
+        //Save the next node
             next=current.next;
+            //Make the current noce to previous
             current.next=previous;
+            //Update previous and current and take them 1 step forward
             previous=current;
             current=next;
         }
