@@ -1,0 +1,73 @@
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+class ListNode{
+    public int val;
+    public ListNode prev;
+    public ListNode next;
+    public ListNode child;
+    ListNode(int val){
+        this.val=val;
+
+    }
+}
+public class Random {
+    static ListNode reverse(ListNode head){
+        if (head==null)return null;
+        ListNode current =head;
+        ListNode prev=null;
+        ListNode next=null;
+        while (current!=null){
+            next=current.next;
+            current.next=prev;
+            prev=current;
+            current=next;
+        }
+        return prev;
+    }
+    static void print(ListNode head){
+        ListNode temp=head;
+        while (temp!=null){
+            System.out.print(temp.val+" ");
+            temp=temp.next;
+        }
+
+    }
+    static ListNode recursiveRecverse(ListNode head,int k){
+       ListNode current=head;
+       ListNode next=null;
+       ListNode prev=null;
+       int count=0;
+       while (count<k&&current!=null){
+           next=current.next;
+           current.next=prev;
+           prev=current;
+           current=next;
+           count++;
+       }
+       if (next!=null){
+           head.next=recursiveRecverse(next,k);
+       }
+       return prev;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n = sc.nextInt();
+        int k=sc.nextInt();
+        ListNode head= new ListNode(sc.nextInt());
+       ListNode temp= head;
+       for (int i=1;i<n;i++){
+           temp=temp.next=new ListNode(sc.nextInt());
+       }
+       ListNode x=recursiveRecverse(head,k);
+       print(x);
+
+
+
+
+    }
+
+
+}
