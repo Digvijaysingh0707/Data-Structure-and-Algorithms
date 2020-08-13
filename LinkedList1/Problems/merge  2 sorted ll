@@ -1,0 +1,64 @@
+import java.util.List;
+import java.util.Scanner;
+import java.util.Stack;
+
+class ListNode{
+    public int val;
+    public ListNode prev;
+    public ListNode next;
+    public ListNode child;
+    ListNode(int val){
+        this.val=val;
+
+    }
+}
+public class Random {
+
+    static void print(ListNode head){
+        ListNode temp=head;
+        while (temp!=null){
+            System.out.print(temp.val+" ");
+            temp=temp.next;
+        }
+
+    }
+    static ListNode merge(ListNode a,ListNode b){
+        if (a==null)return b;
+        if (b==null)return a;
+        ListNode c=new ListNode(0);
+        if (a.val<b.val){
+            c=a;
+            c.next=merge(a.next,b);
+        }
+        if (a.val>b.val){
+            c=b;
+            c.next=merge(a,b.next);
+        }
+        return c;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n = sc.nextInt();
+        ListNode head1= new ListNode(sc.nextInt());
+       ListNode temp= head1;
+       for (int i=1;i<n;i++){
+           temp=temp.next=new ListNode(sc.nextInt());
+       }
+        int m=sc.nextInt();
+       ListNode head2= new ListNode(sc.nextInt());
+       ListNode temp2=head2;
+       for (int i=1;i<m;i++){
+           temp2=temp.next=new ListNode(sc.nextInt());
+       }
+       merge(head1,head2);
+       print(head1);
+
+
+
+
+
+    }
+
+
+}
