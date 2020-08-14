@@ -1,0 +1,9 @@
+//This is o(n) space approach
+static ListNode find(ListNode head){
+        ListNode a[]= new ListNode[100];
+                int t=0;
+                while (head!=null){
+                    a[t++]=head;
+                    head=head.next;
+                }
+                return a[t/2]; }
