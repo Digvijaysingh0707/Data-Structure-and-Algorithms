@@ -10,9 +10,11 @@ import java.util.Stack;
         }
     }
     static void  reverseStack(Stack<Integer> s1){
+    //Helper stack
         Stack<Integer>  s2 = new Stack();
         int n =s1.size();
         for(int i =0;i<n;i++){
+        //pick the element at top and insert it at the bottom
             int x =s1.peek();
             s1.pop();
             transfer(s1,s2,n-i-1);
