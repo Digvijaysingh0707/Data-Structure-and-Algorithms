@@ -18,7 +18,9 @@ public class ReverseStackRecursion {
     static void reverse(Stack<Integer> s){
         if (s.isEmpty())return;
         int x=s.peek();
+        //pop out the top element and insrert it at the bottom of reverse smaller stack
         s.pop();
+        //recursively reverse the smaller stack
         reverse(s);
         InsertAtBottom(s,x);
 
