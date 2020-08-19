@@ -5,35 +5,36 @@ compute the span
 push the current day into the stack
 
 // by stack O(N)
- package com.company;
-
-import java.util.Scanner;
-import java.util.Stack;
-
-public class Main {
-    static void printSpan(int a[], int n) {
-        Stack<Integer> s = new Stack<>();
-        int ans[] = new int[100];
-        for (int day = 0; day < n; day++) {
-            int curprice = a[day];
-            while (s.isEmpty() == false && a[s.peek()] < curprice) {
-                s.pop();
+     import java.util.*;
+    public class Main {
+        static void find(int prices[],int n,int span[]){
+            span[0]=1;
+            Stack<Integer> s= new Stack<>();
+            s.push(0);
+            for (int i=1;i<n;i++){
+                int currentPrice=prices[i];
+                while (!s.isEmpty()&&prices[s.peek()]<=prices[i]){
+                    s.pop();
+                }
+                if (!s.isEmpty()){
+                    int previous_Highest=s.peek();
+                    span[i]=i-previous_Highest;
+                }
+                else span[i]=i+1;
+                s.push(i);
             }
-            int betterDay = s.isEmpty() ? 0 : s.peek();
-            int span = day - betterDay;
-            
-            ans[day] = span;
-            s.push(day);
-        }
-        for (int i = 0; i < n; i++) {
-            System.out.print(ans[i] + " ");
         }
 
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+           int a[]={100,80,60,70,60,75,85};
+           int n=a.length;
+           int span[]= new int[n];
+           Arrays.fill(span,0);
+           find(a,n,span);
+           for (int i=0;i<n;i++){
+               System.out.print(span[i]+" ");
+           }
+        }
     }
-
-    public static void main(String[] args) {
-        int n = 7;
-        int arr[] = {100, 80, 60, 70, 60, 75, 85};
-        printSpan(arr, n);
-    }
-}
+ 
