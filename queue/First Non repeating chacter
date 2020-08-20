@@ -1,0 +1,33 @@
+    import java.util.*;
+    public class Main {
+       public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+           Queue<Character> queue= new LinkedList<>();
+           int fre[]= new int[27];
+           Arrays.fill(fre,0);
+           //Running strem until a '.' comes
+           char ch=sc.next().charAt(0);
+           while (ch!='.'){
+               //logic willgo there
+               //insert in the queue and fre table
+               queue.add(ch);
+               fre[ch-'a']++;
+               //query
+               while (!queue.isEmpty()) {
+                   int Index_of_element_at_front = queue.peek() - 'a';
+                   if (fre[Index_of_element_at_front] > 1) {
+                       queue.poll();
+                   } else {
+                       System.out.println(queue.peek());
+                       break;
+                   }
+               }
+                   //queue is empty
+                   if (queue.isEmpty()){
+                       System.out.println("-1");
+                   }
+                   ch=sc.next().charAt(0);
+               }
+           }
+        }
+
