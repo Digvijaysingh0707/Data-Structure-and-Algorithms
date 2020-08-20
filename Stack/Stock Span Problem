@@ -9,8 +9,10 @@ push the current day into the stack
     public class Main {
         static void find(int prices[],int n,int span[]){
             span[0]=1;
-            Stack<Integer> s= new Stack<>();
+            Stack<Integer> s= new Stack<>();//indices of the day
             s.push(0);
+            //loop for rest of the day
+            
             for (int i=1;i<n;i++){
                 int currentPrice=prices[i];
                 while (!s.isEmpty()&&prices[s.peek()]<=prices[i]){
@@ -19,8 +21,9 @@ push the current day into the stack
                 if (!s.isEmpty()){
                     int previous_Highest=s.peek();
                     span[i]=i-previous_Highest;
-                }
+                
                 else span[i]=i+1;
+                //push this element into the stack
                 s.push(i);
             }
         }
