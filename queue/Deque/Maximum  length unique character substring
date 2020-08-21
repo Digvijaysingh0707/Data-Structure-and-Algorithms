@@ -1,0 +1,69 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        FastScanner sc=new FastScanner();
+        String s=sc.next();
+        char a[]=s.toCharArray();
+        int n=s.length();
+        int current_length=1;
+        int max_len=1;
+        int visited[]= new int[256];
+        Arrays.fill(visited,-1);//initially each chacter is not visited
+        visited[a[0]]=0;
+        for (int i=1;i<n;i++){
+            int last_occurence=visited[a[i]];
+
+            //Expansion :- if the current char is not occured earlier || not occuring inside the window
+            if (last_occurence==-1||i-current_length>last_occurence){
+                current_length+=1;
+            }
+            //Expansion+Contraction
+            else{
+                if (current_length>max_len)max_len=current_length;
+                current_length=i-last_occurence;
+            }
+            visited[a[i]]=i;
+        }
+        if (current_length>max_len)max_len=current_length;
+        System.out.println(max_len);
+
+            }
+
+    static void sort(int[] a) {
+        ArrayList<Integer> l=new ArrayList<>();
+        for (int i:a) l.add(i);
+        Collections.sort(l);
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+
+    static class FastScanner {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer("");
+        String next() {
+            while (!st.hasMoreTokens())
+                try {
+                    st=new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        int[] readArray(int n) {
+            int[] a=new int[n];
+            for (int i=0; i<n; i++) a[i]=nextInt();
+            return a;
+        }
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+    }
+
+
+}
