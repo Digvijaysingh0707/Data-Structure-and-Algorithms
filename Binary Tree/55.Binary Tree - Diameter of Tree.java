@@ -1,5 +1,6 @@
 It have a complexity of O(n^2)
     Diameter of a tree is the longest distance between any two nodes of a tree
+    this is the preorder traversal as we are computing height first and then we are going to left and right
 
 
 
