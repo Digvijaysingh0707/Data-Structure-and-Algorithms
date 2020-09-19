@@ -63,3 +63,24 @@ class Main {
 		System.out.print("The diameter of the tree is " + getDiameter(root));
 	}
 }
+
+
+
+____________________________________________________________________________________________________
+class Pair{
+    int height;
+    int diameter;
+}
+public class Main {
+    Pair fastDiamter(TreeNode root){
+        Pair p= new Pair();
+        if (root==null){
+            p.diameter=p.height=0;
+            return p;
+        }
+        Pair left=fastDiamter(root.left);
+        Pair right = fastDiamter(root.right);
+        p.height=Math.max(left.height,right.height)+1;
+        p.diameter=Math.max((left.height,right.height),(Math.max(left.diameter,right.diameter));
+        return p;
+    }
