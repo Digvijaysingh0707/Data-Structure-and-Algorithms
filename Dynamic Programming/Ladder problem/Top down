@@ -1,3 +1,5 @@
+TC:- O(n*k)
+
 package DP;
 
 import java.util.Arrays;
