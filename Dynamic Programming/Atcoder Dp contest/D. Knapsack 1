@@ -1,0 +1,96 @@
+https://www.geeksforgeeks.org/java-program-for-dynamic-programming-set-10-0-1-knapsack-problem/?ref=rp
+
+
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.*;
+public class Main {
+    static long max(long a, long b)
+    { return (a > b) ? a : b; }
+    static long find(int n ,int c,int prices[],int weight[] ){
+        long dp[][]= new long[n+1][c+1];
+        for (int i=0;i<=n;i++){
+            for (int j=0;j<=c;j++){
+                if (i==0||j==0){
+                    dp[i][j]=0;
+                }
+                else if (j>=weight[i-1]){
+                    dp[i][j]=max((prices[i-1]+dp[i-1][j-weight[i-1]]),dp[i-1][j]);
+                }
+                else{
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+        return dp[n][c];
+    }
+
+    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+        FastScanner sc = new FastScanner();
+        PrintWriter out = new PrintWriter(System.out);
+        int n=sc.nextInt();
+        int w=sc.nextInt();
+
+        int prices[]= new int[n];
+        int weight[]= new int[n];
+        for (int i=0;i<n;i++){
+            weight[i]=sc.nextInt();
+            prices[i]=sc.nextInt();
+        }
+        System.out.println(find(n,w,prices,weight));
+
+        out.flush();
+
+    }
+    static void sort(int[] a) {
+        ArrayList<Integer> l=new ArrayList<>();
+        for (int i:a) l.add(i);
+        Collections.sort(l);
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+    static void sortReverse(long[] a) {
+        ArrayList<Long> l=new ArrayList<>();
+        for (long i:a) l.add(i);
+//        Collections.sort.(l);
+        Collections.sort(l,Collections.reverseOrder());
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+
+    static class FastScanner {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer("");
+        String next() {
+            while (!st.hasMoreTokens())
+                try {
+                    st=new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        int[] readArray(int n) {
+            int[] a=new int[n];
+            for (int i=0; i<n; i++) a[i]=nextInt();
+            return a;
+        }
+        long[] readArrayLong(long n) {
+            long[] a=new long[(int)n];
+            for (int i=0; i<n; i++) a[i]=nextLong();
+            return a;
+        }
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+    }
+
+
+}
