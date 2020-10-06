@@ -1,0 +1,83 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.*;
+public class Main {
+    static int count(int n){
+        int ans=0;
+        while (n>0){
+            n=n&(n-1);
+            ans++;
+            n>>=1;
+        }
+        return ans;
+    }
+
+    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+        FastScanner sc = new FastScanner();
+        PrintWriter out = new PrintWriter(System.out);
+        int t=sc.nextInt();
+        while (t-->=1) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int count=0;
+            for (int i=a;i<=b;i++){
+                count+=count(i);
+
+            }
+            System.out.println(count);
+        }
+
+
+        out.flush();
+
+    }
+    static void sort(int[] a) {
+        ArrayList<Integer> l=new ArrayList<>();
+        for (int i:a) l.add(i);
+        Collections.sort(l);
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+    static void sortReverse(long[] a) {
+        ArrayList<Long> l=new ArrayList<>();
+        for (long i:a) l.add(i);
+//        Collections.sort.(l);
+        Collections.sort(l,Collections.reverseOrder());
+        for (int i=0; i<a.length; i++) a[i]=l.get(i);
+    }
+
+    static class FastScanner {
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st=new StringTokenizer("");
+        String next() {
+            while (!st.hasMoreTokens())
+                try {
+                    st=new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            return st.nextToken();
+        }
+
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+        int[] readArray(int n) {
+            int[] a=new int[n];
+            for (int i=0; i<n; i++) a[i]=nextInt();
+            return a;
+        }
+        long[] readArrayLong(long n) {
+            long[] a=new long[(int)n];
+            for (int i=0; i<n; i++) a[i]=nextLong();
+            return a;
+        }
+        long nextLong() {
+            return Long.parseLong(next());
+        }
+    }
+
+
+}
