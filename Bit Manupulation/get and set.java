@@ -11,17 +11,17 @@ public class LinkedList {
    static int OddOREven(int n){
         return (n&1);
     }
-    static int getBit(int n ,int i){
+    static int getBit(int n ,int i){//used to find ith bit is set or not
        int mask=1<<i;
        int bit=(n & mask)>0?1:0;
        return bit;
     }
-    static int setBit(int n,int i){
+    static int setBit(int n,int i){//it sets the ith bit and make it 1
        int mask=1<<i;
        int ans=n | mask;
        return ans;
     }
-    static int clearBit(int n ,int i){
+    static int clearBit(int n ,int i){//it clears the ith bit and make it to zero
        int mask=~(1<<i);
        int ans=n&mask;
        return ans;
