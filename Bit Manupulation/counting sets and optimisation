@@ -1,4 +1,7 @@
+//A number can have atmost [log(N)+1] bits
+
 public class bit {
+//First Method TC:- O(log(n))
 static int countBits(int n){
     int ans=0;
     while (n>0){
@@ -7,6 +10,7 @@ static int countBits(int n){
     }
     return ans;
 }
+//Second Method TC:- O(no. of bits) in best case and in worst case O(logn) as number can have logn bits in worst case
 static int countBitsFast(int n){
     int ans=0;
     while (n>0){
@@ -15,6 +19,9 @@ static int countBitsFast(int n){
     }
     return ans;
 }
+
+//Inbuilt Method
+Integer.bitCount(n)
 
     public static void main(String[] args) {
 
