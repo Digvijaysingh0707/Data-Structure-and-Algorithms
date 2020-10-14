@@ -14,14 +14,18 @@ Tpes of heaps:
 min heap=value of parent <value of child
 max heap=value of parent >value of child
 
-Reprsentation ofheaps: it is generally representated as linear ds as array because accessing of child to parrent or vice versa is true
+Representing heap as bt(binary tree) and as cbt is not good as insertion in bt takes O(n) but we want to insert in log(n)
+
+Reprsentation of heaps: it is generally representated as linear ds as array because accessing of child to parrent or vice versa is true
+
+visualise heap as a tree but represent it as a array
 
 
 parent is at i then left child at 2*i+1, right child at 2*i+2
 value of child is given at j the parent will be at floor value of (j-1)/2
 
-when indexing startts from 1 then
-parent is at i then left child at 2*i, right child at 2*i+1
-value of child is given at j the parent will be at floor value of (j)/2
+when indexing startts from 1 then:-
+  parent is at i then left child at 2*i, right child at 2*i+1
+  value of child is given at j the parent will be at floor value of (j)/2
 
 
