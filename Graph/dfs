@@ -1,6 +1,8 @@
 https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
 https://www.youtube.com/watch?v=oD-LQ4cN014&list=PLM8hb123F969o-FOHGnCWJoTzlCcda8zH&index=3
 
+//TC:- O(V+E)
+//Space:- O(V)
 package Graph;
 
 import java.util.ArrayList;
