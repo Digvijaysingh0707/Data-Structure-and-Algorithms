@@ -1,0 +1,31 @@
+//TC:-O(d) where d is the last day of travel
+//Space:-O(n)
+class Solution {
+    int costs[];
+    int dp[];
+    Set<Integer> dayset;
+    public int mincostTickets(int days[],int costs[]){
+        this.costs=costs;
+        int n=days.length;
+        dp=new int[days[n-1]];
+        dayset = new HashSet<>();
+        for(int i:days)dayset.add(i);
+        return dp(days[n-1]);
+    }
+    public  int dp(int i){
+        if (i<=0)return 0;
+        if (dp[i-1]!=0)return dp[i-1];
+        int ans;
+        if (dayset.contains(i)){
+            int op1=dp(i-1)+costs[0];
+            int op2=dp(i-7)+costs[1];
+            int op3=dp(i-30)+costs[2];
+            ans=Math.min(op1,Math.min(op2,op3));
+        }
+        else{
+            ans=dp(i-1);
+        }
+        dp[i-1]=ans;
+        return ans;
+    }
+}
