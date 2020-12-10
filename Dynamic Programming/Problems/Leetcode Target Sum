@@ -1,0 +1,45 @@
+//Recursive:2^n
+class Solution {
+    public int findTargetSumWays(int[] nums, int S) {
+        return findTargetSumWays(nums,S,0,0);
+    }
+     public int findTargetSumWays(int[] nums, int S,int sum,int i) {
+        if(i==nums.length){
+            if(S==sum)return 1;
+            else return 0;
+        }
+         else{
+             int add=findTargetSumWays(nums,S,sum+nums[i],i+1);
+             int sub=findTargetSumWays(nums,S,sum-nums[i],i+1);
+             return add+sub;
+         }
+    }
+}
+
+______________________________________________________________________________________________
+//Top down:O(n*sum) sumis max sum
+
+class Solution {
+    static int dp[][];
+    
+    public int findTargetSumWays(int[] nums, int S) {
+        dp= new int[nums.length][2001];
+        for(int x[]:dp){
+            Arrays.fill(x,Integer.MAX_VALUE);
+        }
+        
+        return findTargetSumWays(nums,S,0,0);
+    }
+     public int findTargetSumWays(int[] nums, int S,int sum,int i) {
+        if(i==nums.length){
+            if(S==sum)return 1;
+            else return 0;
+        }
+         else{
+             if(dp[i][sum+1000]!=Integer.MAX_VALUE)return dp[i][sum+1000];
+             int add=findTargetSumWays(nums,S,sum+nums[i],i+1);
+             int sub=findTargetSumWays(nums,S,sum-nums[i],i+1);
+             return dp[i][sum+1000]=add+sub;
+         }
+    }
+}
