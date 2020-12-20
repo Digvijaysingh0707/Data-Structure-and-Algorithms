@@ -7,12 +7,26 @@ as we are moving from top to bottom the last element of commmon part will be the
 
 Assumption both a and b are present in the tree
 
-static TreeNode lca(TreeNode root,int a,int b){
-        if (root==null)return null;
-        if (root.val==a||root.val==b)return root;
-        TreeNode left=lca(root.left,a,b);
-        TreeNode right=lca(root.right,a,b);
-        if (left!=null&&right!=null)return root;
-        if (left!=null)return left;
-        else return right;
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root==null)return null;
+        if(root==p||root==q){
+            return root;
+        }
+        TreeNode leftans=lowestCommonAncestor(root.left,p,q);
+        TreeNode rightans=lowestCommonAncestor(root.right,p,q);
+        if(leftans!=null&&rightans!=null)return root;
+        if(leftans!=null)return leftans;
+        return rightans;
+        
     }
+}
