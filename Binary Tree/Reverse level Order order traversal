@@ -1,0 +1,26 @@
+public ArrayList<Integer> reverseLevelOrder(Node node) 
+    {
+        // code here
+        Queue<Node> q= new LinkedList<>();
+     Stack<Node> ans= new Stack<>();
+     q.add(node);
+     while(!q.isEmpty()){
+         Node temp=q.poll();
+         ans.add(temp);
+         
+         if(temp.right!=null){
+             q.add(temp.right);
+         }
+         if(temp.left!=null){
+             q.add(temp.left);
+         }
+         
+     }
+     ArrayList<Integer> list = new ArrayList<>();
+     while(ans.isEmpty()==false){
+         list.add(ans.pop().data);
+     }
+     
+     return list;
+
+    }
