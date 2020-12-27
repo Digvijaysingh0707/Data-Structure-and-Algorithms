@@ -80,150 +80,39 @@ public class Node {
 
         }
         
-        Another approach: Bottom up approach O(n)
+        //Another approach: Bottom up approach O(n)
             
             
-            package com.company;
-class Node {
-    int key;
-    Node left,right;
-    public Node(int item){
-        this.key=item;
-        left=right=null;
-
-    }
-}
-class Height{
-    int height=0;
-}
-class  BinaryTree {
-    static Node root;
-
-    BinaryTree() {
-        root = null;
-    }
-
-    boolean isBalanced(Node root,Height height){
-        if (root==null){
-            height.height=0;
-            return true;
-        }
-        Height lheight=new Height(),rheight=new Height();
-        boolean l=isBalanced(root.left,lheight);
-        boolean r= isBalanced(root.right,rheight);
-        int lh=lheight.height,rh=rheight.height;
-        height.height=(lh>rh?lh:rh)+1;
-        if (Math.abs(lh-rh)<=1){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    public static void main(String[] args) {
-        Height height= new Height();
-        BinaryTree tree = new BinaryTree();
-
-        tree.root=new Node(1);
-
-        tree.root.left=new Node(2);
-
-        tree.root.right=new Node(3);
-
-        tree.root.left.left=new Node(4);
-
-        tree.root.left.right = new Node(5);
-
-        if (tree.isBalanced(tree.root,height)){
-            System.out.println("IsBalanced");
-        }
-        else{
-            System.out.println("Not balanced");
-        }
-
-
-    }
-}
-
-        
-    Another solution using O(n) //techiedelight.com/check-given-binary-tree-is-height-balanced-not/   
-        import java.util.concurrent.atomic.AtomicBoolean;
-
-// Data structure to store a Binary Tree node
-class Node
+         class Tree
 {
-	int data;
-	Node left = null, right = null;
-
-	Node(int data) {
-		this.data = data;
-	}
+    static class Pair{
+        int height;
+        boolean balance;
+    }
+    static Pair balance(Node root){
+        Pair p= new Pair();
+        if(root==null){
+            p.height=0;
+            p.balance=true;
+            return p;
+        }
+        Pair left=balance(root.left);
+        Pair right=balance(root.right);
+        p.height=Math.max(left.height,right.height)+1;
+        if(Math.abs(left.height-right.height)<=1&&left.balance&&right.balance){
+            p.balance=true;
+        }
+        else p.balance= false;
+        return p;
+    }
+     
+    boolean isBalanced(Node root)
+    {
+       if(balance(root).balance){
+           return true;
+       }
+       return false;
+	
+    }
 }
-
-class Main {
-	// Recursive function to check if given binary tree is height balanced or not
-	public static int isHeightBalanced(Node root, AtomicBoolean isBalanced)
-	{
-		// base case: tree is empty or tree is not balanced
-		if (root == null || !isBalanced.get()) {
-			return 0;
-		}
-
-		// get height of left subtree
-		int left_height = isHeightBalanced(root.left, isBalanced);
-
-		// get height of right subtree
-		int right_height = isHeightBalanced(root.right, isBalanced);
-
-		// tree is unbalanced if absolute difference between height of
-		// its left subtree and right subtree is more than 1
-		if (Math.abs(left_height - right_height) > 1) {
-			isBalanced.set(false);
-		}
-
-		// return height of subtree rooted at current node
-		return Math.max(left_height, right_height) + 1;
-	}
-
-	// Main function to check if given binary tree is height balanced or not
-	public static boolean isHeightBalanced(Node root)
-	{
-		// Using AtomicBoolean as boolean is passed by value in Java
-		AtomicBoolean isBalanced =  new AtomicBoolean(true);
-		isHeightBalanced(root, isBalanced);
-
-		return isBalanced.get();
-	}
-
-	// main function
-	public static void main(String[] args) {
-	    /* Construct below tree
-		          1
-		        /   \
-		       /     \
-		      2       3
-		     / \     /
-		    4   5   6
-	    */
-
-		Node root = new Node(1);
-		root.left = new Node(2);
-		root.right = new Node(3);
-		root.left.left = new Node(4);
-		root.left.right = new Node(5);
-		root.right.left = new Node(6);
-
-		if (isHeightBalanced(root)) {
-			System.out.print("Yes");
-		} else {
-			System.out.print("No");
-		}
-	}
-}
-
-
-
-
-
-  
 
