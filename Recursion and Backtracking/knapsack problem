@@ -2,6 +2,7 @@ package Recursion;
 
 public class knapsackProblem {
     static int knapsack(int n,int c,int prices[],int weight[]){
+    //c is capacity
         if (n==0||c==0)return 0;
         int ans=0;
         int include=0;
