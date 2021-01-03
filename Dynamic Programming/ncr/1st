@@ -1,0 +1,21 @@
+//Time and space:-O(n*r)
+static int nCr(int n, int r)
+    {
+        long mod=(int)(1e9+7);
+        int dp[][]= new int[1001][1001];
+        for (int i[]:dp){
+            Arrays.fill(i,-1);
+        }
+        if (r==0||n==r){
+            dp[n][r]=1;
+            return dp[n][r];
+        }
+        
+        if (r>n){
+            dp[n][r]=0;
+            return dp[n][r];
+        }
+        if (dp[n][r]!=-1)return dp[n][r];
+        long ans=(nCr(n-1,r-1)+nCr(n-1,r))%mod;
+        return dp[n][r]=(int)ans;
+    }
