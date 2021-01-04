@@ -1,0 +1,17 @@
+//Time and space:-O(n) 
+static int permutaion(int n,int r){
+            int fact[]= new int[n+1];
+            fact[0]=1;
+            for (int i=1;i<=n;i++){
+                fact[i]=i*fact[i-1];
+            }
+            return fact[n]/fact[n-r];
+        }
+        //O(1) space
+        static int permutaion2(int n,int r){
+            int p=1;
+            for (int i=0;i<r;i++){
+                p*=(n-i);
+            }
+            return p;
+        }
