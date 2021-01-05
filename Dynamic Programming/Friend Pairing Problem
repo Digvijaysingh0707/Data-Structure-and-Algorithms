@@ -22,3 +22,16 @@ public class FriendPairing {
 
     }
 }
+__________________________________________________________
+//O(1) space
+public long countFriendsPairings(int n) 
+    { 
+       long a=1,b=2,c=0;
+       if(n<=2)return n;
+       for(long i=3;i<=n;i++){
+           c=(b+(i-1)*a);
+           a=b;
+           b=c;
+       }
+       return c;
+    }
