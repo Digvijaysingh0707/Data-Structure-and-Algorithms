@@ -1,0 +1,32 @@
+static int equalPartition(int N, int arr[])
+        {
+            int sum=0;
+            for (int i=0;i<N;i++){
+                sum+=arr[i];
+            }
+            boolean dp[][]= new boolean[N+1][sum/2+1];
+            if (sum%2!=0)return 0;
+            else{
+
+                dp[0][0]=true;
+                for (int i=1;i<=N;i++){
+                    dp[i][0]=true;
+                }
+                for (int i=1;i<=sum/2;i++){
+                    dp[0][i]=false;
+                }
+                for (int i=0;i<=N;i++){
+                    for (int j=1;j<=sum/2;j++){
+                        if (j>=arr[i-1]){
+                            dp[i][j]=dp[i-1][j]||dp[i-1][j-arr[i-1]];
+                        }
+                        if (j<arr[i-1]){
+                            dp[i][j]=dp[i-1][j];
+                        }
+                    }
+                }
+
+            }
+            if (dp[N][sum/2]==false)return 0;
+            else return 1;
+        }
