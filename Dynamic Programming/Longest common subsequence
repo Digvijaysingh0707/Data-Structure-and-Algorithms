@@ -30,3 +30,29 @@ return dp[m][n];
         System.out.println(lcs(x,y));
     }
 }
+
+_________________________________________________________________________________________________________________________________
+//O(n) space
+static int spaceOptimisedLCs(String a,String b){
+            int n=a.length(),m=b.length();
+            int min=Math.min(n,m);
+            int max=Math.max(n,m);
+            int dp[][]= new int[2][min+1];
+            int sign=0;
+            for (int i=0;i<=max;i++ ){
+                sign=sign&i;
+                for (int j=0;j<=min;j++){
+                    if (i==0||j==0){
+                        dp[sign][j]=0;
+                    }
+                    else if (a.charAt(i-1)==b.charAt(j-1)){
+                        dp[sign][j]=dp[1-sign][j-1]+1;
+                    }
+                    else{
+                        dp[sign][j]=Math.min(dp[1-sign][j],dp[sign][j-1]);
+                    }
+                }
+
+            }
+            return dp[sign][min];
+        }
