@@ -13,3 +13,21 @@ static long dp[]= new long[1000000];
             }
             return dp[n];
         }
+        
+        
+        ___________________________________________________
+        //O(1) space
+        static long  countWays(int n,int k)
+        {
+            int mod=1000000007;
+           long same=k;
+           long diff=k*(k-1);
+           long total=same+diff;
+           for (int i=3;i<=n;i++){
+               same=diff;
+               diff=total*(k-1);
+               diff=diff%mod;
+               total=(same+diff)%mod;
+           }
+           return total;
+        }
