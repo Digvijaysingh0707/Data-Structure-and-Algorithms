@@ -1,0 +1,35 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+            int t=sc.nextInt();
+            while (t-->=1){
+                int n=sc.nextInt(),m=sc.nextInt(),o=sc.nextInt();
+                String a=sc.next(),b=sc.next(),c=sc.next();
+                int dp[][][]= new int[n+1][m+1][o+1];
+                for (int i=0;i<=n;i++){
+                    for (int j=0;j<=m;j++){
+                        for (int k=0;k<=o;k++){
+                            if (i==0||j==0||k==0){
+                                dp[i][j][k]=0;
+                            }
+                            else if (a.charAt(i-1)==b.charAt(j-1)&&a.charAt(i-1)==c.charAt(k-1)){
+                                dp[i][j][k]=dp[i-1][j-1][k-1]+1;
+                            }
+                            else{
+                                dp[i][j][k]=Math.max(dp[i-1][j][k],Math.max(dp[i][j-1][k],dp[i][j][k-1]));
+                            }
+                        }
+                    }
+                }
+                System.out.println(dp[n][m][o]);
+            }
+
+
+	}
+}
