@@ -1,0 +1,16 @@
+//longest subsequence such that difference between adjacent is 1
+static int dp[]= new int[1100];
+        static int longestSubsequence(int N, int A[])
+        {
+            Arrays.fill(dp,1);
+            int max=0;
+            for (int i=1;i<N;i++){
+                for (int j=0;j<i;j++){
+                    if (Math.abs(A[i]-A[j])==1&&dp[i]<1+dp[j]){
+                        dp[i]=1+dp[j];
+                    }
+                }
+                max=Math.max(max,dp[i]);
+            }
+            return max;
+        }
