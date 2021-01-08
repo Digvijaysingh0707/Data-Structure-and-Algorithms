@@ -1,0 +1,29 @@
+//TC:-O(n^2) && space:-O(n)
+class GfG
+{
+   
+        int maxChainLength(Pair arr[], int n)
+        {
+           Arrays.sort(arr, new Comparator<Pair>()
+    {
+        public int compare(Pair a, Pair b)
+        {
+            return a.x - b.x;
+        }
+    }); 
+            int max=0;
+            int dp[]= new int[n];
+            Arrays.fill(dp,1);
+            for (int i=0;i<n;i++){
+                for (int j=0;j<i;j++){
+                    if (arr[j].y<arr[i].x&&dp[i]<1+dp[j]){
+                        dp[i]=1+dp[j];
+                    }
+                }
+                max=Math.max(max,dp[i]);
+            }
+            return max;
+        }
+}
+
+___________________________________________________________________________________________________
