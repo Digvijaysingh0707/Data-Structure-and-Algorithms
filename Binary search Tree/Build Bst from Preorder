@@ -46,58 +46,28 @@ public class BuildBStFromPre {
 
 O(n) approach
 
-package BST;
-
-import java.util.concurrent.atomic.AtomicInteger;
-
-class Node{
-    int key;
-    Node left;
-    Node right;
-    Node(int key){
-        this.key=key;
+class Solution {
+    
+     public TreeNode bstFromPreorder(int[] preorder) {
+        return helper(preorder, 0, preorder.length);
+        
     }
-}
-public class BuildBStFromPre {
-    static void inorder(Node root) {
-        if (root == null) return;
-        inorder(root.left);
-        System.out.print(root.key + ",");
-        inorder(root.right);
-    }
-    static Node BuildTree(int preorder[], AtomicInteger pIndex,int min,int max){
-        //Base case
-        if (pIndex.get()==preorder.length){
-            return null;
+    
+    public TreeNode helper(int[] preorder, int rootindex, int right)
+    {        
+        if(rootindex >= right) return null;
+        
+        int value = preorder[rootindex];
+        TreeNode root = new TreeNode(value);
+        
+        int i = rootindex+1;
+	    while(i <= preorder.length-1 && preorder[i] < value)
+        {
+            i++;
         }
-        int val= preorder[pIndex.get()];
-        if (val<min||val>max){
-            return null;
-        }
-        Node root = new Node(val);
-        pIndex.incrementAndGet();
-
-        root.left=BuildTree(preorder,pIndex,min,val-1);
-        root.right=BuildTree(preorder,pIndex,val,max);
-        return root;
-    }
-    static Node BuildTree(int preorder[]){
-        AtomicInteger pIndex= new AtomicInteger(0);
-        return BuildTree(preorder,pIndex,Integer.MIN_VALUE,Integer.MAX_VALUE);
-    }
-
-    public static void main(String[] args)
-    {
-		
-        int[] preorder = { 15, 10, 8, 12, 20, 16, 25 };
-
-        // construct the BST
-        Node root = BuildTree(preorder);
-
-        // print the BST
-        System.out.print("Inorder Traversal of BST is: ");
-
-        // inorder on the BST always returns a sorted sequence
-        inorder(root);
+        root.left = helper(preorder, rootindex+1, i);
+        root.right = helper(preorder,i, right);
+        
+        return root;        
     }
 }
