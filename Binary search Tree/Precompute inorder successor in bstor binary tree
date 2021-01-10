@@ -1,0 +1,18 @@
+ //TC:-O(n)
+ //Space:-O(1)
+class GFG
+{
+    static Node pre;
+    public static void populateNext(Node root)
+    {
+        //Add your code here.
+        if(root==null)return;
+        populateNext(root.left);
+        if(pre!=null){
+            pre.next=root;
+        }
+        pre=root;
+        populateNext(root.right);
+        
+    }
+}
