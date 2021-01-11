@@ -1,0 +1,40 @@
+static List<Integer> in(List<Integer> list,Node root){
+        if(root==null)return list;
+        in(list,root.left);
+        list.add(root.data);
+        in(list,root.right);
+        return list;
+    }
+    static List<Integer> merge(List<Integer> l1,List<Integer> l2){
+        int n1=l1.size();
+        int n2=l2.size();
+        List<Integer> ans= new ArrayList<>();
+        int i=0,j=0;
+        while (i<n1&&j<n2){
+            if (l1.get(i)>l2.get(j)){
+                ans.add(l2.get(j));
+                j++;
+            }
+            else{
+                ans.add(l1.get(i));
+                i++;
+            }
+        }
+        while (i<n1){
+            ans.add(l1.get(i));
+            i++;
+        }
+        while (j<n2){
+            ans.add(l2.get(j));
+            j++;
+        }
+        return ans;
+    }
+    public List<Integer> merge(Node root1,Node root2)
+    {
+        List<Integer> l1= new ArrayList<>();
+        List<Integer> l2= new ArrayList<>();
+        in(l1,root1);
+        in(l2,root2);
+        return merge(l1,l2);
+    }
