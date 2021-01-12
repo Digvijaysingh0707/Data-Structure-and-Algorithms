@@ -1,0 +1,15 @@
+//Time O(n)
+class GFG
+{
+    public static boolean isDeadEnd(Node root)
+    {
+        //Add your code here.
+        return find(root,1,Integer.MAX_VALUE);
+        
+    }
+    static boolean find(Node root,int min,int max){
+        if(root==null)return false;
+        if(min==max)return true;
+        return find(root.left,min,root.data-1)||find(root.right,root.data+1,max);
+    }
+}
