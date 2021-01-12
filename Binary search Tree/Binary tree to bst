@@ -1,0 +1,44 @@
+class GfG
+{
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+    class index{
+        int x;
+        index(int x){
+            this.x=x;
+        }
+    }
+    void arrayToBST(int a[],Node root,index i){
+        if (root==null)return;
+        arrayToBST(a,root.left,i);
+        root.data=a[i.x++];
+        arrayToBST(a,root.right,i);
+
+    }
+    void storeInorder(Node root,int inorder[],index i){
+        if (root==null){
+            return;
+        }
+        storeInorder(root.left,inorder,i);
+        inorder[i.x++]=root.data;
+        storeInorder(root.right,inorder,i);
+    }
+    int size(Node root){
+        if (root==null)return 0;
+        return 1+size(root.left)+size(root.right);
+    }
+    Node binaryTreeToBST(Node root)
+    {
+        // Your code here
+        if (root==null)return null;
+        int n=size(root);
+        int a[]= new int[n];
+        index i= new index(0);
+        storeInorder(root,a,i);
+        Arrays.sort(a);
+        i.x=0;
+        arrayToBST(a,root,i);
+        return root;
+    }
+}
+ 
