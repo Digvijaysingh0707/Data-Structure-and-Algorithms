@@ -14,3 +14,12 @@ class Solution
         return dp[n];
     } 
 }
+
+_______________________________________________________________
+//Recursive
+static int count(int a[],int amount,int n){
+        if (amount==0)return 1;
+        if (amount<0)return 0;
+        if (n<=0&&amount>0)return 0;
+        return count(a,amount-a[n-1],n)+count(a,amount,n-1);
+    }
