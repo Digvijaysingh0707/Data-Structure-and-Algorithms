@@ -1,0 +1,54 @@
+import com.sun.security.jgss.GSSUtil;
+import org.w3c.dom.Node;
+
+import javax.print.DocFlavor;
+import javax.swing.table.AbstractTableModel;
+import java.io.*;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
+
+//_________________________________________________________________
+class index{
+    int x=0;
+}
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int T=sc.nextInt();
+        outer:while (T-->=1) {
+            int n=sc.nextInt();
+            int a[]= new int[n];
+            int ans[]= new int[n];
+            Arrays.fill(ans,-1);
+            for (int i=0;i<n;i++)a[i]=sc.nextInt();
+            Stack<Integer> s= new Stack<>();
+            s.add(a[0]);
+            for (int i=1;i<n;i++){
+                if (s.isEmpty()){
+                    s.push(a[i]);
+                    continue;
+                }
+                while (s.isEmpty()==false&&s.peek()<a[i]){
+                    System.out.println(s.peek()+"---> "+a[i]+" ");
+                    s.pop();
+                }
+                s.push(a[i]);
+            }
+            while (s.isEmpty()==false){
+                System.out.println(s.peek()+"-->"+-1);
+                s.pop();
+            }
+
+
+
+
+
+
+        }
+
+    }
+}
+
+
