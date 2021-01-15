@@ -1,58 +1,32 @@
-import java.util.ArrayList;
-class Graph{
-    static  ArrayList<ArrayList<Integer>> graph;
-    static  int v;
-     public Graph(int nodes){
-        this.v=nodes;
-        graph=new ArrayList<ArrayList<Integer>>();
-        for (int i=0;i<v;i++){
-            graph.add(new ArrayList<>());
-        }
-    }
-    static void add(int u,int v){
-        graph.get(u).add(v);
-        graph.get(v).add(u);
-    }
-    static void print(){
-        for (int i=0;i<v;i++){
-            System.out.println("NOde "+i);
-            for (int x:graph.get(i)){
-                System.out.println(x);
-            }
-        }
-     }
-    static boolean cycle_helper(int node,boolean visited[],int parent){
-        visited[node]=true;
-        for (int x:graph.get(node)){
-            //Two cases
-            if (!visited[x]){
-                //go and recursively visit the node
-                boolean cycle_mila=cycle_helper(x,visited,node);
-                    if (cycle_mila){
-                        return true;
-                    } 
-            }
-            //node is visited but it should not be the parent
-            else if (x!=parent){
-                return true;
+class Solution
+{
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj)
+    {
+        // Code here
+        boolean vis[]= new boolean[V];
+        // return helper(0,vis,-1,adj);
+        for(int i=0;i<V;i++){
+            if(vis[i]==false){
+                if(helper(i,vis,-1,adj))return true;
             }
         }
         return false;
     }
-    static boolean conatainCycle(){
-        boolean visited[]= new boolean[v];
-       return cycle_helper(0,visited,-1);
-    }
-    public static void main(String[] args) {
-        Graph g = new Graph(7);
-        g.add(0,1);
-        g.add(1,2);
-        g.add(2,3);
-        g.add(3,4);
-        g.add(4,0);
-        if (g.conatainCycle()){
-            System.out.println("Yes");
+    public boolean helper(int node,boolean vis[],int par,ArrayList<ArrayList<Integer>> adj){
+        vis[node]=true;
+        Iterator<Integer> it =adj.get(node).iterator();
+        while(it.hasNext()){
+            int c=it.next();
+            if(vis[c]==false){
+                //recursively visit the node
+                if(helper(c,vis, node,adj))return true;
+            }
+            //neighbour is visited but it should not be the parent
+            else if(c!=par){
+                return true;
+            }
         }
-        else System.out.println("no");
-     }
+        return false;
+        
+    }
 }
