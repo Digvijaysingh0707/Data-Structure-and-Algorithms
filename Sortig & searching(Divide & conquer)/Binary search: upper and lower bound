@@ -1,4 +1,5 @@
-complexity is O(log n) base is 2
+//TC:-O(logn)
+//Space:-O(1)
 public class Main {
     static int firstOccurence(int a[] ,int n ,int key){
         int s=0;
