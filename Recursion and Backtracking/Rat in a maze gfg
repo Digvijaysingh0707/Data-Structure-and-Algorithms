@@ -1,0 +1,56 @@
+
+//Time:-O((n^2)^4)
+//Space:-O(Len of path*no of paths)
+class GfG {
+    static String possiblePath="";
+    public static ArrayList<String> printPath(int[][] m, int n) {
+        ArrayList<String> ans=new ArrayList<>();
+        int sol[][]= new int[n][n];
+        find(m,0,0,n,sol,ans);
+        Collections.sort(ans);
+        return ans;
+    }
+    static boolean safe(int i,int j,int a[][],int n,int sol[][]){
+        if (i==n||j==n||i==-1||j==-1||a[i][j]==0||sol[i][j]==1)return false;
+        return true;
+    }
+
+    static void find(int a[][],int i,int j,int n,int sol[][],ArrayList<String> ans){
+        if (i==-1||j==-1||i==n||j==n||sol[i][j]==1||a[i][j]==0)return;
+        if (i==n-1&&j==n-1){
+            ans.add(possiblePath);
+            return;
+        }
+        sol[i][j]=1;
+        boolean right=safe(i,j+1,a,n,sol);
+        boolean left=safe(i,j-1,a,n,sol);
+        boolean down=safe(i+1,j,a,n,sol);
+        boolean up=safe(i-1,j,a,n,sol);
+
+
+        if (up){
+            possiblePath+='U';
+            find(a,i-1,j,n,sol,ans);
+            possiblePath=possiblePath.substring(0,possiblePath.length()-1);
+        }
+        if (down){
+            possiblePath+='D';
+            find(a,i+1,j,n,sol,ans);
+            possiblePath=possiblePath.substring(0,possiblePath.length()-1);
+        }
+
+        if (left){
+            possiblePath+='L';
+            find(a,i,j-1,n,sol,ans);
+            possiblePath=possiblePath.substring(0,possiblePath.length()-1);
+        }
+        if (right){
+            possiblePath+='R';
+            find(a,i,j+1,n,sol,ans);
+            possiblePath=possiblePath.substring(0,possiblePath.length()-1);
+        }
+        sol[i][j]=0;
+
+    }
+
+}
