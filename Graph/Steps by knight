@@ -1,0 +1,44 @@
+//Time and space:-O(n^2)
+
+static class Pair{
+        int x;int y;int dis;
+        Pair(int x,int y,int dis){
+            this.x=x;
+            this.y=y;
+            this.dis=dis;
+        }
+    }
+    static boolean inRange(int i,int j,int n){
+        if (i>=1&&i<=n&&j>=1&&j<=n)return true;
+        return false;
+
+    }
+    public int minStepToReachTarget(int KnightPos[], int TargetPos[], int N)
+    {
+        // Code here
+        int dx[] = { -2, -1, 1, 2, -2, -1, 1, 2 };
+        int dy[] = { -1, -2, -2, -1, 1, 2, 2, 1 };
+        Queue<Pair> q= new LinkedList<>();
+        q.add(new Pair(KnightPos[0],KnightPos[1],0));
+        boolean vis[][]=new boolean[N+1][N+1];
+        vis[KnightPos[0]][KnightPos[1]]=true;
+        while (q.size()!=0){
+           Pair p=q.poll();
+
+            if (p.x==TargetPos[0]&&p.y==TargetPos[1]){
+                return p.dis;
+            }
+            for (int i=0;i<8;i++){
+               int x=p.x+dx[i];
+               int  y=p.y+dy[i];
+                if (inRange(x,y,N)&&!vis[x][y]){
+                    vis[x][y]=true;
+                    q.add(new Pair(x,y,p.dis+1));
+                }
+            }
+        }
+        return -1;
+
+    }
+
+}
