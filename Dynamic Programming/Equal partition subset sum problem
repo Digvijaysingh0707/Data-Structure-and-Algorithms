@@ -1,31 +1,34 @@
-if (matrix.length==0)return 0;
-        int m=matrix.length;
-        int n=matrix[0].length;
-        int dp[][]= new int[m][n];
-        int maxside=0;
-        //init base case last row and last col
-        for (int j=0;j<n;j++){
-            dp[m-1][j]=matrix[m-1][j]-'0';
-            maxside=Math.max(maxside,dp[m-1][j]);
+class Solution{
+    static int equalPartition(int N, int arr[])
+    {
+        int sum=0;
+        for (int i=0;i<arr.length;i++){
+            sum+=arr[i];
         }
-        for (int j=0;j<n;j++){
-            dp[j][n-1]=matrix[j][n-1]-'0';
-            maxside=Math.max(maxside,dp[j][n-1]);
-        }
-        for (int i=m-2;i>=0;i--){
-            for (int j=n-2;j>=0;j--){
-                int a1=dp[i+1][j];//bottom
-                int a2=dp[i+1][j+1];//diagonal
-                int a3=dp[i][j+1];//right
-                int ans=Math.min(a1, Math.min(a2,a3));
-                if (matrix[i][j]=='0'){
-                    dp[i][j]=0;
+        if(sum%2==1)return 0;
+        sum/=2;
+        
+        boolean dp[][]= new boolean[N+1][sum+1];
+        for (int i=0;i<=arr.length;i++){
+            for (int j=0;j<=sum;j++){
+                if (i==0){
+                    dp[0][j]=false;
                 }
-                else{
-                    ans++;
-                    maxside=Math.max(maxside,ans);
-                    dp[i][j]=ans;
+                else if (j==0){
+                    dp[i][0]=true;
                 }
             }
         }
-        return maxside*maxside;
+        for (int i=1;i<=N;i++){
+            for (int j=1;j<=sum;j++){
+                if (arr[i-1]<=j){
+                    dp[i][j]=dp[i-1][j-arr[i-1]]||dp[i-1][j];
+                }
+                else dp[i][j]=dp[i-1][j];
+            }
+        }
+        if (dp[N][sum]==true)return 1;
+         return 0;
+
+    }
+}
