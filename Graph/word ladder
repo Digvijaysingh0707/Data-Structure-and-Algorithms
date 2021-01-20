@@ -1,0 +1,39 @@
+
+class Solution {
+    public static void find1(String w,HashMap<String,Boolean> map,Queue<String> q){
+        for (int i=0;i<w.length();i++){
+            char ch[]=w.toCharArray();
+            for (char alpha='a';alpha<='z';alpha++){
+                ch[i]=alpha;
+                String s=String.valueOf(ch);
+                if (map.containsKey(s)&&map.get(s)==false){
+                    map.put(s,true);
+                    q.add(s);
+                }
+            }
+        }
+    }
+    public static int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (wordList.contains(endWord)==false)return 0;
+        HashMap<String,Boolean> map = new HashMap<>();
+        for (int i=0;i<wordList.size();i++){
+            map.put(wordList.get(i),false);
+        }
+        Queue<String> q= new LinkedList<>();
+        int depth=1;
+        q.add(beginWord);
+        map.put(beginWord,true);
+        while (q.isEmpty()==false){
+            int size=q.size();
+            for (int i=0;i<size;i++){
+                String word=q.poll();
+                if (word.equals(endWord)){
+                    return depth;
+                }
+                 find1(word,map,q);
+            }
+            depth++;
+        }
+        return 0;
+
+    }}
