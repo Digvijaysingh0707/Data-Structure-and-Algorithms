@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+public class Main {
+    static class Pair implements Comparable<Pair> {
+        int v;
+        //psf is Path so far
+        String psf;
+        //wsf is weight so far
+        int wsf;
+        Pair(int v, String psf, int wsf) {
+            this.v = v;
+            this.psf = psf;
+            this.wsf = wsf;
+        }
+        public int compareTo(Pair o) {
+            return this.wsf - o.wsf;
+        }
+    }
+    static class Edge {
+        int src;
+        int nbr;
+        int wt;
+
+        Edge(int src, int nbr, int wt) {
+            this.src = src;
+            this.nbr = nbr;
+            this.wt = wt;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<Edge>[] graph = new ArrayList[7];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        int src = sc.nextInt();
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(src, src + "", 0));
+        boolean visited[] = new boolean[n];
+        while (pq.size() > 0) {
+            Pair rem = pq.remove();
+            if (visited[rem.v] == true) {
+                continue;
+            }
+            visited[rem.v] = true;
+            System.out.println(rem.v + " via " + rem.psf + " @ " + rem.wsf);
+            for (Edge e : graph[rem.v]) {
+                if (visited[e.nbr] == false) {
+                    pq.add(new Pair(e.nbr, rem.psf + e.nbr, rem.wsf + e.wt));
+                }
+            } 
+        } 
+    }
+}
