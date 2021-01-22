@@ -1,0 +1,43 @@
+//Time:-O(n*sum) n is the number of elements and sum is the sum of all elements
+
+//subset sum problem
+    static void subsetSum(int arr[],int n,int sum,boolean dp[][]){
+        for (int i=0;i<=n;i++){
+            for (int j=0;j<=sum;j++){
+                if (i==0){
+                    dp[i][j]=false;
+                }
+                if (j==0)dp[i][j]=true;
+            }
+        }
+        for (int i=1;i<=n;i++){
+            for (int j=1;j<=sum;j++){
+                if (arr[i-1]<=j){
+                    dp[i][j]=(dp[i-1][j-arr[i-1]]||dp[i-1][j]);
+                }
+                else{
+                    dp[i][j]=dp[i-1][j];
+                }
+            }
+        }
+    }
+
+    public int minDiffernce(int arr[], int n)
+    {
+        int range=0;
+        for(int i=0;i<n;i++)range+=arr[i];
+        boolean dp[][]= new boolean[n+1][range+1];
+        subsetSum(arr,n,range,dp);
+        //find possible subset
+        int subset[]= new int[range/2+1];
+        for (int i=0;i<subset.length;i++){
+            if (dp[n][i]==true)subset[i]=1;
+        }
+
+        int min=Integer.MAX_VALUE;
+        for (int i=0;i<subset.length;i++){
+            if (subset[i]>0)
+            min=Math.min(min,range-2*i);
+        }
+        return min;
+    }
