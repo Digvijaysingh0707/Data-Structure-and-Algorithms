@@ -34,3 +34,20 @@ class Solution{
 
     }
 }
+
+__________________________________________________________________________________________
+//O(sum) space
+public boolean canPartition(int[] nums) {
+        int sum=0;
+        int n=nums.length;
+        for (int i=0;i<n;i++)sum+=nums[i];
+        if (sum%2!=0)return false;
+        sum/=2;
+       boolean dp[]= new boolean[sum+1];
+       for (int i=0;i<n;i++){
+           for (int j=sum;j>=nums[i];j--){
+               if (dp[j-nums[i]]==true||j==nums[i])dp[j]=true;
+           }
+       }
+       return dp[sum];
+    }
