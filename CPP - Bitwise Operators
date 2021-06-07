@@ -1,9 +1,0 @@
-Bitwise operator operate on bits(binary representation of a number)
-for bitwise XOR same bits gives 0 while different bits gives 1
-Left Shift(<<):- let 'a' be a number then
-'a'left shift 1 is a*2
-'a' left shift 2 is a*2^2
-'a' left shift n is a*2^n
-
-Right shift(>>):-
-'a' right shift n is a/2^n
