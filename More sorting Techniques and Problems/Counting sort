@@ -1,7 +1,3 @@
-O(N+range)
-helpul for small range
-Ex is sort the mark of students in jee range will be 360
-we atke the array and record their frequency
 
 
 package com.company;
